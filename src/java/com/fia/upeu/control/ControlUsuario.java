@@ -33,17 +33,12 @@ public class ControlUsuario extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String usuario = request.getParameter("usuario");
+        String clave = request.getParameter("clave");
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet ControlUsuario</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet ControlUsuario at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            out.println(usuario);
+            out.println(clave);
+            
         } finally {
             out.close();
         }

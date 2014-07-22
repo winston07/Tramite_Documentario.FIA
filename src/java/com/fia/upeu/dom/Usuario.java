@@ -11,5 +11,8 @@ package com.fia.upeu.dom;
  * @author alum.fial7
  */
 public class Usuario {
+    private String usuario;
+    private String clave;
+    private String estado;
     
 }
