@@ -7,7 +7,6 @@ package com.fia.upeu.config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 /**
  *
@@ -15,20 +14,23 @@ import java.sql.SQLException;
  */
 public class Conexion {
 
-    private static Connection conex = null;
-
     public static Connection getConex() throws Exception {
-        Class.forName("oracle.jdbc.OracleDriver").newInstance();
-        String url = "jdbc:oracle:thin:@localhost:1521:XE";
-        String user = "root";
-        String pwd = "";
-        
-        conex = DriverManager.getConnection(url, user, pwd);
+        String usuario = "bd";
+        String password = "bd";
+        String host = "localhost";
+        String puerto = "1521";
+        String sid = "XE";
+        String driver = "oracle.jdbc.driver.OracleDriver";
+        String url = "jdbc:oracle:thin:" + usuario + "/" + password + "@" + host + ":" + puerto + ":" + sid;
 
-        return conex;
-    }
+        Connection connection = null;
 
-    public static  void CerrarConexion() throws SQLException {
-        conex.close();
+        try {
+            Class.forName(driver).newInstance();
+            connection = DriverManager.getConnection(url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return connection;
     }
 }

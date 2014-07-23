@@ -3,11 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.fia.upeu.control;
 
+import com.fia.upeu.modelo.ModeloUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,10 +18,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author alum.fial7
+ * @author Kelvin Thony
  */
-public class ControlUsuario extends HttpServlet {
-    
+public class ComprobarUsuario extends HttpServlet {
+
+    ResultSet rs = null;
+    ModeloUsuario mUsuario = new ModeloUsuario();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,18 +35,8 @@ public class ControlUsuario extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String usuario = request.getParameter("usuario");
-        String clave = request.getParameter("clave");
-        try {
-            out.println(usuario);
-            out.println(clave);
-            
-        } finally {
-            out.close();
-        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -56,7 +51,7 @@ public class ControlUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
     }
 
     /**
@@ -70,7 +65,29 @@ public class ControlUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        PrintWriter out = response.getWriter();
+        String opc = request.getParameter("opc");
+        String usuario = request.getParameter("usuario");
+        String clave = request.getParameter("clave");
+
+        out.println(usuario);
+        out.println(clave);
+        out.println(opc);
+        try {
+            out.println(opc + "estas dentro del try cach");
+            rs = mUsuario.ValidaUsuario(usuario, clave);
+            if (rs.next()) {
+                out.println(opc + "estas dentro del if");
+                response.sendRedirect("vistas_director/portal.jsp");
+
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(ComprobarUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     /**

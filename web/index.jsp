@@ -9,16 +9,16 @@
     <body>
         <div class="container">
             <div class="marco">
-                <form class="form-signin" role="form" action="ControlUsuario">
+                <form class="form-signin" role="form" action="ComprobarUsuario" method="post">
                     <h2 class="form-signin-heading text-center"><img src="img/logoing.png" class="img2 img-circle " alt="" /></h2>
-                    <input type="email" class="form-control" placeholder="Correo Electronico" required autofocus name="usuario">
+                    <input type="text" class="form-control" placeholder="Correo Electronico" required autofocus name="usuario">
                     <input type="password" class="form-control" placeholder="Clave" required name="clave">
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="remember-me"> Recordar
                         </label>
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Iniciar</button>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" value="validar" name="opc">Iniciar</button>
                 </form>
             </div>
 

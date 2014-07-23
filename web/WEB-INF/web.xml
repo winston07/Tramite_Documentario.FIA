@@ -4,9 +4,17 @@
         <servlet-name>ControlUsuario</servlet-name>
         <servlet-class>com.fia.upeu.control.ControlUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ComprobarUsuario</servlet-name>
+        <servlet-class>com.fia.upeu.control.ComprobarUsuario</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ControlUsuario</servlet-name>
         <url-pattern>/ControlUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ComprobarUsuario</servlet-name>
+        <url-pattern>/ComprobarUsuario</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
