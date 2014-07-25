@@ -7,8 +7,8 @@ package com.fia.upeu.modelo;
 
 import com.fia.upeu.config.Conexion;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 /**
  *
@@ -16,19 +16,15 @@ import java.sql.ResultSet;
  */
 public class ModeloUsuario {
 
-    ResultSet rs;
-    boolean resultado = false;
-
-    public ResultSet listarUsuario() {
-        return rs;
-    }
-
-    public ResultSet ValidaUsuario(String usuario, String clave) throws Exception  {
-        System.out.println(usuario+clave);
-        Connection cx = Conexion.getConex();
-        String query = "select usu_login,usu_pasword from  USUARIO where usu_login='"+usuario+"' and usu_pasword='"+clave+"';";
-        PreparedStatement ps = cx.prepareStatement(query);
-        rs = ps.executeQuery();
+    ResultSet rs = null;
+    Statement stmt = null;
+     Connection cx = null;
+     
+    public ResultSet ValidarUsuario(String usuario, String clave) throws Exception {
+        
+        cx=Conexion.getConex();
+        stmt = cx.createStatement();
+        rs = stmt.executeQuery("select * from usuario where usu_login='"+usuario+"' and usu_pasword='"+clave+"'");
         return rs;
     }
 }

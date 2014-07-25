@@ -15,12 +15,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Kelvin Thony
  */
-public class ComprobarUsuario extends HttpServlet {
+public class ControlUsuarios extends HttpServlet {
 
     ResultSet rs = null;
     ModeloUsuario mUsuario = new ModeloUsuario();
@@ -37,6 +38,22 @@ public class ComprobarUsuario extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try {
+            String usuario = request.getParameter("usuario");
+            String clave = request.getParameter("clave");
+            out.println("aqui"+usuario+clave);
+            rs = mUsuario.ValidarUsuario(usuario, clave);
+            if (rs.next()) {
+                HttpSession sesion = request.getSession(true);
+                response.sendRedirect("vistas_director/portal.jsp");
+            } else {
+                response.sendRedirect("index.jsp");
+            }
+
+        } finally {
+            out.close();
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -51,7 +68,11 @@ public class ComprobarUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(ControlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -65,29 +86,11 @@ public class ComprobarUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        String opc = request.getParameter("opc");
-        String usuario = request.getParameter("usuario");
-        String clave = request.getParameter("clave");
-
-        out.println(usuario);
-        out.println(clave);
-        out.println(opc);
         try {
-            out.println(opc + "estas dentro del try cach");
-            rs = mUsuario.ValidaUsuario(usuario, clave);
-            if (rs.next()) {
-                out.println(opc + "estas dentro del if");
-                response.sendRedirect("vistas_director/portal.jsp");
-
-            } else {
-                response.sendRedirect("index.jsp");
-            }
+            processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ComprobarUsuario.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getMessage());
+            Logger.getLogger(ControlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     /**
