@@ -166,7 +166,7 @@
                                         </td>
                                     </tr>
                                     <tr id="ocultar">
-                                        <td>1</td><td>201122837</td><td>Winston Cursai Quispe</td><td>2011-2</td><td>2014-2</td>
+                                        <td>1</td><td>201122837</td><td>Winston Curasi Quispe</td><td>2011-2</td><td>2014-2</td>
                                         <td>
                                             <input id="mos2" type="button" value="Mostrar" href="#" class="btn btn-success"/>
                                             <input id="ocu2" type="button" value="Ocultar" href="#" class="btn btn-warning"/>
