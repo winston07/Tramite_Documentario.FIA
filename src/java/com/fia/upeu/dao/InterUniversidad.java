@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface InterUniversidad {
     public List<Universidad>list_Universidad();
-    boolean ingresar_Universidad(String uni_nombre, String uni_direccion);
+    boolean ingresar_Universidad(String iduniversidad,String uni_nombre, String uni_direccion);
     boolean eliminar_Universidad(String iduniversidad);
-    boolean modificar_Universidad(String uni_nombre,String uni_direccion);
+    boolean modificar_Universidad(String iduniversidad,String uni_nombre,String uni_direccion);
     
 }
