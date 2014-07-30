@@ -5,6 +5,7 @@
  */
 package com.fia.upeu.control;
 
+import com.fia.upeu.dao.InterUsuario;
 import com.fia.upeu.dao_imple.ModeloUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,7 +25,7 @@ import javax.servlet.http.HttpSession;
 public class ControlUsuarios extends HttpServlet {
 
     ResultSet rs = null;
-    ModeloUsuario mUsuario = new ModeloUsuario();
+    InterUsuario mUsuario = new ModeloUsuario();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,7 +44,7 @@ public class ControlUsuarios extends HttpServlet {
             String usuario = request.getParameter("usuario");
             String clave = request.getParameter("clave");
             out.println("aqui"+usuario+clave);
-            rs = mUsuario.ValidarUsuario(usuario, clave);
+            rs = mUsuario.validar_Usuario(usuario, clave);
             if (rs.next()) {
                 HttpSession sesion = request.getSession(true);
                 response.sendRedirect("vistas_director/portal.jsp");
