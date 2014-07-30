@@ -5,7 +5,7 @@
  */
 package com.fia.upeu.control;
 
-import com.fia.upeu.modelo.ModeloUsuario;
+import com.fia.upeu.dao_imple.ModeloUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;

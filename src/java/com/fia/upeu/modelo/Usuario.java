@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.fia.upeu.dom;
+package com.fia.upeu.modelo;
 
 /**
  *
@@ -16,6 +16,7 @@ public class Usuario {
     private String clave;
     private String estado;
     private String idPersona;
+    private String idRol;
 
     public String getIdUduario() {
         return idUduario;
