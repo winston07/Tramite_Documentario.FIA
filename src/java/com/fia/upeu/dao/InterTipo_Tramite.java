@@ -16,11 +16,11 @@ import java.util.List;
 public interface InterTipo_Tramite {
     public List<Tipo_Tramite> listar_Tipo_Tramite();
 
-    public List<Tipo_Tramite> listar_Id_Tipo_Tramite(String idPedido);
+    public List<Tipo_Tramite> listar_Id_Tipo_Tramite(String idTipo_Tramite);
 
-    public boolean agregar_Tipo_Tramite(String fecha, String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante);
+    public boolean agregar_Tipo_Tramite(String idValidacion, String nombre_Tramite);
 
-    public boolean modificar_Tipo_Tramite(String fecha, String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante);
+    public boolean modificar_Tipo_Tramite(String idValidacion, String nombre_Tramite);
 
-    public boolean eliminar_Tipo_Tramite(String idPedido);
+    public boolean eliminar_Tipo_Tramite(String idTipo_Tramite);
 }

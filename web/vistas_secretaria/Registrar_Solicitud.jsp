@@ -1,8 +1,12 @@
+
+<%@page import="com.fia.upeu.modelo.Solicitante"%>
+<%@page import="com.fia.upeu.dao_imple.ModeloSolicitante"%>
+<%@page import="com.fia.upeu.dao.InterSolicitante"%>
+<%@page import="com.fia.upeu.dao_imple.Tipo_Tramite"%>
+<%@page import="com.fia.upeu.dao_imple.ModelTipo_Tramite"%>
+<%@page import="com.fia.upeu.dao.InterTipo_Tramite"%>
 <%@page import="java.util.Iterator"%>
-<%@page import="com.fia.upeu.modelo.Usuario"%>
 <%@page import="java.util.List"%>
-<%@page import="com.fia.upeu.dao_imple.ModeloUsuario"%>
-<%@page import="com.fia.upeu.dao.InterUsuario"%>
 
 <!DOCTYPE html>
 <html>
@@ -76,15 +80,16 @@
 
                                 <select data-placeholder="Codigo del Alumno" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="codigo">
                                     <option value=""></option>
+                                    <option value="null">No Tengo :P</option>
                                     <%
-                                        InterUsuario iUsuario = new ModeloUsuario();
+                                        InterSolicitante iSolicitante = new ModeloSolicitante();
                                     %>
                                     <%
-                                        List<Usuario> lUsuario = iUsuario.list_Usuario();
+                                        List<Solicitante> liSolicitante = iSolicitante.listar_Solicitante();
                                         
                                     %>
-                                    <%for (int i = 0; i < lUsuario.size(); i++){%>
-                                    <option value="<%=lUsuario.get(i).getUsuario()%>"><%=lUsuario.get(i).getUsuario()%></option>
+                                    <%for (int i = 0; i < liSolicitante.size(); i++){%>
+                                    <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
                                     <%}%>
                                 </select>
                                 <br/><br/>
@@ -94,14 +99,14 @@
                                 <select data-placeholder="Codigo del Alumno" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="codigo">
                                     <option value=""></option>
                                     <%
-                                        InterUsuario iUsuario = new ModeloUsuario();
+                                        InterTipo_Tramite tTramite = new ModelTipo_Tramite();
                                     %>
                                     <%
-                                        List<Usuario> lUsuario = iUsuario.list_Usuario();
+                                        List<Tipo_Tramite> ltTramite = tTramite.listar_Tipo_Tramite();
                                         
                                     %>
-                                    <%for (int i = 0; i < lUsuario.size(); i++){%>
-                                    <option value="<%=lUsuario.get(i).getUsuario()%>"><%=lUsuario.get(i).getUsuario()%></option>
+                                    <%for (int i = 0; i < ltTramite.size(); i++){%>
+                                    <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
                                     <%}%>
                                 </select>
 
