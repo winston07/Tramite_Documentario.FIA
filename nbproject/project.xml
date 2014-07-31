@@ -7,7 +7,11 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
+<<<<<<< HEAD
                     <file>${libs.Orcale_JDBC.classpath}</file>
+=======
+                    <file>${libs.oracle.classpath}</file>
+>>>>>>> origin/master
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
