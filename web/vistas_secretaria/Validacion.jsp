@@ -56,7 +56,7 @@
             </nav>
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
-                 <div class="sidebar-collapse">
+                <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
                         <li class="text-center">
                             <img src="../img/logosecretaria.png" class="user-image img-responsive"/>
@@ -81,88 +81,88 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-md-12">
-                        
+
                         <!--ingrese datos tabla-->  
                         <p>Registro de Validaciones de Alumnos</p>
-<center>
-    
-    <form action="" method="post" name="formulario" id="formulario">
-        <strong> Escuela </strong>
-        <select class="input-lg btn btn-default">
-        <option value="" disabled="disabled" selected="selected">SELECCIONE ESCUELA</option>
-        <option value="1">INGENIERIA SISTEMAS</option>
-        <option value="2">INGENIERIA ALIMENTOS</option>
-        <option value="3">INGENIERIA AMBIENTAL</option>
-        <option value="4">INGENIERIA CIVIL</option>
-        <option value="5">ARQUITECTURA</option>
-    </select>
-        
-        <p><strong >Codigo </strong>
-        <input class="text-box"name="Codigo" type="text" id="codigo" size="20" maxlength="50" />
-    <strong>Plan</strong>
-        <input class="text-box"name="plan" type="text" id="plan" size="5" maxlength="50" />
-    <strong>Plan Nuevo</strong>
-        <input class="text-box" name="plannuevo" type="text" id="plannuevo" size="5" maxlength="50" />
-    </p>
-  <p><strong>Nombres:</strong>
-    <input  class="text-box"name="descripcion" id="nombre" size="20" maxlength="50">
-    <strong>Apellidos:</strong>
-    <input  class="text-box"name="apellidos" id="apellidos" size="30" maxlength="50"/>
-  </p>
-</form><br/>
-    <!--INGRESO DE TRABLA JQUERY -->
-    
-    <table border='1'>
-    <div id="divContenedor" >
-		
-        <div id="divContenedorTabla" >
-            <table align="center" width="800" class="table-responsive">
-                            <caption>Plan academico </caption>
-				<thead>
-					<tr>
-				<th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>TH</th><th>HNP</th><th>Nota</th><th width="40">&nbsp;</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-                                            <td><input type="text"  size="3"class="clsAnchoTotal form-control "></td>
-						<td><input type="text" size="20" class="clsAnchoTotal form-control"></td>
-						<td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                                <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                                <td><input type="text"size="3" class="clsAnchoTotal form-control"></td>
-						<td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                                <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-						<td align="right"><input type="button" value="-" class="clsEliminarFila btn btn-danger"></td>
-					</tr>
-				</tbody>
-				<tfoot>
-					<tr>
-						<td colspan="4" align="right" >
-							<input type="button" value="Agregar una fila" class="clsAgregarFila btn btn-default" >
-							<!--<input type="button" value="Clonar la tabla" class="clsClonarTabla">
-							<input type="button" value="Eliminar la tabla" class="clsEliminarTabla">-->
-						</td>
-					</tr>
-				</tfoot>
-			</table>
-		</div>
-	</div>
+                        <center>
 
-    </table>
-                    
-    <p>
-    <center>
-    <div>
-        <input type="button" class="btn btn-success"name="ingresar" id="enviar" value="ingresar" />
-      <input type="button" class="btn btn-danger"name="cancelar" id="cancelar" value="Cancelar" />
-    <!--<a href="#" onClick="return false" onmouseOver="alert('')">
-    <img src="../img/interrogacion.png" width="45" height="45">
-</a>-->
-   <br />
-                    </div>
-    </center>
-</p>
-</center>
+                            <form action="" method="post" name="formulario" id="formulario">
+                                <strong> Escuela </strong>
+                                <select class="input-lg btn btn-default">
+                                    <option value="" disabled="disabled" selected="selected">SELECCIONE ESCUELA</option>
+                                    <option value="1">INGENIERIA SISTEMAS</option>
+                                    <option value="2">INGENIERIA ALIMENTOS</option>
+                                    <option value="3">INGENIERIA AMBIENTAL</option>
+                                    <option value="4">INGENIERIA CIVIL</option>
+                                    <option value="5">ARQUITECTURA</option>
+                                </select>
+
+                                <p><strong >Codigo </strong>
+                                    <input class="text-box"name="Codigo" type="text" id="codigo" size="20" maxlength="50" />
+                                    <strong>Plan</strong>
+                                    <input class="text-box"name="plan" type="text" id="plan" size="5" maxlength="50" />
+                                    <strong>Plan Nuevo</strong>
+                                    <input class="text-box" name="plannuevo" type="text" id="plannuevo" size="5" maxlength="50" />
+                                </p>
+                                <p><strong>Nombres:</strong>
+                                    <input  class="text-box"name="descripcion" id="nombre" size="20" maxlength="50">
+                                    <strong>Apellidos:</strong>
+                                    <input  class="text-box"name="apellidos" id="apellidos" size="30" maxlength="50"/>
+                                </p>
+                            </form><br/>
+                            <!--INGRESO DE TRABLA JQUERY -->
+
+                            <table border='1'>
+                                <div id="divContenedor" >
+
+                                    <div id="divContenedorTabla" >
+                                        <table align="center" width="800" class="table-responsive">
+                                            <caption>Plan academico </caption>
+                                            <thead>
+                                                <tr>
+                                                    <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>TH</th><th>HNP</th><th>Nota</th><th width="40">&nbsp;</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input type="text"  size="3"class="clsAnchoTotal form-control "></td>
+                                                    <td><input type="text" size="20" class="clsAnchoTotal form-control"></td>
+                                                    <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
+                                                    <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
+                                                    <td><input type="text"size="3" class="clsAnchoTotal form-control"></td>
+                                                    <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
+                                                    <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
+                                                    <td align="right"><input type="button" value="-" class="clsEliminarFila btn btn-danger"></td>
+                                                </tr>
+                                            </tbody>
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="4" align="right" >
+                                                        <input type="button" value="Agregar una fila" class="clsAgregarFila btn btn-default" >
+                                                        <!--<input type="button" value="Clonar la tabla" class="clsClonarTabla">
+                                                        <input type="button" value="Eliminar la tabla" class="clsEliminarTabla">-->
+                                                    </td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </table>
+
+                            <p>
+                            <center>
+                                <div>
+                                    <input type="button" class="btn btn-success"name="ingresar" id="enviar" value="ingresar" />
+                                    <input type="button" class="btn btn-danger"name="cancelar" id="cancelar" value="Cancelar" />
+                                    <!--<a href="#" onClick="return false" onmouseOver="alert('')">
+                                    <img src="../img/interrogacion.png" width="45" height="45">
+                                </a>-->
+                                    <br />
+                                </div>
+                            </center>
+                            </p>
+                        </center>
 
 
                     </div>

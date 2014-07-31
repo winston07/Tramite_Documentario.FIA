@@ -1,8 +1,15 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="com.fia.upeu.modelo.Usuario"%>
+<%@page import="java.util.List"%>
+<%@page import="com.fia.upeu.dao_imple.ModeloUsuario"%>
+<%@page import="com.fia.upeu.dao.InterUsuario"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="../css/chosen.css" rel="stylesheet" />
         <title>Registro de Solicitud</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
@@ -35,7 +42,7 @@
             </nav>   
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
-                 <div class="sidebar-collapse">
+                <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
                         <li class="text-center">
                             <img src="../img/logosecretaria.png" class="user-image img-responsive"/>
@@ -61,22 +68,48 @@
                 <div class="row">
                     <div class="col-md-12">
                         <center>
-                        <h2>Registro de Solicitud</h2> 
-                        
-                        <form>
-                            <br/>
-                            Nombre: &nbsp;&nbsp;&nbsp;<input type="text" name="nombre" required><br/><br/>
-                            Apellidos:&nbsp; <input type="text" name="apellidos" required><br/><br/>
-                            Codigo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" name="codigo" required><br/><br/>
-                            Tramite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="tramite" size=1>
-                                <option value="0">Seleccione Tramite</option>
-                                <option value="1">Validacion de Cursos</option>
-                                <option value="2">Cambio de Plan Academico</option>
-                            </select><br/><br/>
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;<a href="../vistas_secretaria/portal.jsp"><button type="submit">Imprimir y Registrar</button></a>
-                        </form>
+                            <h2>Registro de Solicitud</h2> 
+
+                            <form class="center-block">
+                                <br/>
+                                Codigo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                <select data-placeholder="Codigo del Alumno" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="codigo">
+                                    <option value=""></option>
+                                    <%
+                                        InterUsuario iUsuario = new ModeloUsuario();
+                                    %>
+                                    <%
+                                        List<Usuario> lUsuario = iUsuario.list_Usuario();
+                                        
+                                    %>
+                                    <%for (int i = 0; i < lUsuario.size(); i++){%>
+                                    <option value="<%=lUsuario.get(i).getUsuario()%>"><%=lUsuario.get(i).getUsuario()%></option>
+                                    <%}%>
+                                </select>
+                                <br/><br/>
+                                Nombre: &nbsp;&nbsp;&nbsp;<input type="text" name="nombres" required><br/><br/>
+                                Apellidos:&nbsp; <input type="text" name="apellidos" required><br/><br/>                           
+                                Tramite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <%%>
+                                <select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipoTramite">
+                                    <option value=""></option> 
+                                    <%%>
+                                    <option value="<%%>">hola</option>
+                                    <%%>
+                                </select>
+
+                                <br/><br/>
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;<button type="submit" name="opc">Imprimir y Registrar</button>
+                            </form>
+                            <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
+                            <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
+                            <script type="text/javascript">
+                                $(".chzn-select").chosen();
+                                $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                            </script>
                         </center>
                     </div>
                 </div>

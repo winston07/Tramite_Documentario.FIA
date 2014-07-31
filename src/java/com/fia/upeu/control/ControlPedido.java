@@ -34,8 +34,12 @@ public class ControlPedido extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String nombres = request.getParameter("nombres");
+        String apellidos= request.getParameter("apellidos");
+        String codigo=request.getParameter("codigo");
+        String tramite = request.getParameter("tipoTramite");
         try {
-           
+            
         } finally {
             out.close();
         }
