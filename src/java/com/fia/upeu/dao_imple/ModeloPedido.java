@@ -30,7 +30,6 @@ public class ModeloPedido implements InterPedido {
 
     @Override
     public List<Pedido> listar_Pedido() {
-
         List<Pedido> list = new ArrayList<Pedido>();
         try {
             cx = Conexion.getConex();
@@ -100,10 +99,10 @@ public class ModeloPedido implements InterPedido {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            stmt.executeQuery("insert into PEDIDO values ('"+Periodo+"','"+escuela+"','"+tipo_Tramite+"','"+validacion+"','"+Pedido+"','"+fecha+"','1','"+solicitante+"')");
-            estado=true;
+            stmt.executeQuery("insert into PEDIDO values ('" + Periodo + "','" + escuela + "','" + tipo_Tramite + "','" + validacion + "','" + Pedido + "','" + fecha + "','1','" + solicitante + "')");
+            estado = true;
         } catch (Exception ex) {
-           estado=false;
+            estado = false;
         }
 
         return estado;
@@ -118,5 +117,4 @@ public class ModeloPedido implements InterPedido {
     public boolean eliminar_Pedido(String idPedido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }
