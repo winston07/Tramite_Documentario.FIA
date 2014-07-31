@@ -26,6 +26,7 @@ public class ModeloPedido implements InterPedido {
     ResultSet rs = null;
     Statement stmt = null;
     Connection cx = null;
+    boolean estado = false;
 
     @Override
     public List<Pedido> listar_Pedido() {
@@ -63,13 +64,11 @@ public class ModeloPedido implements InterPedido {
 
     @Override
     public List<Pedido> listar_Id_Pedido(String idPedido) {
-        
-
         List<Pedido> list = new ArrayList<Pedido>();
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from usuario WHERE idpedido='"+idPedido+"'");
+            rs = stmt.executeQuery("select * from usuario WHERE idpedido='" + idPedido + "'");
             while (rs.next()) {
                 Pedido ped = new Pedido();
                 ped.setFecha(rs.getString("IDPEDIDO"));
@@ -98,7 +97,16 @@ public class ModeloPedido implements InterPedido {
 
     @Override
     public boolean agregar_Pedido(String fecha, String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            stmt.executeQuery("insert into PEDIDO values ('"+Periodo+"','"+escuela+"','"+tipo_Tramite+"','"+validacion+"','"+Pedido+"','"+fecha+"','1','"+solicitante+"')");
+            estado=true;
+        } catch (Exception ex) {
+           estado=false;
+        }
+
+        return estado;
     }
 
     @Override
