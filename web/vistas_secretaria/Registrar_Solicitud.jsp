@@ -91,12 +91,18 @@
                                 Nombre: &nbsp;&nbsp;&nbsp;<input type="text" name="nombres" required><br/><br/>
                                 Apellidos:&nbsp; <input type="text" name="apellidos" required><br/><br/>                           
                                 Tramite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <%%>
-                                <select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipoTramite">
-                                    <option value=""></option> 
-                                    <%%>
-                                    <option value="<%%>">hola</option>
-                                    <%%>
+                                <select data-placeholder="Codigo del Alumno" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="codigo">
+                                    <option value=""></option>
+                                    <%
+                                        InterUsuario iUsuario = new ModeloUsuario();
+                                    %>
+                                    <%
+                                        List<Usuario> lUsuario = iUsuario.list_Usuario();
+                                        
+                                    %>
+                                    <%for (int i = 0; i < lUsuario.size(); i++){%>
+                                    <option value="<%=lUsuario.get(i).getUsuario()%>"><%=lUsuario.get(i).getUsuario()%></option>
+                                    <%}%>
                                 </select>
 
                                 <br/><br/>
