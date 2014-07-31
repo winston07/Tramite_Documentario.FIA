@@ -16,7 +16,6 @@ import java.util.List;
  */
 public interface InterUsuario {
      public List<Usuario> list_Usuario();
-     public List<Usuario> validar_Usuario(String usuario, String clave);
-     public boolean elimnar(String id);
+     public ResultSet validar_Usuario(String usuario, String clave);
     
 }

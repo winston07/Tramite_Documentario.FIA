@@ -5,7 +5,6 @@
         <title></title>
         <link rel="stylesheet" href="css/bootstrap.css" />
         <link rel="stylesheet" href="css/sing.css" />
-        <link rel="shortcut icon" href="img/logoing.png" />
     </head>
     <body>
         <div class="container">

@@ -27,6 +27,8 @@ public class ModeloUsuario implements InterUsuario {
     Statement stmt = null;
     Connection cx = null;
 
+  
+
     public Usuario editarUsuario(String idUsuario) {
         return null;
     }
@@ -73,29 +75,17 @@ public class ModeloUsuario implements InterUsuario {
     }
 
     @Override
-    public List<Usuario> validar_Usuario(String usuario, String clave) {
-        List<Usuario> list = new ArrayList<Usuario>();
+    public ResultSet validar_Usuario(String usuario,String clave) {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
             rs = stmt.executeQuery("select * from usuario where usu_login='" + usuario + "' and usu_pasword='" + clave + "'");
-            while (rs.next()) {
-                Usuario usu = new Usuario();
-                usu.setUsuario(rs.getString("USU_LOGIN"));
-                usu.setClave(rs.getString("USU_PASWORD"));
-                list.add(usu);
-            }
-
+            
         } catch (SQLException ex) {
             Logger.getLogger(ModeloUsuario.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
             Logger.getLogger(ModeloUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return list;
-    }
-
-    @Override
-    public boolean elimnar(String id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rs;
     }
 }
