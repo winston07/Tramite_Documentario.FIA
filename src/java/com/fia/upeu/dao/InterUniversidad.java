@@ -5,11 +5,17 @@
  */
 
 package com.fia.upeu.dao;
+import com.fia.upeu.modelo.Universidad;
+import java.util.List;
 
 /**
  *
  * @author XPC
  */
-public class InterUniversidad {
+public interface InterUniversidad {
+    public List<Universidad>list_Universidad();
+    boolean ingresar_Universidad(String uni_nombre, String uni_direccion);
+    boolean eliminar_Universidad(String iduniversidad);
+    boolean modificar_Universidad(String uni_nombre,String uni_direccion);
     
 }
