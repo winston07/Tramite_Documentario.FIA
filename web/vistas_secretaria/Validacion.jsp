@@ -1,3 +1,6 @@
+<%@page import="com.fia.upeu.modelo.Curso_in"%>
+<%@page import="com.fia.upeu.dao_imple.ModeloCurso_in"%>
+<%@page import="com.fia.upeu.dao.InterCurso_in"%>
 <%@page import="com.fia.upeu.modelo.Escuela"%>
 <%@page import="java.util.List"%>
 <%@page import="com.fia.upeu.dao.InterEscuela"%>
@@ -22,8 +25,7 @@
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <!-- descargadoo ya ! error <script type="text/javascript" src="js/jquery.min.js"></script>-->
-        <script type="text/javascript" src="../js/manipulacion.js"></script>
+        <!-- descargadoo ya ! error <script type="text/javascript" src="js/jquery.min.js"></script>-->       
         <script type="text/javascript" src="../js/efec.js" ></script>
         <!--fin tabla -->
 
@@ -125,8 +127,24 @@
                                     <caption>Plan academico </caption>
                                     <thead>
                                         <tr>
-                                            <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>TH</th><th>HNP</th><th>Nota</th><th width="40">&nbsp;</th>
+                                            <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width="40">&nbsp;</th>
                                         </tr>
+
+                                        <% InterCurso_in iCurso_in = new ModeloCurso_in();
+                                            List<Curso_in> lCur_in = iCurso_in.listar_Curso();
+                                        %>
+                                        <% for (int e = 0; e<lCur_in.size(); e++){%>                                      
+                                        <tr>
+                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getIdCurso()%></label></td>
+                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCurNombre()%></label></td>
+                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Cr() %></label></td>
+                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Ht()%></label></td>
+                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Hnp()%></label></td>
+                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Th()%></label></td>
+                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Nota()%></label></td>
+                                            <td align="right"><a type="button"  class="btn btn-danger">x</a></td>
+                                        </tr>
+                                        <%}%>
                                     </thead>
                                     <tbody>
                                         <tr>

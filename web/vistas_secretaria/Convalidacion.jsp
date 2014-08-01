@@ -113,77 +113,84 @@
                             <!--INGRESO DE TRABLA JQUERY -->
                             <!--<a href="#" onClick="return false" onmouseOver="alert('Ingrese cursos del alumno ')">
                             <img src="../img/interrogacion.png" width="45" height="45">-->
-                            <table border='1'>
-                                <div id="divContenedor" >
 
-                                    <div id="divContenedorTabla" >
-                                        <table align="center" width="800" class="table-responsive">
-                                            <caption>Plan academico </caption>
-                                            <thead>
-                                                <tr>
-                                                    <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>TH</th><th>HNP</th><th>Nota</th><th width="40">&nbsp;</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td><input type="text"  size="3"class="clsAnchoTotal form-control "></td>
-                                                    <td><input type="text" size="20" class="clsAnchoTotal form-control"></td>
-                                                    <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                                    <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                                    <td><input type="text"size="3" class="clsAnchoTotal form-control"></td>
-                                                    <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                                    <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                                    <td align="right"><input type="button" value="-" class="clsEliminarFila btn btn-danger"></td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td colspan="4" align="right" >
-                                                        <input type="button" value="Agregar una fila" class="clsAgregarFila btn btn-default" >
-                                                        <!--<input type="button" value="Clonar la tabla" class="clsClonarTabla">
-                                                        <input type="button" value="Eliminar la tabla" class="clsEliminarTabla">-->
-                                                    </td>
-                                                </tr>
-                                            </tfoot>
-                                        </table>
-                                    </div>
-                                </div>
+                            <table align="center" width="800" class="table-responsive">
+                                <caption>Plan academico </caption>
+                                <thead>
+                                    <tr>
+                                        <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>TH</th><th>HNP</th><th>Nota</th><th width="40">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td><input type="text"  size="3"class="form-control "></td>
+                                    <td><input type="text" size="20" class="form-control"></td>
+                                    <td><input type="text" size="3"class="form-control"></td>
+                                    <td><input type="text" size="3"class="form-control"></td>
+                                    <td><input type="text"size="3" class="form-control"></td>
+                                    <td><input type="text" size="3"class="form-control"></td>
+                                    <td><input type="text" size="3"class="form-control"></td>
+                                </tr>
 
+                                <tbody>
+                                    <tr>
+                                        <td><input type="text"  size="3"class="form-control "></td>
+                                        <td><input type="text" size="20" class="form-control"></td>
+                                        <td><input type="text" size="3"class="form-control"></td>
+                                        <td><input type="text" size="3"class="form-control"></td>
+                                        <td><input type="text"size="3" class="form-control"></td>
+                                        <td><input type="text" size="3"class="form-control"></td>
+                                        <td><input type="text" size="3"class="form-control"></td>
+                                        <td align="right"><input type="button" value="-" class="btn btn-danger"></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="4" align="right" >
+                                            <input type="button" value="Agregar una fila" class="clsAgregarFila btn btn-default" >
+                                            <!--<input type="button" value="Clonar la tabla" class="clsClonarTabla">
+                                            <input type="button" value="Eliminar la tabla" class="clsEliminarTabla">-->
+                                        </td>
+                                    </tr>
+                                </tfoot>
                             </table>
-
-                            <p>
-                            <center>
-                                <div>
-                                    <input type="button" class="btn btn-success"name="ingresar" id="enviar" value="ingresar" />
-                                    <input type="button" class="btn btn-danger"name="cancelar" id="cancelar" value="Cancelar" />
-
-                                    </a>
-                                    <br />
-                                </div>
-                            </center>
-                            </p>
-                        </center>
-
-
                     </div>
                 </div>
+
+                </table>
+
+                <p>
+                <center>
+                    <div>
+                        <input type="button" class="btn btn-success"name="ingresar" id="enviar" value="ingresar" />
+                        <input type="button" class="btn btn-danger"name="cancelar" id="cancelar" value="Cancelar" />
+
+                        </a>
+                        <br />
+                    </div>
+                </center>
+                </p>
+                </center>
+
+
             </div>
-            <!-- /. PAGE WRAPPER  -->
         </div>
-        <!-- /. WRAPPER  -->
-        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-        <!-- JQUERY SCRIPTS -->
-        <script src="../js/jquery-1.10.2.js"></script>
-        <!-- BOOTSTRAP SCRIPTS -->
-        <script src="../js/bootstrap.min.js"></script>
-        <!-- METISMENU SCRIPTS -->
-        <script src="../js/jquery.metisMenu.js"></script>
-        <!-- MORRIS CHART SCRIPTS -->
-        <script src="../js/morris/raphael-2.1.0.min.js"></script>
-        <script src="../js/morris/morris.js"></script>
-        <!-- CUSTOM SCRIPTS -->
-        <script src="../js/custom.js"></script>
+    </div>
+    <!-- /. PAGE WRAPPER  -->
+</div>
+<!-- /. WRAPPER  -->
+<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+<!-- JQUERY SCRIPTS -->
+<script src="../js/jquery-1.10.2.js"></script>
+<!-- BOOTSTRAP SCRIPTS -->
+<script src="../js/bootstrap.min.js"></script>
+<!-- METISMENU SCRIPTS -->
+<script src="../js/jquery.metisMenu.js"></script>
+<!-- MORRIS CHART SCRIPTS -->
+<script src="../js/morris/raphael-2.1.0.min.js"></script>
+<script src="../js/morris/morris.js"></script>
+<!-- CUSTOM SCRIPTS -->
+<script src="../js/custom.js"></script>
 
 
-    </body>
+</body>
 </html>
