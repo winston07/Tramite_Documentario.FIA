@@ -3,35 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
 package com.fia.upeu.control;
 
-import com.fia.upeu.dao.InterPedido;
-import com.fia.upeu.dao_imple.ModeloPedido;
-import com.fia.upeu.dao_imple.Tipo_Tramite;
-import com.fia.upeu.modelo.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sun.util.calendar.BaseCalendar;
 
 /**
  *
  * @author Kelvin Thony
  */
-@WebServlet(name = "ControlPedido", urlPatterns = {"/ControlPedido"})
-public class ControlPedido extends HttpServlet {
-
-    InterPedido iPedido = new ModeloPedido();
-    boolean estado = false;
-    Date dat = new Date();
-    SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
+@WebServlet(name = "ControlUniversidad", urlPatterns = {"/ControlUniversidad"})
+public class ControlUniversidad extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,43 +32,19 @@ public class ControlPedido extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //Para insetar la fecha de sistema
-        
-        //------------------------------------------------------
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
-        String nombres = request.getParameter("nombres");
-        String apellidos = request.getParameter("apellidos");
-        String codigo = request.getParameter("codigo");
-        String tramite = request.getParameter("tipotramite");
-        String opc = request.getParameter("opc");
-        String validacion = "null";
-        String Ped = "PED007";
-
-        String fechainicio =sdf.format(dat);
         try {
+            /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Imprimir</title>");
-            out.println("<link href='css/bootstrap.css' rel='stylesheet'/>");
-            if (opc.equals("insertar")) {
-                estado = iPedido.agregar_Pedido("PEI003", "null", tramite, validacion, codigo, Ped, fechainicio);
-                if (estado) {
-                    out.println("<script type='text/javascript'> alert('Exito');</script>");
-                } else {
-                    out.println("<script type='text/javascript'> alert('sin Exito');</script>");
-                }
-            }
+            out.println("<title>Servlet ControlUniversidad</title>");            
             out.println("</head>");
-            out.println("<body class='text-center' style='color:blue; font-size: 20px;'>");  
-            out.println("Datos del Alumno: "+nombres+","+apellidos+" </br>");
-           out.println("Alumno Codigo: "+codigo+"</br>"); 
-           out.println("Tramite: "+tramite+"</br>"); 
-            
+            out.println("<body>");
+            out.println("<h1>Servlet ControlUniversidad at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-
         } finally {
             out.close();
         }

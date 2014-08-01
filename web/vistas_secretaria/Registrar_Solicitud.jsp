@@ -5,7 +5,6 @@
 <%@page import="com.fia.upeu.dao_imple.Tipo_Tramite"%>
 <%@page import="com.fia.upeu.dao_imple.ModelTipo_Tramite"%>
 <%@page import="com.fia.upeu.dao.InterTipo_Tramite"%>
-<%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
 
 <!DOCTYPE html>
@@ -25,7 +24,9 @@
         <link href="../css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        
     </head>
+    
     <body>
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -74,7 +75,7 @@
                         <center>
                             <h2>Registro de Solicitud</h2> 
 
-                            <form class="center-block">
+                            <form class="center-block" action="../ControlPedido" method="post">
                                 <br/>
                                 Codigo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -86,9 +87,9 @@
                                     %>
                                     <%
                                         List<Solicitante> liSolicitante = iSolicitante.listar_Solicitante();
-                                        
+
                                     %>
-                                    <%for (int i = 0; i < liSolicitante.size(); i++){%>
+                                    <%for (int i = 0; i < liSolicitante.size(); i++) {%>
                                     <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
                                     <%}%>
                                 </select>
@@ -96,16 +97,16 @@
                                 Nombre: &nbsp;&nbsp;&nbsp;<input type="text" name="nombres" required><br/><br/>
                                 Apellidos:&nbsp; <input type="text" name="apellidos" required><br/><br/>                           
                                 Tramite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <select data-placeholder="Codigo del Alumno" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="codigo">
+                                <select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
                                     <option value=""></option>
                                     <%
                                         InterTipo_Tramite tTramite = new ModelTipo_Tramite();
                                     %>
                                     <%
                                         List<Tipo_Tramite> ltTramite = tTramite.listar_Tipo_Tramite();
-                                        
+
                                     %>
-                                    <%for (int i = 0; i < ltTramite.size(); i++){%>
+                                    <%for (int i = 0; i < ltTramite.size(); i++) {%>
                                     <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
                                     <%}%>
                                 </select>
@@ -113,7 +114,7 @@
                                 <br/><br/>
                                 &nbsp;&nbsp;&nbsp;&nbsp;
                                 &nbsp;&nbsp;&nbsp;&nbsp;
-                                &nbsp;&nbsp;&nbsp;<button type="submit" name="opc">Imprimir y Registrar</button>
+                                &nbsp;&nbsp;&nbsp;<button type="submit" name="opc" value="insertar">Imprimir y Registrar</button>
                             </form>
                             <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                             <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>

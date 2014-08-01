@@ -18,7 +18,7 @@ public interface InterPedido {
 
     public List<Pedido> listar_Id_Pedido(String idPedido);
 
-    public boolean agregar_Pedido(String fecha, String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante);
+    public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante, String pedido,String fecha);
 
     public boolean modificar_Pedido(String fecha, String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante);
 

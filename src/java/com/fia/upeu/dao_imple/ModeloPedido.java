@@ -34,7 +34,7 @@ public class ModeloPedido implements InterPedido {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from usuario");
+            rs = stmt.executeQuery("select * from pedido");
             while (rs.next()) {
                 Pedido ped = new Pedido();
                 ped.setFecha(rs.getString("IDPEDIDO"));
@@ -95,11 +95,11 @@ public class ModeloPedido implements InterPedido {
     }
 
     @Override
-    public boolean agregar_Pedido(String fecha, String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante) {
+    public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante,String pedido,String fecha) {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            stmt.executeQuery("insert into PEDIDO values ('" + Periodo + "','" + escuela + "','" + tipo_Tramite + "','" + validacion + "','" + Pedido + "','" + fecha + "','1','" + solicitante + "')");
+            stmt.executeQuery("insert into PEDIDO values ('" + Periodo + "','" + escuela + "','" + tipo_Tramite + "','" + validacion + "','"+pedido+"','"+fecha+"','1','" + solicitante + "')");
             estado = true;
         } catch (Exception ex) {
             estado = false;
@@ -117,4 +117,5 @@ public class ModeloPedido implements InterPedido {
     public boolean eliminar_Pedido(String idPedido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
