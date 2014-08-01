@@ -137,15 +137,13 @@
                                             <td><input type="text"size="3" class="clsAnchoTotal form-control"></td>
                                             <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
                                             <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                            <td align="right"><input type="button" value="-" class="clsEliminarFila btn btn-danger"></td>
+                                            <td align="right"><a type="button"  class="clsEliminarFila btn btn-danger">x</a></td>
                                         </tr>
                                     </tbody>
                                     <tfoot>
                                         <tr>
                                             <td colspan="4" align="right" >
-                                                <input type="button" value="Agregar una fila" class="clsAgregarFila btn btn-default" >
-                                                <!--<input type="button" value="Clonar la tabla" class="clsClonarTabla">
-                                                <input type="button" value="Eliminar la tabla" class="clsEliminarTabla">-->
+                                                <button type="submit" value="insertar" class="btn btn-info" >Agregar Curso</button>                                               
                                             </td>
                                         </tr>
                                     </tfoot>
