@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package com.fia.upeu.dao_imple;
+package com.fia.upeu.modelo;
 
 /**
  *

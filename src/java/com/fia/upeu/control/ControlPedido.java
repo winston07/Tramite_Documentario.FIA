@@ -7,7 +7,7 @@ package com.fia.upeu.control;
 
 import com.fia.upeu.dao.InterPedido;
 import com.fia.upeu.dao_imple.ModeloPedido;
-import com.fia.upeu.dao_imple.Tipo_Tramite;
+import com.fia.upeu.modelo.Tipo_Tramite;
 import com.fia.upeu.modelo.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;

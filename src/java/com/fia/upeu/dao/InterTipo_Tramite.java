@@ -6,7 +6,7 @@
 
 package com.fia.upeu.dao;
 
-import com.fia.upeu.dao_imple.Tipo_Tramite;
+import com.fia.upeu.modelo.Tipo_Tramite;
 import java.util.List;
 
 /**

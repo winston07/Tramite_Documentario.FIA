@@ -6,9 +6,9 @@
 
 package com.fia.upeu.dao_imple;
 
-import com.fia.upeu.modelo.Tipo_Tramite;
 import com.fia.upeu.config.Conexion;
-import com.fia.upeu.dao.InterTipo_Tramite;
+import com.fia.upeu.dao.InterEscuela;
+import com.fia.upeu.modelo.Escuela;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,26 +22,25 @@ import java.util.logging.Logger;
  *
  * @author Kelvin Thony
  */
-public class ModelTipo_Tramite implements InterTipo_Tramite{
+public class ModeloEscuela implements InterEscuela{
     ResultSet rs = null;
     Statement stmt = null;
     Connection cx = null;
     boolean estado = false;
 
     @Override
-    public List<Tipo_Tramite> listar_Tipo_Tramite() {
-        
-        List<Tipo_Tramite> list = new ArrayList<Tipo_Tramite>();
+    public List<Escuela> listar_Escuela() {
+         List<Escuela> list = new ArrayList<Escuela>();
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from TIPO_TRAMITE");
+            rs = stmt.executeQuery("select * from escuela");
             while (rs.next()) {
-                Tipo_Tramite tipoTra = new Tipo_Tramite();
-                tipoTra.setId_Tipo_Tramite(rs.getString("ID_TIPO_TRAMITE"));
-                tipoTra.setIdValidacion(rs.getString("IDVALIDACION"));
-                tipoTra.setNombreTramite(rs.getString("NOMBRE_TRAMITE"));
-                list.add(tipoTra);
+                Escuela esc = new Escuela();
+                esc.setEscuela(rs.getString("IDESCUELA"));
+                esc.setIdFacultad(rs.getString("IDFACULTAD"));
+                esc.setNombre(rs.getString("ESC_NOMBRE"));                
+                list.add(esc);
             }
         } catch (SQLException e) {
         } catch (Exception ex) {
@@ -58,22 +57,22 @@ public class ModelTipo_Tramite implements InterTipo_Tramite{
     }
 
     @Override
-    public List<Tipo_Tramite> listar_Id_Tipo_Tramite(String idTipo_Tramite) {
+    public List<Escuela> listar_Id_Escuela(String idPedido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean agregar_Tipo_Tramite(String idValidacion, String nombre_Tramite) {
+    public boolean agregar_Pedido(String idFacultad, String nombre) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean modificar_Tipo_Tramite(String idValidacion, String nombre_Tramite) {
+    public boolean modificar_Pedido(String idEscuela, String idFacultad, String nombre) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean eliminar_Tipo_Tramite(String idTipo_Tramite) {
+    public boolean eliminar_Pedido(String idPedido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
