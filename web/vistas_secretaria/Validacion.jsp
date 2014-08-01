@@ -100,7 +100,6 @@
                                     %>
                                     <%
                                         List<Escuela> ltEscuela = tEscuela.listar_Escuela();
-
                                     %>
                                     <%for (int i = 0; i < ltEscuela.size(); i++) {%>
                                     <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>

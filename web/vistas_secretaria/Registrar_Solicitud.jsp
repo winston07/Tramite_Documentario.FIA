@@ -1,8 +1,8 @@
 
+<%@page import="com.fia.upeu.modelo.Tipo_Tramite"%>
 <%@page import="com.fia.upeu.modelo.Solicitante"%>
 <%@page import="com.fia.upeu.dao_imple.ModeloSolicitante"%>
 <%@page import="com.fia.upeu.dao.InterSolicitante"%>
-<%@page import="com.fia.upeu.dao_imple.Tipo_Tramite"%>
 <%@page import="com.fia.upeu.dao_imple.ModelTipo_Tramite"%>
 <%@page import="com.fia.upeu.dao.InterTipo_Tramite"%>
 <%@page import="java.util.List"%>
@@ -107,7 +107,7 @@
 
                                     %>
                                     <%for (int i = 0; i < ltTramite.size(); i++) {%>
-                                    <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
+                                    <option value="<%=ltTramite.get(i).getId_Tipo_Tramite() %>"><%=ltTramite.get(i).getNombreTramite()%></option>
                                     <%}%>
                                 </select>
 
