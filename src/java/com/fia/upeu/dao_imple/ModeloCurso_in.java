@@ -33,7 +33,7 @@ public class ModeloCurso_in implements InterCurso_in{
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from CURSO");
+            rs = stmt.executeQuery("select * from curso");
             while (rs.next()) {
                 Curso_in cur_in = new Curso_in();
                 cur_in.setIdCurso(rs.getString("IDCURSO"));

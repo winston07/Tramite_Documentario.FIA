@@ -1,3 +1,5 @@
+<%@page import="com.fia.upeu.dao_imple.ModeloOperaciones"%>
+<%@page import="com.fia.upeu.dao.InterOperaciones"%>
 <%@page import="com.fia.upeu.modelo.Curso_in"%>
 <%@page import="com.fia.upeu.dao_imple.ModeloCurso_in"%>
 <%@page import="com.fia.upeu.dao.InterCurso_in"%>
@@ -130,12 +132,12 @@
                                             <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width="40">&nbsp;</th>
                                         </tr>
 
-                                        <% InterCurso_in iCurso_in = new ModeloCurso_in();
-                                            List<Curso_in> lCur_in = iCurso_in.listar_Curso();
+                                        <% InterOperaciones iCurso_in = new ModeloOperaciones();
+                                            List<Curso_in> lCur_in = iCurso_in.listar_Add_Validacion();
                                         %>
                                         <% for (int e = 0; e<lCur_in.size(); e++){%>                                      
                                         <tr>
-                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getIdCurso()%></label></td>
+                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getPlan_codigo()%></label></td>
                                             <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCurNombre()%></label></td>
                                             <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Cr() %></label></td>
                                             <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Ht()%></label></td>
