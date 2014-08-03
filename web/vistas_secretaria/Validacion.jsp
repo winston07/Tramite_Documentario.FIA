@@ -27,6 +27,11 @@
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            function actualiza() {
+                $(".car").load(".car");
+            }
+        </script>
         <!-- descargadoo ya ! error <script type="text/javascript" src="js/jquery.min.js"></script>-->       
         <script type="text/javascript" src="../js/efec.js" ></script>
         <!--fin tabla -->
@@ -94,86 +99,87 @@
                         <!--ingrese datos tabla-->  
                         <p>Registro de Validaciones de Alumnos</p>
                         <center>
-
-                            <form action="" method="post" name="formulario" id="formulario">
-                                <strong> Escuela </strong>
-                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
-                                    <option value=""></option>
-                                    <%
-                                        InterEscuela tEscuela = new ModeloEscuela();
-                                    %>
-                                    <%
-                                        List<Escuela> ltEscuela = tEscuela.listar_Escuela();
-                                    %>
-                                    <%for (int i = 0; i < ltEscuela.size(); i++) {%>
-                                    <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
-                                    <%}%>
-                                </select>
-
-                                <p><strong >Codigo </strong>
-                                    <input class="text-box"name="Codigo" type="text" id="codigo" size="20" maxlength="50" />
-                                    <strong>Plan</strong>
-                                    <input class="text-box"name="plan" type="text" id="plan" size="5" maxlength="50" />
-                                    <strong>Plan Nuevo</strong>
-                                    <input class="text-box" name="plannuevo" type="text" id="plannuevo" size="5" maxlength="50" />
-                                </p>
-                                <p><strong>Nombres:</strong>
-                                    <input  class="text-box"name="descripcion" id="nombre" size="20" maxlength="50">
-                                    <strong>Apellidos:</strong>
-                                    <input  class="text-box"name="apellidos" id="apellidos" size="30" maxlength="50"/>
-                                </p>
-                                <br/>
-                                <!--INGRESO DE TRABLA JQUERY -->
-
-                                <table align="center" width="800" class="table-responsive">
-                                    <caption>Plan academico </caption>
-                                    <thead>
-                                        <tr>
-                                            <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width="40">&nbsp;</th>
-                                        </tr>
-
-                                        <% InterOperaciones iCurso_in = new ModeloOperaciones();
-                                            List<Curso_in> lCur_in = iCurso_in.listar_Add_Validacion();
+                            <div class="car">
+                                <form action="" method="post" name="formulario" id="formulario">
+                                    <strong> Escuela </strong>
+                                    <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
+                                        <option value=""></option>
+                                        <%
+                                            InterEscuela tEscuela = new ModeloEscuela();
                                         %>
-                                        <% for (int e = 0; e<lCur_in.size(); e++){%>                                      
-                                        <tr>
-                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getPlan_codigo()%></label></td>
-                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCurNombre()%></label></td>
-                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Cr() %></label></td>
-                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Ht()%></label></td>
-                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Hnp()%></label></td>
-                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Th()%></label></td>
-                                            <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Nota()%></label></td>
-                                            <td align="right"><a type="button"  class="btn btn-danger">x</a></td>
-                                        </tr>
+                                        <%
+                                            List<Escuela> ltEscuela = tEscuela.listar_Escuela();
+                                        %>
+                                        <%for (int i = 0; i < ltEscuela.size(); i++) {%>
+                                        <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
                                         <%}%>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><input type="text"  size="3"class="clsAnchoTotal form-control "></td>
-                                            <td><input type="text" size="20" class="clsAnchoTotal form-control"></td>
-                                            <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                            <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                            <td><input type="text"size="3" class="clsAnchoTotal form-control"></td>
-                                            <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                            <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
-                                            <td align="right"><a type="button"  class="clsEliminarFila btn btn-danger">x</a></td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="4" align="right" >
-                                                <button type="submit" value="insertar" class="btn btn-info" >Agregar Curso</button>                                               
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </form>
+                                    </select>
+
+                                    <p><strong >Codigo </strong>
+                                        <input class="text-box"name="Codigo" type="text" id="codigo" size="20" maxlength="50" />
+                                        <strong>Plan</strong>
+                                        <input class="text-box"name="plan" type="text" id="plan" size="5" maxlength="50" />
+                                        <strong>Plan Nuevo</strong>
+                                        <input class="text-box" name="plannuevo" type="text" id="plannuevo" size="5" maxlength="50" />
+                                    </p>
+                                    <p><strong>Nombres:</strong>
+                                        <input  class="text-box"name="descripcion" id="nombre" size="20" maxlength="50">
+                                        <strong>Apellidos:</strong>
+                                        <input  class="text-box"name="apellidos" id="apellidos" size="30" maxlength="50"/>
+                                    </p>
+                                    <br/>
+                                    <!--INGRESO DE TRABLA JQUERY -->
+
+                                    <table align="center" width="800" class="table-responsive">
+                                        <caption>Plan academico </caption>
+                                        <thead>
+                                            <tr>
+                                                <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width="40">&nbsp;</th>
+                                            </tr>
+
+                                            <% InterCurso_in iCurso_in = new ModeloCurso_in();
+                                                List<Curso_in> lCur_in = iCurso_in.listar_Curso();
+                                            %>
+                                            <% for (int e = 0; e < lCur_in.size(); e++) {%>                                      
+                                            <tr>
+                                                <td><label   size="3"class="form-control"><%=lCur_in.get(e).getIdCurso()%></label></td>
+                                                <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCurNombre()%></label></td>
+                                                <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Cr()%></label></td>
+                                                <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Ht()%></label></td>
+                                                <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Hnp()%></label></td>
+                                                <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Th()%></label></td>
+                                                <td><label   size="3"class="form-control"><%=lCur_in.get(e).getCur_Nota()%></label></td>
+                                                <td align="right"><a type="button"  class="btn btn-danger">x</a></td>
+                                            </tr>
+                                            <%}%>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input type="text"  size="3"class="clsAnchoTotal form-control "></td>
+                                                <td><input type="text" size="20" class="clsAnchoTotal form-control"></td>
+                                                <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
+                                                <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
+                                                <td><input type="text"size="3" class="clsAnchoTotal form-control"></td>
+                                                <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
+                                                <td><input type="text" size="3"class="clsAnchoTotal form-control"></td>
+                                                <td align="right"><a type="button"  class="clsEliminarFila btn btn-danger">x</a></td>
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="4" align="right" >
+                                                    <button type="submit" value="insertar" class="btn btn-info" onclick="actualiza()">Agregar Curso</button>                                               
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </form>
+                            </div>
                             <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                             <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
                             <script type="text/javascript">
-                    $(".chzn-select").chosen();
-                    $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                                $(".chzn-select").chosen();
+                                $(".chzn-select-deselect").chosen({allow_single_deselect: true});
                             </script>
                     </div>
                 </div>
