@@ -10,7 +10,7 @@ package com.fia.upeu.modelo;
  *
  * @author Kelvin Thony
  */
-public class Solicitante {
+public class Solicitante extends Persona{
     String idSolicitante;
     String codigo;
     String idPersona;
@@ -37,14 +37,6 @@ public class Solicitante {
 
     public void setCodigo(String codigo) {
         this.codigo = codigo;
-    }
-
-    public String getIdPersona() {
-        return idPersona;
-    }
-
-    public void setIdPersona(String idPersona) {
-        this.idPersona = idPersona;
-    }
+    }  
     
 }

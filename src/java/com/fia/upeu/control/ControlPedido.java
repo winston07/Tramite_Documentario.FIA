@@ -7,8 +7,6 @@ package com.fia.upeu.control;
 
 import com.fia.upeu.dao.InterPedido;
 import com.fia.upeu.dao_imple.ModeloPedido;
-import com.fia.upeu.modelo.Tipo_Tramite;
-import com.fia.upeu.modelo.Pedido;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -19,7 +17,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sun.util.calendar.BaseCalendar;
 
 /**
  *
@@ -55,7 +52,7 @@ public class ControlPedido extends HttpServlet {
         String tramite = request.getParameter("tipotramite");
         String opc = request.getParameter("opc");
         String validacion = "null";
-        String Ped = "PED007";
+        String Ped = "PED081";
 
         String fechainicio =sdf.format(dat);
         try {
@@ -65,7 +62,7 @@ public class ControlPedido extends HttpServlet {
             out.println("<title>Imprimir</title>");
             out.println("<link href='css/bootstrap.css' rel='stylesheet'/>");
             if (opc.equals("insertar")) {
-                estado = iPedido.agregar_Pedido("PEI003", "null", tramite, validacion, codigo, Ped, fechainicio);
+                estado = iPedido.agregar_Pedido("PEI001", "null", tramite, validacion, codigo, Ped, fechainicio);
                 if (estado) {
                     out.println("<script type='text/javascript'> alert('Exito');</script>");
                 } else {
@@ -76,7 +73,8 @@ public class ControlPedido extends HttpServlet {
             out.println("<body class='text-center' style='color:blue; font-size: 20px;'>");  
             out.println("Datos del Alumno: "+nombres+","+apellidos+" </br>");
            out.println("Alumno Codigo: "+codigo+"</br>"); 
-           out.println("Tramite: "+tramite+"</br>"); 
+           out.println("Tramite: "+tramite+"</br>");
+           out.println(" <a href='vistas_secretaria/Validacion.jsp?codigo="+codigo+"' >Continuar</a>");
             
             out.println("</body>");
             out.println("</html>");

@@ -25,9 +25,48 @@
         <link href="../css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-        
+        <link rel="stylesheet" href="../js/dataTables/jquery.js" />
+        <script type="text/javascript">
+            function enviar()
+            {
+
+                var id = $("#id").val();
+
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    dataType: "html",
+                    contentType: "text/html",
+                    //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
+                    //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
+                    url: "../ControlCurso?opc=ajax&id=" + id + "&curso=" + curso + "&cr=" + cr + "&ht=" + ht + "&hnp=" + hnp + "&th=" + th + "&nota=" + nota + "",
+                    //url: "../ControlCurso",
+                    // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
+                    data: "id=" + id,
+                    beforeSend: inicioEnvio,
+                    success: llegada,
+                    timeout: 4000,
+                    error: problemas
+                });
+                return false;
+            }
+            function inicioEnvio()
+            {
+                var x = $("#resultados");
+                // x.html('Cargando...');
+            }
+            function llegada(datos)
+            {
+                $("#resultados").html(datos);
+            }
+            function problemas()
+            {
+                $("#resultados").text('Problemas en el servidor.');
+            }
+        </script>
+
     </head>
-    
+
     <body>
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -76,7 +115,7 @@
                         <center>
                             <h2>Registro de Solicitud</h2> 
 
-                            <form class="center-block" action="../ControlPedido" method="post">
+                            <form class="center-block" action="../ControlPedido" >
                                 <br/>
                                 Codigo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -91,12 +130,12 @@
 
                                     %>
                                     <%for (int i = 0; i < liSolicitante.size(); i++) {%>
-                                    <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
+                                    <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo() + "-" + liSolicitante.get(i).getNombre() + "-" + liSolicitante.get(i).getPaterno()%></option>
                                     <%}%>
                                 </select>
                                 <br/><br/>
-                                Nombre: &nbsp;&nbsp;&nbsp;<input type="text" name="nombres" required><br/><br/>
-                                Apellidos:&nbsp; <input type="text" name="apellidos" required><br/><br/>                           
+                                Nombre: &nbsp;&nbsp;&nbsp;<input type="text" name="nombres"><br/><br/>
+                                Apellidos:&nbsp; <input type="text" name="apellidos"><br/><br/>                           
                                 Tramite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
                                     <option value=""></option>
@@ -108,7 +147,7 @@
 
                                     %>
                                     <%for (int i = 0; i < ltTramite.size(); i++) {%>
-                                    <option value="<%=ltTramite.get(i).getId_Tipo_Tramite() %>"><%=ltTramite.get(i).getNombreTramite()%></option>
+                                    <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
                                     <%}%>
                                 </select>
 
@@ -120,8 +159,8 @@
                             <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                             <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
                             <script type="text/javascript">
-                                $(".chzn-select").chosen();
-                                $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+            $(".chzn-select").chosen();
+            $(".chzn-select-deselect").chosen({allow_single_deselect: true});
                             </script>
                         </center>
                     </div>

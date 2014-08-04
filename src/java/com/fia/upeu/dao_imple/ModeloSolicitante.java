@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.fia.upeu.dao_imple;
 
 import com.fia.upeu.modelo.Solicitante;
@@ -22,24 +21,28 @@ import java.util.logging.Logger;
  *
  * @author Kelvin Thony
  */
-public class ModeloSolicitante implements InterSolicitante{
-     ResultSet rs = null;
+public class ModeloSolicitante implements InterSolicitante {
+
+    ResultSet rs = null;
     Statement stmt = null;
     Connection cx = null;
     boolean estado = false;
+
     @Override
     public List<Solicitante> listar_Solicitante() {
-        
+
         List<Solicitante> list = new ArrayList<Solicitante>();
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from SOLICITANTE");
+            rs = stmt.executeQuery("select * from SOLICITANTE, PERSONA where SOLICITANTE.IDPERSONA=PERSONA.IDPERSONA");
             while (rs.next()) {
                 Solicitante sol = new Solicitante();
                 sol.setIdSolicitante(rs.getString("IDSOLICITANTE"));
                 sol.setCodigo(rs.getString("SOL_CODIGO"));
                 sol.setIdPersona(rs.getString("IDPERSONA"));
+                sol.setNombre(rs.getString("PERL_NOMBRE"));
+                sol.setPaterno(rs.getString("PER_APELLIDO_PATERNO"));
                 list.add(sol);
             }
         } catch (SQLException e) {
@@ -58,7 +61,32 @@ public class ModeloSolicitante implements InterSolicitante{
 
     @Override
     public List<Solicitante> listar_Id_Solicitante(String idSolicitante) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Solicitante> list = new ArrayList<Solicitante>();
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            rs = stmt.executeQuery("select * from SOLICITANTE, PERSONA where SOLICITANTE.IDPERSONA=PERSONA.IDPERSONA and SOLICITANTE.IDSOLICITANTE='"+idSolicitante+"'");
+            while (rs.next()) {
+                Solicitante sol = new Solicitante();
+                sol.setIdSolicitante(rs.getString("IDSOLICITANTE"));
+                sol.setCodigo(rs.getString("SOL_CODIGO"));
+                sol.setNombre(rs.getString("PERL_NOMBRE"));
+                sol.setPaterno(rs.getString("PER_APELLIDO_PATERNO"));
+                sol.setMaterno(rs.getString("PER_APELLIDO_MATERNO"));
+                list.add(sol);
+            }
+        } catch (SQLException e) {
+        } catch (Exception ex) {
+            Logger.getLogger(ModeloUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                this.cx.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModeloUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return list;
     }
 
     @Override
@@ -75,5 +103,5 @@ public class ModeloSolicitante implements InterSolicitante{
     public boolean eliminar_Solicitante(String idSolicitante) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

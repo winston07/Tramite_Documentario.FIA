@@ -47,7 +47,7 @@ public class ControlUsuarios extends HttpServlet {
             rs = mUsuario.validar_Usuario(usuario, clave);
             if (rs.next()) {
                 HttpSession sesion = request.getSession(true);
-                response.sendRedirect("vistas_director/portal.jsp");
+                response.sendRedirect("vistas_secretaria/portal.jsp");
             } else {
                 response.sendRedirect("index.jsp");
             }

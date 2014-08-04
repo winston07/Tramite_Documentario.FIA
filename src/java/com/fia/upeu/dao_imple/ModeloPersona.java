@@ -6,8 +6,8 @@
 package com.fia.upeu.dao_imple;
 
 import com.fia.upeu.config.Conexion;
-import com.fia.upeu.dao.InterCurso_in;
-import com.fia.upeu.modelo.Curso_in;
+import com.fia.upeu.dao.InterPersona;
+import com.fia.upeu.modelo.Persona;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import java.util.logging.Logger;
  *
  * @author Kelvin Thony
  */
-public class ModeloCurso_in implements InterCurso_in {
+public class ModeloPersona implements InterPersona {
 
     ResultSet rs = null;
     Statement stmt = null;
@@ -29,22 +29,24 @@ public class ModeloCurso_in implements InterCurso_in {
     boolean estado = false;
 
     @Override
-    public List<Curso_in> listar_Curso() {
-        List<Curso_in> list = new ArrayList<Curso_in>();
+    public List<Persona> listar_Persona() {
+        List<Persona> list = new ArrayList<Persona>();
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from CURSO");
+            rs = stmt.executeQuery("select * from PERSONA");
             while (rs.next()) {
-                Curso_in cur_in = new Curso_in();
-                cur_in.setIdCurso(rs.getString("IDCURSO"));
-                cur_in.setCurNombre(rs.getString("CUR_NOMBRE"));
-                cur_in.setCur_Cr(rs.getString("CUR_CR"));
-                cur_in.setCur_Ht(rs.getString("CUR_HT"));
-                cur_in.setCur_Hnp(rs.getString("CUR_HNP"));
-                cur_in.setCur_Th(rs.getString("CUR_TH"));
-                cur_in.setCur_Nota(rs.getString("CUR_NOTA"));
-                list.add(cur_in);
+                Persona per = new Persona();
+                per.setIdPersona(rs.getString("IDPERSONA"));
+                per.setNombre(rs.getString("PERL_NOMBRE"));
+                per.setPaterno(rs.getString("PER_APELLIDO_PATERNO"));
+                per.setMaterno(rs.getString("PER_APELLIDO_MATERNO"));
+                per.setCorreo(rs.getString("PER_CORREO"));
+                per.setTelefono(rs.getString("PER_TELEFONO"));
+                per.setSexo(rs.getString("PER_SEXO"));
+                per.setDireccion(rs.getString("PER_DIRECCION"));
+                per.setCorreo(null);
+                list.add(per);
             }
         } catch (SQLException e) {
         } catch (Exception ex) {
@@ -61,31 +63,22 @@ public class ModeloCurso_in implements InterCurso_in {
     }
 
     @Override
-    public List<Curso_in> listar_Id_Curso(String idCurso) {
+    public List<Persona> listar_Id_Persona(String idPersona) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean agregar_Curso(String id, String cur_Nombre, String cur_Cr, String cur_ht, String cur_Hnp, String cur_Th, String cur_Nota) {
-        try {
-            cx = Conexion.getConex();
-            stmt = cx.createStatement();
-            stmt.executeQuery("insert into curso values ('" + id + "','" + cur_Nombre + "','" + cur_Cr + "','" + cur_ht + "','" + cur_Hnp + "','" + cur_Th + "','" + cur_Nota + "','1')");
-            estado = true;
-        } catch (Exception ex) {
-            estado = false;
-        }
-
-        return estado;
-    }
-
-    @Override
-    public boolean modificar_Curso(String idCurso, String cur_Nombre, String cur_Cr, String cur_ht, String cur_Hnp, String cur_Th, String estado, String cur_Nota) {
+    public boolean agregar_Persona(String nombre, String paterno, String materno, String correo, String telefono, String sexo, String direccion) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public boolean eliminar_Curso(String idCurso) {
+    public boolean modificar_Persona(String idPersona, String nombre, String paterno, String materno, String correo, String telefono, String sexo, String direccion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean eliminar_Persona(String idPersona) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

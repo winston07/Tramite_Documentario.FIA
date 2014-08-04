@@ -18,7 +18,7 @@ public interface InterCurso_in {
 
     public List<Curso_in> listar_Id_Curso(String idCurso);
 
-    public boolean agregar_Curso(String cur_Nombre, String cur_Cr, String cur_ht, String cur_Hnp, String cur_Th,String cur_Nota);
+    public boolean agregar_Curso(String id, String cur_Nombre, String cur_Cr, String cur_ht, String cur_Hnp, String cur_Th,String cur_Nota);
 
     public boolean modificar_Curso(String idCurso,String cur_Nombre, String cur_Cr, String cur_ht, String cur_Hnp, String cur_Th,String cur_Nota,String estado);
 
