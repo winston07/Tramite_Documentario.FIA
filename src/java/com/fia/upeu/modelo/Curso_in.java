@@ -9,7 +9,7 @@ package com.fia.upeu.modelo;
  *
  * @author Kelvin Thony
  */
-public class Curso_in {
+public class Curso_in extends Plan_In{
 
     private String idCurso;
     private String curNombre;
