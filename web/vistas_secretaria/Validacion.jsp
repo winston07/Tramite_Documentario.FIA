@@ -1,11 +1,7 @@
-<<<<<<< HEAD
-<%@page import="com.fia.upeu.modelo.Solicitante"%>
+
 <%@page import="com.fia.upeu.dao_imple.ModeloSolicitante"%>
+<%@page import="com.fia.upeu.modelo.Solicitante"%>
 <%@page import="com.fia.upeu.dao.InterSolicitante"%>
-=======
-<%@page import="com.fia.upeu.dao_imple.ModeloOperaciones"%>
-<%@page import="com.fia.upeu.dao.InterOperaciones"%>
->>>>>>> origin/master
 <%@page import="com.fia.upeu.modelo.Curso_in"%>
 <%@page import="com.fia.upeu.dao_imple.ModeloCurso_in"%>
 <%@page import="com.fia.upeu.dao.InterCurso_in"%>
@@ -31,7 +27,6 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
-        <<<<<<< HEAD
         <link rel="stylesheet" href="../js/dataTables/jquery.js" />
         <script type="text/javascript">
             function enviar()
@@ -77,18 +72,6 @@
                 $("#resultados").text('Problemas en el servidor.');
             }
         </script>
-        =======
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            function actualiza() {
-                $(".car").load(".car");
-            }
-        </script>
-        <!-- descargadoo ya ! error <script type="text/javascript" src="js/jquery.min.js"></script>-->       
-        <script type="text/javascript" src="../js/efec.js" ></script>
-        <!--fin tabla -->
-        >>>>>>> origin/master
-
     </head>
     <body>
 
@@ -110,10 +93,10 @@
                 </div>
 
                 <script>
-            var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-            var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
-            var f = new Date();
-            document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
+                    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
+                    var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
+                    var f = new Date();
+                    document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
                 </script>
 
 
@@ -180,11 +163,11 @@
                                 <p
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
-                                    <input class="text-box"name="Codigo" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" />
+                                    <input class="text-box"name="Codigo" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" readonly="false" />
                                     <strong>Nombres:</strong>
-                                    <input  class="text-box"name="descripcion" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(w).getNombre()%>"/>
+                                    <input  class="text-box"name="nombres" type="text" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(w).getNombre()%>" readonly="true"/>
                                     <strong>Apellidos:</strong>
-                                    <input  class="text-box"name="apellidos" id="apellidos" size="30" maxlength="50" value="<%=lsoli.get(w).getPaterno() + "," + lsoli.get(w).getMaterno()%>"/>
+                                    <input  class="text-box"name="apellidos" type="text" id="apellidos" size="30" maxlength="50" value="<%=lsoli.get(w).getPaterno() + "," + lsoli.get(w).getMaterno()%>" readonly="true"/>
                                     <%}%>
 
                                 </p>
@@ -226,14 +209,14 @@
                             <tr>
                             <button type="submit" value="insertar" class="btn btn-info" id="enviar" onclick="enviar()">Agregar</button> 
                             </tr>
-                            
+
                         </center>
-                            <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
-                            <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
-                            <script type="text/javascript">
-                                                        $(".chzn-select").chosen();
-                                                        $(".chzn-select-deselect").chosen({allow_single_deselect: true});
-                            </script>
+                        <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
+                        <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
+                        <script type="text/javascript">
+                                $(".chzn-select").chosen();
+                                $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                        </script>
                     </div>
                 </div>
 
