@@ -89,18 +89,23 @@ public class ControlCurso extends HttpServlet {
                 lCur_in = iCurso_in.listar_Curso();
                 out.println("<table class='table-responsive'>");
                 out.println(" <tr>");
-                out.println("<th class='form-control'>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width='40'>&nbsp;</th>");
+                out.println("<table align=\"center\" width=\"800\" class=\"table-responsive\">\n" +
+"                                <caption>Cursos Agregados</caption>");
+                out.println(" <tr>");
+                out.println("<th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width=\"40\">&nbsp;</th>");
                 out.println("</tr>");
                 for (int i = 0; i < lCur_in.size(); i++) {
 
                     out.println("<tr>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getIdCurso() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCurNombre() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Cr() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Ht() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Hnp() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Th() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Nota() +"'></td>");
+                    out.println("<td><input type='text' readonly='true'  size='3'class='clsAnchoTotal form-control' value='"+ lCur_in.get(i).getIdCurso() +"'></td>");
+                    out.println("<td><input type='text' readonly='true' size='20'class='clsAnchoTotal form-control' value='"+ lCur_in.get(i).getCurNombre() +"'></td>");
+                    out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='"+ lCur_in.get(i).getCur_Cr() +"'id='cr'></td>");
+                    out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='"+ lCur_in.get(i).getCur_Ht() +"' id='ht'></td>");
+                    out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='"+ lCur_in.get(i).getCur_Hnp() +"'id='hnp'></td>");
+                    out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='"+ lCur_in.get(i).getCur_Th() +"'id='th'></td>");
+                    out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='"+ lCur_in.get(i).getCur_Nota() +"'id='nota'></td>");
+                    out.println("<td><a type=\"button\" class=\"fa fa-trash-o fa-2x\"></a></td>");
+                    out.println("<td><a type=\"button\" class=\"fa fa-edit fa-2x\"></a></td>");
                     out.println("</tr>");
                 }
                 out.println("</table>");

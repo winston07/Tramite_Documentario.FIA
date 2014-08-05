@@ -17,6 +17,7 @@
         <link href="../css/chosen.css" rel="stylesheet" />
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
+        <link href="../css/Buttons.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
         <!-- MORRIS CHART STYLES-->
@@ -90,7 +91,7 @@
 
                     </button>
 
-                    <a class="navbar-brand" href="portal.jsp"><img src="../img/logoupeu.png" class="img-responsive" id="logo" width="70px" height="70px"/><b class="titulo">Facultad de Ingenieria y Arquitectura</b></a> 
+                    <a class="navbar-brand" href="portal.jsp"><img src="../img/logoupeu.png" class="img-responsive" id="logo"/><b class="titulo">Facultad de Ingenieria y Arquitectura</b></a> 
                 </div>
 
                 <script>
@@ -164,7 +165,7 @@
 
                                 </select>
 
-                                <p
+                                <p>
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
                                     <input class="text-box"name="lalal" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" readonly="false" />
@@ -199,15 +200,15 @@
 
 
 
-                                <tr>
-                                    <td><input type="text"  size="3"class="clsAnchoTotal form-control" name="id" id="id"></td>
-                                    <td><input type="text" size="20" class="clsAnchoTotal form-control" id="curso"></td>
+                                <tr style="vertical-align: middle">
+                                    <td valign="middle" ><input type="text"  size="3"class="clsAnchoTotal form-control" name="id" id="id"></td>
+                                    <td valign="middle" ><input type="text" size="20" class="clsAnchoTotal form-control" id="curso"></td>
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="cr"></td>
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="ht"></td>
                                     <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp"></td>
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th"></td>
-                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="nota"></td>
-                                    <td align="right"><a type="button"  class="clsEliminarFila btn btn-danger">x</a></td>
+                                    <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota"></td>
+                                    <td valign="middle" ><a type="button" class="fa fa-trash-o fa-2x"></a></td>
 
 
                                 </tr>
