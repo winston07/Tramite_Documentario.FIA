@@ -94,13 +94,13 @@ public class ControlCurso extends HttpServlet {
                 for (int i = 0; i < lCur_in.size(); i++) {
 
                     out.println("<tr>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getIdCurso() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCurNombre() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Cr() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Ht() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Hnp() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Th() +"'></td>");
-                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Nota() +"'></td>");
+                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getIdCurso() +"'id='id'></td>");
+                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCurNombre() +"'id='curso'></td>");
+                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Cr() +"'id='cr></td>");
+                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Ht() +"' id='ht'></td>");
+                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Hnp() +"'id='hnp'></td>");
+                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Th() +"'id='th'></td>");
+                    out.println("<td><input type='text'  size='3'class='form-control' value='"+ lCur_in.get(i).getCur_Nota() +"'id='nota'></td>");
                     out.println("</tr>");
                 }
                 out.println("</table>");
