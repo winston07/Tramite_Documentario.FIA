@@ -6,6 +6,7 @@
 
 package com.fia.upeu.dao_imple;
 
+import com.fia.upeu.config.Conexion;
 import com.fia.upeu.dao.InterfacePlan_In;
 import com.fia.upeu.modelo.Plan_In;
 import java.sql.Connection;
@@ -21,6 +22,7 @@ public class ModeloPlan_In implements InterfacePlan_In{
     ResultSet rs = null;
     Statement stmt = null;
     Connection cx = null;
+    boolean estado;
 
     @Override
     public List<Plan_In> list_Plan_In() {
@@ -29,7 +31,16 @@ public class ModeloPlan_In implements InterfacePlan_In{
 
     @Override
     public boolean agregar_Plan_In(String plan_codigo, String plan_estado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            stmt.executeQuery("insert into plan_in values ('1','')");
+            estado = true;
+        } catch (Exception ex) {
+            estado = false;
+        }
+
+        return estado;
     }
 
     @Override

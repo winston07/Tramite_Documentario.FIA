@@ -6,11 +6,17 @@
 package com.fia.upeu.control;
 
 import com.fia.upeu.dao.InterPedido;
+import com.fia.upeu.dao.InterValidacion;
 import com.fia.upeu.dao_imple.ModeloPedido;
+import com.fia.upeu.dao_imple.ModeloValidacion;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,10 +31,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlPedido", urlPatterns = {"/ControlPedido"})
 public class ControlPedido extends HttpServlet {
 
+    ResultSet rs;
     InterPedido iPedido = new ModeloPedido();
     boolean estado = false;
     Date dat = new Date();
-    SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
+    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,44 +47,51 @@ public class ControlPedido extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         //Para insetar la fecha de sistema
-        
+        PrintWriter out = response.getWriter();
         //------------------------------------------------------
         response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        String nombres = request.getParameter("nombres");
-        String apellidos = request.getParameter("apellidos");
-        String codigo = request.getParameter("codigo");
-        String tramite = request.getParameter("tipotramite");
         String opc = request.getParameter("opc");
-        String validacion = "null";
-        String Ped = "PED081";
 
-        String fechainicio =sdf.format(dat);
+        String fechainicio = sdf.format(dat);
         try {
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Imprimir</title>");
-            out.println("<link href='css/bootstrap.css' rel='stylesheet'/>");
             if (opc.equals("insertar")) {
-                estado = iPedido.agregar_Pedido("PEI001", "null", tramite, validacion, codigo, Ped, fechainicio);
+                String codigo = request.getParameter("codigo");
+                String tramite = request.getParameter("tipotramite");
+                String validacion = "null";
+                String ped = "PED081";
+                InterPedido iped = new ModeloPedido();
+                InterValidacion iVal = new ModeloValidacion();
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("<title>Imprimir</title>");
+                out.println("<link href='css/bootstrap.css' rel='stylesheet'/>");
+
+                estado = iPedido.agregar_Pedido("PEI001", "1", tramite, validacion, codigo, ped, fechainicio);
+                rs = iped.listar_To_Print(codigo, ped, tramite);
+                
                 if (estado) {
                     out.println("<script type='text/javascript'> alert('Exito');</script>");
                 } else {
                     out.println("<script type='text/javascript'> alert('sin Exito');</script>");
                 }
+                boolean bi = false;
+                rs.next();
+                bi = iVal.agregar_Validacion(rs.getString(9), "", "", "", "", "");
+                out.println("</head>");
+                out.println("<body class='text-center' style='color:blue; font-size: 20px;'>");
+                
+
+                out.println("Datos del Alumno: " + rs.getString(1) + "," + rs.getString(2) + "," + " " + rs.getString(3) + "</br>");
+                out.println("Alumno Codigo: " + rs.getString(4) + "</br>");
+                out.println("Tramite: " + rs.getString(5) + "</br>");
+                out.println(" <a href='vistas_secretaria/Validacion.jsp?codigo=" + codigo + "&pedido=" + rs.getString(6) + "&tramite=" + rs.getString(7) + "&validacion="+rs.getString(9)+"' >Continuar</a>");
+
+                out.println("</body>");
+                out.println("</html>");
             }
-            out.println("</head>");
-            out.println("<body class='text-center' style='color:blue; font-size: 20px;'>");  
-            out.println("Datos del Alumno: "+nombres+","+apellidos+" </br>");
-           out.println("Alumno Codigo: "+codigo+"</br>"); 
-           out.println("Tramite: "+tramite+"</br>");
-           out.println(" <a href='vistas_secretaria/Validacion.jsp?codigo="+codigo+"' >Continuar</a>");
-            
-            out.println("</body>");
-            out.println("</html>");
 
         } finally {
             out.close();
@@ -96,7 +110,11 @@ public class ControlPedido extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -110,7 +128,11 @@ public class ControlPedido extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

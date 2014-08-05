@@ -10,7 +10,7 @@ package com.fia.upeu.modelo;
  *
  * @author XPC
  */
-public class Plan_Curso {
+public class Plan_Curso_in {
     private String idplan;
 
     public String getIdplan() {
@@ -48,13 +48,13 @@ public class Plan_Curso {
     private String idplan_curso;
     private String plan_cur_ciclos;
     
-    public Plan_Curso (String idcurso,String idplan,String idplan_curso,String plan_cur_ciclos){
+    public Plan_Curso_in (String idcurso,String idplan,String idplan_curso,String plan_cur_ciclos){
     this.idplan=idplan;
     this.idcurso=idcurso;
     this.idplan_curso=idplan_curso;
     this.plan_cur_ciclos=plan_cur_ciclos;
     }
-    public Plan_Curso(){
+    public Plan_Curso_in(){
     }
     
     

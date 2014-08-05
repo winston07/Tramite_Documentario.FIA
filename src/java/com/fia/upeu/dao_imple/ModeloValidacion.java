@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.fia.upeu.dao_imple;
 
 import com.fia.upeu.config.Conexion;
@@ -22,14 +21,16 @@ import java.util.logging.Logger;
  *
  * @author Kelvin Thony
  */
-public class ModeloValidacion implements InterValidacion{
+public class ModeloValidacion implements InterValidacion {
+
     ResultSet rs = null;
     Statement stmt = null;
     Connection cx = null;
     boolean estado = false;
+
     @Override
     public List<Validacion> listar_Validacion() {
-       List<Validacion> list = new ArrayList<Validacion>();
+        List<Validacion> list = new ArrayList<Validacion>();
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
@@ -64,18 +65,36 @@ public class ModeloValidacion implements InterValidacion{
     }
 
     @Override
-    public boolean agregar_Validacion(String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean agregar_Validacion(String id,String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out) {
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            stmt.executeQuery("insert into VALIDACION values ('"+id+"','"+val_Numero+"','"+val_Plan_in+"','"+val_plan_out+"','"+val_inst_in+"','"+val_inst_out+"','1')");
+            estado = true;
+        } catch (Exception ex) {
+            estado = false;
+        }
+
+        return estado;
     }
 
     @Override
-    public boolean modificar_Validacion(String idValidacion, String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out,String estado) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean modificar_Validacion(String idValidacion, String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out, String estadoo) {
+       try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            stmt.executeUpdate("UPDATE validacion SET val_plan_in='"+val_Plan_in+"',val_plan_out='"+val_plan_out+"',val_inst_in='"+val_inst_in+"',val_inst_out='"+val_inst_out+"',val_estado='1' WHERE idvalidacion='"+idValidacion+"'");
+            estado=true;
+        } catch (Exception ex) {
+            estado = false;
+        }
+
+        return estado;
     }
 
     @Override
     public boolean eliminar_Validacion(String idValidacion) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

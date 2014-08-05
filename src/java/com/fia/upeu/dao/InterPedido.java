@@ -6,6 +6,7 @@
 package com.fia.upeu.dao;
 
 import com.fia.upeu.modelo.Pedido;
+import java.sql.ResultSet;
 import java.util.List;
 
 /**
@@ -23,4 +24,6 @@ public interface InterPedido {
     public boolean modificar_Pedido(String fecha, String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante);
 
     public boolean eliminar_Pedido(String idPedido);
+    
+    public ResultSet listar_To_Print(String sol, String ped, String tra);
 }

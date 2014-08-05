@@ -95,11 +95,11 @@ public class ModeloPedido implements InterPedido {
     }
 
     @Override
-    public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante,String pedido,String fecha) {
+    public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante, String pedido, String fecha) {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            stmt.executeQuery("insert into PEDIDO values ('" + Periodo + "','" + escuela + "','" + tipo_Tramite + "','" + validacion + "','"+pedido+"','"+fecha+"','1','" + solicitante + "')");
+            stmt.executeQuery("insert into PEDIDO values ('" + Periodo + "','" + escuela + "','" + tipo_Tramite + "','" + validacion + "','" + pedido + "','" + fecha + "','1','" + solicitante + "')");
             estado = true;
         } catch (Exception ex) {
             estado = false;
@@ -116,6 +116,20 @@ public class ModeloPedido implements InterPedido {
     @Override
     public boolean eliminar_Pedido(String idPedido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet listar_To_Print(String sol, String ped, String tra) {
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            rs = stmt.executeQuery("SELECT PER.PERL_NOMBRE AS NOMBRE,PER.PER_APELLIDO_PATERNO AS AP_PATERNO, PER.PER_APELLIDO_MATERNO AS AP_MATERNO,SO.SOL_CODIGO AS CODIGO, TT.NOMBRE_TRAMITE AS NOMBRE_TRAMITE,PE.IDPEDIDO AS PEDIDO,TT.ID_TIPO_TRAMITE,SO.IDSOLICITANTE,PE.IDVALIDACION FROM PEDIDO PE,TIPO_TRAMITE TT,SOLICITANTE SO,PERSONA PER WHERE SO.IDSOLICITANTE=PE.IDSOLICITANTE AND SO.IDPERSONA=PER.IDPERSONA AND SO.IDSOLICITANTE='"+sol+"' AND PE.IDPEDIDO='"+ped+"' AND TT.ID_TIPO_TRAMITE='"+tra+"'");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
     }
 
 }

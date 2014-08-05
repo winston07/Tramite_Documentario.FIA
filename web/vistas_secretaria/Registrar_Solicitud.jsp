@@ -181,10 +181,10 @@
                                 <a  href="../vistas_secretaria/Registrar_Solicitud.jsp"><i class="fa fa-dashboard fa-3x"></i>Registro</a>
                         </li>
                         <li>
-                            <a  href="../vistas_secretaria/Validacion.jsp"><i class="fa fa-check-square-o fa-3x"></i>Validacion</a>
+                            <!--<a  href="../vistas_secretaria/Validacion.jsp"><i class="fa fa-check-square-o fa-3x"></i>Validacion</a>-->
                         </li>
                         <li>
-                            <a  href="../vistas_secretaria/Convalidacion.jsp"><i class="fa fa-th-list fa-3x"></i>Convalidacion</a>
+                            <!--<a  href="../vistas_secretaria/Convalidacion.jsp"><i class="fa fa-th-list fa-3x"></i>Convalidacion</a>-->
                         </li>
                     </ul>
 
@@ -196,13 +196,7 @@
                    <div class="row">
                        <div class="col-md-12">
                            <center>
-                               <h2>Registro de Solicitud</h2> 
-
-                               <form class="center-block text-center" action="../ControlPedido" >
-                               <br/>
-                               Codigo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                               <!-- modal empieza-->
-
+                               <h2>Registro de Solicitud</h2>
                                <div id="modal3" class="modalmask">
                                    <div class="modalbox resize">
                                        <a href="#close" title="Close" class="close">X</a>
@@ -221,12 +215,19 @@
                                        </form>
                                    </div>
                                </div>
+
+                               <form class="center-block text-center" action="../ControlPedido" >
+                               <br/>
+                               <a href="#modal3"  class="btn btn-success right">Agregar</a>
+                               Codigo: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                               <!-- modal empieza-->
+
+                               
                                <!--modal termina -->
 
                                <select data-placeholder="Codigo del Alumno" class="chzn-select form-control text-center"  tabindex="2" style="width: 200px;" name="codigo">
                                    <option value="null"></option>
                                    <option value="">N</option>
-
                                    <%
                                        InterSolicitante iSolicitante = new ModeloSolicitante();
                                    %>
@@ -237,7 +238,7 @@
                                    <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo() + "-" + liSolicitante.get(i).getNombre() + "-" + liSolicitante.get(i).getPaterno()%></option>
                                    <%}%>
                                </select>
-                               <a href="#modal3"  class="btn btn-success right">Agregar</a>
+                               
                                <br/>                         
                                Tramite:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                <select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">

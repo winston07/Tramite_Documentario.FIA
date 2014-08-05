@@ -72,6 +72,7 @@
                 $("#resultados").text('Problemas en el servidor.');
             }
         </script>
+      
     </head>
     <body>
 
@@ -138,12 +139,15 @@
                         <p>Registro de Validaciones de Alumnos</p>
                         <center>    
 
-                            <form action="" method="post" name="formulario" id="formulario">
+                            <form action="../ControlValidacion" method="post" name="formulario" id="formulario">
                                 <strong> Escuela </strong>
-                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
+                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="escuela">
                                     <option value=""></option>
                                     <%
-                                        String id = request.getParameter("codigo");
+                                        String ids = request.getParameter("codigo");
+                                        String tramite = request.getParameter("pedido");
+                                        String pedido = request.getParameter("tramite");
+                                        String validacion = request.getParameter("validacion");
                                         InterEscuela tEscuela = new ModeloEscuela();
 
                                     %>
@@ -155,7 +159,7 @@
 
                                     <%
                                         InterSolicitante tSolicitante = new ModeloSolicitante();
-                                        List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(id);
+                                        List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
                                     %>
 
                                 </select>
@@ -163,7 +167,11 @@
                                 <p
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
-                                    <input class="text-box"name="Codigo" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" readonly="false" />
+                                    <input class="text-box"name="lalal" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" readonly="false" />
+                                    <input type="hidden" name="codigo" value="<%=ids%>" />
+                                    <input type="hidden" name="pedido" value="<%=pedido%>" />
+                                    <input type="hidden" name="tramite" value="<%=tramite%>" />
+                                    <input type="hidden" name="validacion" value="<%=validacion%>" />
                                     <strong>Nombres:</strong>
                                     <input  class="text-box"name="nombres" type="text" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(w).getNombre()%>" readonly="true"/>
                                     <strong>Apellidos:</strong>
@@ -173,9 +181,10 @@
                                 </p>
                                 <p>
                                     <strong>Plan</strong>
-                                    <input class="text-box"name="plan" type="text" id="plan" size="5" maxlength="50" />
+                                    <input class="text-box" name="oldplan" type="text" id="plan" size="5" maxlength="50" />
                                     <strong>Plan Nuevo</strong>
-                                    <input class="text-box" name="plannuevo" type="text" id="plannuevo" size="5" maxlength="50" />
+                                    <input class="text-box" name="newplan" type="text" id="plannuevo" size="5" maxlength="50" /><br />
+                                    <button type="submit" class="btn btn-circle btn-inverse" value="cabecera" name="opc">Agregar Cabecera</button>
                                 </p>
                                 <br/>
                             </form>

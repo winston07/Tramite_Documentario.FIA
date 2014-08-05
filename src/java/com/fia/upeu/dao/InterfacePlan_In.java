@@ -7,7 +7,7 @@
 package com.fia.upeu.dao;
 import com.fia.upeu.modelo.Plan_In;
 
-import java.sql.ResultSet;
+
 import java.util.List;
 /**
  *
@@ -15,8 +15,8 @@ import java.util.List;
  */
 public interface InterfacePlan_In {
     public List<Plan_In> list_Plan_In();
-    boolean agregar_Plan_In(String plan_codigo, String plan_estado);
-    boolean modificar_Plan_Ino_(String plan_codigo, String plan_estado);
-    boolean eliminar_Plan_In(String idplan);
+    public boolean agregar_Plan_In(String plan_codigo, String plan_estado);
+    public boolean modificar_Plan_Ino_(String plan_codigo, String plan_estado);
+    public boolean eliminar_Plan_In(String idplan);
             
 }
