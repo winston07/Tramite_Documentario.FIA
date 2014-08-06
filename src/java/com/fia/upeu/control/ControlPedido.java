@@ -13,8 +13,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,8 +32,6 @@ public class ControlPedido extends HttpServlet {
     ResultSet rs;
     InterPedido iPedido = new ModeloPedido();
     boolean estado = false;
-    Date dat = new Date();
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,7 +50,8 @@ public class ControlPedido extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String opc = request.getParameter("opc");
 
-        String fechainicio = sdf.format(dat);
+        String fechainicio = iPedido.periodo();
+        
         try {
             if (opc.equals("insertar")) {
                 String codigo = request.getParameter("codigo");
@@ -69,7 +66,7 @@ public class ControlPedido extends HttpServlet {
                 out.println("<title>Imprimir</title>");
                 out.println("<link href='css/bootstrap.css' rel='stylesheet'/>");
 
-                estado = iPedido.agregar_Pedido("PEI001", "1", tramite, validacion, codigo, ped, fechainicio);
+                estado = iPedido.agregar_Pedido(fechainicio, "1", tramite, validacion, codigo, ped, fechainicio);
                 rs = iped.listar_To_Print(codigo, ped, tramite);
 
                 if (estado) {

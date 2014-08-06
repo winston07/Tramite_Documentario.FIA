@@ -28,4 +28,7 @@ public interface InterPedido {
     public ResultSet listar_To_Print(String sol, String ped, String tra);
 
     public ResultSet listar_To_Evaluar(String idTramite);
+    
+    public String periodo();
+    
 }

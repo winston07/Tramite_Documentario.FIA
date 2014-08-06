@@ -25,9 +25,18 @@
         <link href="../css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-        <link rel="stylesheet" href="../js/dataTables/jquery.js" />
+
+
+
         <script type="text/javascript" src="../js/sec/ajaxlistaralumno.js"></script>     
         <link rel="stylesheet" href="../css/stylemodal.css" />
+        <link rel="stylesheet" href="../js/jquery.js" />
+        <link rel="stylesheet" href="../js/sec/js.printl.js" />
+        <script type="text/javascript">
+            function im(){
+                $("div#myPrintArea").printArea();
+            }
+        </script>
     </head>
 
     <body>
@@ -95,44 +104,50 @@
                                 </form>
                             </div>
                         </div>
+                       
 
-                        <form class="center-block" action="../ControlPedido" >
-                            
-                            <table>
-                                <tr><td>Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"  tabindex="2" style="width: 200px;" name="codigo" onchange="enviar();">
-                                        <option value="null"></option>
-                                        <%
-                                            InterSolicitante iSolicitante = new ModeloSolicitante();
-                                        %>
-                                        <%
-                                            List<Solicitante> liSolicitante = iSolicitante.listar_Solicitante();
-                                        %>
-                                        <%for (int i = 0; i < liSolicitante.size(); i++) {%>
-                                        <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
-                                        <%}%>
-                                    </select></td></tr>
-                                <tr><td>Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
-                                            <option value=""></option>
-                                            <%
-                                                InterTipo_Tramite tTramite = new ModelTipo_Tramite();
-                                            %>
-                                            <%
-                                                List<Tipo_Tramite> ltTramite = tTramite.listar_Tipo_Tramite();
+                            <form class="center-block" action="../ControlPedido" >
+                                
 
-                                            %>
-                                            <%for (int i = 0; i < ltTramite.size(); i++) {%>
-                                            <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
-                                            <%}%>
-                                        </select></td></tr>
-                                <tr id="resultados"></tr> 
-                                <tr><td><button type="submit" name="opc" value="insertar">Imprimir y Registrar</button></td></tr>
-                            </table>
-                        </form>
+                                <table>
+                                     <div>
+                                    <tr><td>Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"  tabindex="2" style="width: 200px;" name="codigo" onchange="enviar();">
+                                                <option value="null"></option>
+                                                <%
+                                                    InterSolicitante iSolicitante = new ModeloSolicitante();
+                                                %>
+                                                <%
+                                                    List<Solicitante> liSolicitante = iSolicitante.listar_Solicitante();
+                                                %>
+                                                <%for (int i = 0; i < liSolicitante.size(); i++) {%>
+                                                <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
+                                                <%}%>
+                                            </select></td></tr>
+                                    <tr><td>Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
+                                                <option value=""></option>
+                                                <%
+                                                    InterTipo_Tramite tTramite = new ModelTipo_Tramite();
+                                                %>
+                                                <%
+                                                    List<Tipo_Tramite> ltTramite = tTramite.listar_Tipo_Tramite();
+
+                                                %>
+                                                <%for (int i = 0; i < ltTramite.size(); i++) {%>
+                                                <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
+                                                <%}%>
+                                            </select></td></tr>
+                                    <tr id="resultados"></tr> 
+                                     </div>
+                                            <tr><td><input type="submit" name="opc" value="insertar" /></td></tr>
+                                </table>
+                            </form>
+                       
+
                         <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                         <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
                         <script type="text/javascript">
-                                $(".chzn-select").chosen();
-                                $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                                        $(".chzn-select").chosen();
+                                        $(".chzn-select-deselect").chosen({allow_single_deselect: true});
                         </script>
 
                     </div>

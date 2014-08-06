@@ -12,7 +12,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -137,13 +139,27 @@ public class ModeloPedido implements InterPedido {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from PEDIDOSESPERA where ID_TIPO_TRAMITE='"+idTramite+"'");
+            rs = stmt.executeQuery("select * from PEDIDOSESPERA where ID_TIPO_TRAMITE='" + idTramite + "'");
 
         } catch (Exception ex) {
             Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return rs;
+    }
+
+    @Override
+    public String periodo() {
+        String fecha;
+        String f;
+        Date dat = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf1 = new SimpleDateFormat("MM/yyyy");
+        f = sdf.format(dat);
+        fecha = sdf.format(dat);
+        Date d = sdf.get2DigitYearStart();
+        return null;
+        
     }
 
 }

@@ -9,6 +9,9 @@ import com.fia.upeu.config.Conexion;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  *
@@ -19,29 +22,13 @@ public class prueba {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Exception{
-           ResultSet rs;
-         Connection cx = Conexion.getConex();
-        String query = "select * from usuario";
-        Statement sp = cx.createStatement();
-        rs=sp.executeQuery(query);
-        while(rs.next()){
-            System.out.println(rs.getString(2));
-        }    
-
-    }
-
-     void listar() throws Exception {
-        ResultSet rs;
-         Connection cx = Conexion.getConex();
-        String query = "select * from usuario;";
-        Statement sp = cx.createStatement();
-        rs=sp.executeQuery(query);
-        while(rs.next()){
-            System.out.println(rs.getString(1));
-        }
-        
-
+    public static void main(String[] args) throws Exception {
+        String fecha;
+        Date dat = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        fecha = sdf.format(dat);
+        Date d = sdf.parse(fecha);
+        System.out.println("aqui esta la fecha" + d);
     }
 
 }
