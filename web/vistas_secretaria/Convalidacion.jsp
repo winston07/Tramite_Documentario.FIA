@@ -16,10 +16,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-        <!-- descargadoo ya ! error <script type="text/javascript" src="js/jquery.min.js"></script>-->
-        <script type="text/javascript" src="../js/manipulacion.js"></script>
-        <script type="text/javascript" src="../js/efec.js" ></script>
+        
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/sec/ajaxlistarconvalidaciones.js"></script>
         <!--fin tabla -->
