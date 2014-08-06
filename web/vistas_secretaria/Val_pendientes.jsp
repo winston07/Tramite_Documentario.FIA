@@ -32,7 +32,7 @@
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
         <script type="text/javascript" src="../js/jquery.js"></script>
-        <script type="text/javascript" src="../js/sec/ajaxlistarpedido.js"></script>
+        <script type="text/javascript" src="../js/sec/ajaxlistarvalidaciones.js"></script>
 
     </head>
     <body>

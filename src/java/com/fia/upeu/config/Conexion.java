@@ -10,14 +10,14 @@ import java.sql.DriverManager;
 
 /**
  *
- * @author christinecolumbia
+ * @author kelvinthony
  */
 public class Conexion {
 
     public static Connection getConex() throws Exception {
         String usuario = "bd";
         String password = "bd";
-        String host = "localhost";
+        String host = "192.168.1.4";
         String puerto = "1521";
         String sid = "xe";
         String driver = "oracle.jdbc.driver.OracleDriver";
