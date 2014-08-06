@@ -133,11 +133,11 @@ public class ModeloPedido implements InterPedido {
     }
 
     @Override
-    public ResultSet listar_To_Evaluar() {
+    public ResultSet listar_To_Evaluar(String idTramite) {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from PEDIDOSESPERA where ID_TIPO_TRAMITE='TRM001'");
+            rs = stmt.executeQuery("select * from PEDIDOSESPERA where ID_TIPO_TRAMITE='"+idTramite+"'");
 
         } catch (Exception ex) {
             Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);
