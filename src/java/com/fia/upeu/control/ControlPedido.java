@@ -71,7 +71,7 @@ public class ControlPedido extends HttpServlet {
 
                 estado = iPedido.agregar_Pedido("PEI001", "1", tramite, validacion, codigo, ped, fechainicio);
                 rs = iped.listar_To_Print(codigo, ped, tramite);
-                
+
                 if (estado) {
                     out.println("<script type='text/javascript'> alert('Exito');</script>");
                 } else {
@@ -82,15 +82,23 @@ public class ControlPedido extends HttpServlet {
                 bi = iVal.agregar_Validacion(rs.getString(9), "", "", "", "", "");
                 out.println("</head>");
                 out.println("<body class='text-center' style='color:blue; font-size: 20px;'>");
-                
 
                 out.println("Datos del Alumno: " + rs.getString(1) + "," + rs.getString(2) + "," + " " + rs.getString(3) + "</br>");
                 out.println("Alumno Codigo: " + rs.getString(4) + "</br>");
                 out.println("Tramite: " + rs.getString(5) + "</br>");
-                out.println(" <a href='vistas_secretaria/Validacion.jsp?codigo=" + codigo + "&pedido=" + rs.getString(6) + "&tramite=" + rs.getString(7) + "&validacion="+rs.getString(9)+"' >Continuar</a>");
+                out.println(" <a href='vistas_secretaria/Validacion.jsp?codigo=" + codigo + "&pedido=" + rs.getString(6) + "&tramite=" + rs.getString(7) + "&validacion=" + rs.getString(9) + "' >Continuar</a>");
 
                 out.println("</body>");
                 out.println("</html>");
+            }
+            if (opc.equals("sync")) {
+                rs = iPedido.listar_To_Evaluar();
+                while (rs.next()) {
+                    out.println("<tr class='btn-info'>");
+                    out.println("<td>"+rs.getString(6)+"</td><td>"+rs.getString(4)+"</td><td>"+rs.getString(1)+"</td><td>"+rs.getString(2)+", "+rs.getString(3)+"</td><td>"+rs.getString(9)+"</td><td><a></a><a></a></td>");
+                   out.println("</tr> ");
+                }
+
             }
 
         } finally {

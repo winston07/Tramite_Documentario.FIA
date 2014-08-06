@@ -1,0 +1,79 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 06/08/2014, 12:17:56 AM
+    Author     : Kelvin Thony
+*/
+
+            .modalmask {
+                position: fixed;
+                font-family: Arial, sans-serif;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(0,0,0,0.8);
+                z-index: 99999;
+                opacity:0;
+                -webkit-transition: opacity 400ms ease-in;
+                -moz-transition: opacity 400ms ease-in;
+                transition: opacity 400ms ease-in;
+                pointer-events: none;
+            }
+            .modalmask:target {
+                opacity:1;
+                pointer-events: auto;
+            }
+            .modalbox{
+                width: 430px;
+                position: relative;
+                padding: 5px 20px 13px 20px;
+                background: #fff;
+                border-radius:3px;
+                -webkit-transition: all 500ms ease-in;
+                -moz-transition: all 500ms ease-in;
+                transition: all 500ms ease-in;
+
+            }
+
+            
+            .resize {
+                margin: 10% auto;
+                
+
+            }
+            
+
+            .modalmask:target .resize{
+                width:430px;
+                height:310px;
+            }
+            .close {
+                background: #606061;
+                color: #FFFFFF;
+                line-height: 25px;
+                position: absolute;
+                right: 1px;
+                text-align: center;
+                top: 1px;
+                width: 24px;
+                text-decoration: none;
+                font-weight: bold;
+                border-radius:3px;
+                font-size:16px;
+            }
+
+            .close:hover { 
+                background: #FAAC58; 
+                color:#222;
+            }         
+            .nsc{
+                position:absolute;
+                bottom:40%;
+                right:0;
+            }
+    
+
