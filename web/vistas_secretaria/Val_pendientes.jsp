@@ -51,6 +51,7 @@
 
                     </button>
 
+
                     <a class="navbar-brand" href="portal.jsp"><img src="../img/logoupeu.png" class="img-responsive" id="logo"/><b class="titulo">Facultad de Ingenieria y Arquitectura</b></a> 
                 </div>
 
@@ -90,12 +91,12 @@
 
 
             </nav>  
+
             <!-- /. NAV SIDE  -->
 
             <div id="page-wrapper">
                 <div class="row">
-                    <div class="col-md-12">
-
+                    <div class="col-md-12">                        
                         <!--ingrese datos tabla-->  
                         <h1 class="text-info text-center">Validaciones en Espera.</h1>
                         <table class="table table-responsive tabs-stacked text-center  table-bordered">
@@ -103,9 +104,9 @@
                                 <td>IdPedido</td><td>Codigo Solicitante</td><td>Nombres de Solicitante</td><td>Apellidos de Solicitante</td><td>Estado</td><td colspan="2">Opciones</td>
                             </tr> 
                             <tbody id="resultados"></tbody>
-                           
+
                         </table>
-                        
+
 
                     </div>
                 </div>

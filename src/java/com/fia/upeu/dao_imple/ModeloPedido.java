@@ -137,7 +137,7 @@ public class ModeloPedido implements InterPedido {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("SELECT * FROM PEDIDOSESPERA");
+            rs = stmt.executeQuery("select * from PEDIDOSESPERA where ID_TIPO_TRAMITE='TRM001'");
 
         } catch (Exception ex) {
             Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);

@@ -20,6 +20,8 @@
         <!-- descargadoo ya ! error <script type="text/javascript" src="js/jquery.min.js"></script>-->
         <script type="text/javascript" src="../js/manipulacion.js"></script>
         <script type="text/javascript" src="../js/efec.js" ></script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/sec/ajaxlistarconvalidaciones.js"></script>
         <!--fin tabla -->
 
     </head>
@@ -85,112 +87,35 @@
                     <div class="col-md-12">
 
                         <!--ingrese datos tabla-->  
-                        <p>Registro de Convalidacion del Alumno</p>
-                        <center>
+                        <h1 class="text-info text-center">Convalidaciones en Espera.</h1>
+                        <table class="table table-responsive tabs-stacked text-center  table-bordered">
+                            <tr class="btn-lg btn-warning">
+                                <td>IdPedido</td><td>Codigo Solicitante</td><td>Nombres de Solicitante</td><td>Apellidos de Solicitante</td><td>Estado</td><td colspan="2">Opciones</td>
+                            </tr> 
+                            <tbody id="resultados"></tbody>
 
-                            <form action="" method="post" name="formulario" id="formulario">
-                                <p>
-                                    <strong> Universidad</strong>
-                                    <input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" />
-                                    <strong> Facultad</strong>
-                                    <input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50" />
-                                    <strong> Escuela  Profesional</strong>
-                                    <input class="text-box" name="escuela" type="text" id="escuela" size="20" maxlength="50" />
+                        </table>
 
-                                <p><strong >Codigo </strong>
-                                    <input class="text-box" name="Codigo" type="text" id="codigo" size="20" maxlength="50" />
-                                    <strong>Plan</strong>
-                                    <input class="text-box" name="plan" type="text" id="plan" size="5" maxlength="50" />
-                                    <strong>Plan Nuevo</strong>
-                                    <input class="text-box" name="plannuevo" type="text" id="plannuevo" size="5" maxlength="50" />
-                                </p>
-                                <p><strong>Nombres:</strong>
-                                    <input  class="text-box" name="descripcion" id="nombre" size="20" maxlength="50">
-                                    <strong>Apellidos:</strong>
-                                    <input  class="text-box" name="apellidos" id="apellidos" size="30" maxlength="50"/>
-                                </p>
-                            </form><br/>
-                            <!--INGRESO DE TRABLA JQUERY -->
-                            <!--<a href="#" onClick="return false" onmouseOver="alert('Ingrese cursos del alumno ')">
-                            <img src="../img/interrogacion.png" width="45" height="45">-->
-
-                            <table align="center" width="800" class="table-responsive">
-                                <caption>Plan academico </caption>
-                                <thead>
-                                    <tr>
-                                        <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>TH</th><th>HNP</th><th>Nota</th><th width="40">&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tr>
-                                    <td><input type="text"  size="3"class="form-control "></td>
-                                    <td><input type="text" size="20" class="form-control"></td>
-                                    <td><input type="text" size="3"class="form-control"></td>
-                                    <td><input type="text" size="3"class="form-control"></td>
-                                    <td><input type="text"size="3" class="form-control"></td>
-                                    <td><input type="text" size="3"class="form-control"></td>
-                                    <td><input type="text" size="3"class="form-control"></td>
-                                </tr>
-
-                                <tbody>
-                                    <tr>
-                                        <td><input type="text"  size="3"class="form-control "></td>
-                                        <td><input type="text" size="20" class="form-control"></td>
-                                        <td><input type="text" size="3"class="form-control"></td>
-                                        <td><input type="text" size="3"class="form-control"></td>
-                                        <td><input type="text"size="3" class="form-control"></td>
-                                        <td><input type="text" size="3"class="form-control"></td>
-                                        <td><input type="text" size="3"class="form-control"></td>
-                                        <td align="right"><input type="button" value="-" class="btn btn-danger"></td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td colspan="4" align="right" >
-                                            <input type="button" value="Agregar una fila" class="clsAgregarFila btn btn-default" >
-                                            <!--<input type="button" value="Clonar la tabla" class="clsClonarTabla">
-                                            <input type="button" value="Eliminar la tabla" class="clsEliminarTabla">-->
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
                     </div>
                 </div>
-
-                </table>
-
-                <p>
-                <center>
-                    <div>
-                        <input type="button" class="btn btn-success"name="ingresar" id="enviar" value="ingresar" />
-                        <input type="button" class="btn btn-danger"name="cancelar" id="cancelar" value="Cancelar" />
-
-                        </a>
-                        <br />
-                    </div>
-                </center>
-                </p>
-                </center>
-
-
             </div>
         </div>
-    </div>
-    <!-- /. PAGE WRAPPER  -->
-</div>
-<!-- /. WRAPPER  -->
-<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-<!-- JQUERY SCRIPTS -->
-<script src="../js/jquery-1.10.2.js"></script>
-<!-- BOOTSTRAP SCRIPTS -->
-<script src="../js/bootstrap.min.js"></script>
-<!-- METISMENU SCRIPTS -->
-<script src="../js/jquery.metisMenu.js"></script>
-<!-- MORRIS CHART SCRIPTS -->
-<script src="../js/morris/raphael-2.1.0.min.js"></script>
-<script src="../js/morris/morris.js"></script>
-<!-- CUSTOM SCRIPTS -->
-<script src="../js/custom.js"></script>
+        <!-- /. PAGE WRAPPER  -->
+
+        <!-- /. WRAPPER  -->
+        <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+        <!-- JQUERY SCRIPTS -->
+        <script src="../js/jquery-1.10.2.js"></script>
+        <!-- BOOTSTRAP SCRIPTS -->
+        <script src="../js/bootstrap.min.js"></script>
+        <!-- METISMENU SCRIPTS -->
+        <script src="../js/jquery.metisMenu.js"></script>
+        <!-- MORRIS CHART SCRIPTS -->
+        <script src="../js/morris/raphael-2.1.0.min.js"></script>
+        <script src="../js/morris/morris.js"></script>
+        <!-- CUSTOM SCRIPTS -->
+        <script src="../js/custom.js"></script>
 
 
-</body>
+    </body>
 </html>
