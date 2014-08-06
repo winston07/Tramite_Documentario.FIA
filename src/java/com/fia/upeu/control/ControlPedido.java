@@ -96,8 +96,9 @@ public class ControlPedido extends HttpServlet {
                 rs = iPedido.listar_To_Evaluar(id);
                 while (rs.next()) {
                     out.println("<tr class='btn-info'>");
-                    out.println("<td>"+rs.getString(6)+"</td><td>"+rs.getString(4)+"</td><td>"+rs.getString(1)+"</td><td>"+rs.getString(2)+", "+rs.getString(3)+"</td><td>"+rs.getString(9)+"</td><td><a href=\"#\" class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></a><a></a><a></a></td>");
-                   out.println("</tr> ");
+                    out.println("<td>"+rs.getString(6)+"</td><td>"+rs.getString(4)+"</td><td>"+rs.getString(1)+"</td><td>"+rs.getString(2)+", "+rs.getString(3)+"</td><td>"+rs.getString(9)+"</td><td><a href=\"#\" class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></td>");
+                    out.println("<td><a type=\"button\" class=\"fa fa-check-square-o fa-2x\"></a></td>");
+                    out.println("</tr> ");
                 }
 
             }
