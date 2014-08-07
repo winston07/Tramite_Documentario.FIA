@@ -150,16 +150,30 @@ public class ModeloPedido implements InterPedido {
 
     @Override
     public String periodo() {
-        String fecha;
-        String f;
+        String respuesta=null;
         Date dat = new Date();
+        String fechanow;
+        int diain = 1;
+        int mesin = 6;
+        int mesout = 12;
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat sdf1 = new SimpleDateFormat("MM/yyyy");
-        f = sdf.format(dat);
-        fecha = sdf.format(dat);
-        Date d = sdf.get2DigitYearStart();
-        return null;
-        
+        fechanow = sdf.format(dat);
+        String cortadodia = fechanow.substring(0, 2);
+        String cortadomes = fechanow.substring(3, 5);
+        String cortanio = fechanow.substring(6, 10);
+        int diain2 = Integer.parseInt(cortadodia);
+        int mesin2 = Integer.parseInt(cortadomes);
+        int anio = Integer.parseInt(cortanio);
+        //System.out.println("dia:"+diain2+"-Mes:"+mesout2);
+        if (diain2 >= diain && mesin2 <= mesin) {
+            respuesta = anio + "-1";
+        }
+
+        if (diain2 > diain && mesin2 <= mesout) {
+            respuesta = anio + "-2";
+            
+        }
+        return respuesta;
     }
 
 }

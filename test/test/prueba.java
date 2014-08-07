@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import javafx.scene.input.KeyCode;
 
 /**
  *
@@ -22,13 +23,14 @@ public class prueba {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws Exception {
-        String fecha;
-        Date dat = new Date();
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        fecha = sdf.format(dat);
-        Date d = sdf.parse(fecha);
-        System.out.println("aqui esta la fecha" + d);
+    public static void main(String[] args) {
+        hola h = new hola();
+        String a = h.periodo();
+       
+        System.out.println(a);
+
     }
+
+   
 
 }

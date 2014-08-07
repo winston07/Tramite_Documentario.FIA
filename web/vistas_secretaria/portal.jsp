@@ -12,7 +12,7 @@
         <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
         <link href="../css/custom.css" rel="stylesheet" />
-        <!-- GOOGLE FONTS-->
+        <!-- GOOcmdGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <script type="text/javascript" src="js/jquery.js"></script>
         <script>
