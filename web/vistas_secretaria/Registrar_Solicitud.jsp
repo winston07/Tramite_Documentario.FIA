@@ -84,6 +84,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-md-12">
+                        <center>
                         <a href="#modal3"  class="btn btn-success right">Agregar</a>
                         <h2>Registro de Solicitud</h2>
                         <div id="modal3" class="modalmask">
@@ -91,12 +92,12 @@
                                 <a href="#close" title="Close" class="btn btn-danger" style="float: right;">X</a>
                                 <form action="">
                                     <table>
-                                        <h2>Agregar Nuevo Solicitante</h2>
+                                        <!--<h2>Agregar Nuevo Solicitante</h2>-->
                                         <tr><td>Nombres:</td><td><input type="text" /></td></tr>
-                                        <tr><td>Apellido Paterno:</td><td><input type="text" /></td</tr>
+                                        <tr><td>Apellido Paterno:</td><td><input type="text" /></td></tr>
                                         <tr><td>Apellido Materno:</td><td><input type="text" /></td></tr>
                                         <tr><td>Nombres:</td><td><input type="text" /></td></tr>
-                                        <tr><td>Apellido Paterno:</td><td><input type="text" /></td</tr>
+                                        <tr><td>Apellido Paterno:</td><td><input type="text" /></td></tr>
                                         <tr><td>Apellido Materno:</td><td><input type="text" /></td></tr>                                               
                                         <td><button type="submit" class="btn btn-success center-block">Insertar</button></td>
                                         </tr>
@@ -109,9 +110,9 @@
                             <form class="center-block" action="../ControlPedido" >
                                 
 
-                                <table>
+                                
                                      <div>
-                                    <tr><td>Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"  tabindex="2" style="width: 200px;" name="codigo" onchange="enviar();">
+                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"  tabindex="2" style="width: 200px;" name="codigo" onchange="enviar();">
                                                 <option value="null"></option>
                                                 <%
                                                     InterSolicitante iSolicitante = new ModeloSolicitante();
@@ -122,8 +123,10 @@
                                                 <%for (int i = 0; i < liSolicitante.size(); i++) {%>
                                                 <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
                                                 <%}%>
-                                            </select></td></tr>
-                                    <tr><td>Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
+                                            </select>
+                                    <br><br>
+                                    Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
+                                                
                                                 <option value=""></option>
                                                 <%
                                                     InterTipo_Tramite tTramite = new ModelTipo_Tramite();
@@ -135,13 +138,15 @@
                                                 <%for (int i = 0; i < ltTramite.size(); i++) {%>
                                                 <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
                                                 <%}%>
-                                            </select></td></tr>
-                                    <tr id="resultados"></tr> 
+                                            </select>
+                                            <table>
+                                                <td><tr id="resultados">
+                                    </table>
                                      </div>
-                                            <tr><td><input type="submit" name="opc" value="insertar" /></td></tr>
-                                </table>
+                                            <input type="submit" name="opc" value="insertar" />
+                              
                             </form>
-                       
+                       </center>
 
                         <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                         <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
