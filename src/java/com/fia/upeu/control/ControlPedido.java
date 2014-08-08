@@ -37,8 +37,9 @@ public class ControlPedido extends HttpServlet {
     boolean estado = false;
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -52,13 +53,14 @@ public class ControlPedido extends HttpServlet {
         //------------------------------------------------------
         response.setContentType("text/html;charset=UTF-8");
 
-        
+
         String opc = request.getParameter("opc");
 
         try {
             if (opc.equals("Guardar")) {
                 String Periodo = iPedido.periodo();
                 String fechanow;
+                String escuela = "ESC00001";
                 Date dat = new Date();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 fechanow = sdf.format(dat);
@@ -71,24 +73,26 @@ public class ControlPedido extends HttpServlet {
                 out.println("<title>Imprimir</title>");
                 out.println("<link href='css/bootstrap.css' rel='stylesheet'/>");
 
-                estado = iPedido.agregar_Pedido(Periodo, "ESC00001", tramite, codigo, fechanow);
+                estado = iPedido.agregar_Pedido(Periodo, escuela, tramite, codigo, fechanow);
                 upr = iPedido.ultimo_pedido();
                 upr.next();
                 String ped = upr.getString("ULTIMOPEDIDO");
                 rs = iPedido.listar_To_Print(codigo, ped, tramite);
-                out.println(codigo + ped + tramite + Periodo + codigo + fechanow);
+                //out.println(codigo + ped + tramite + Periodo + codigo + fechanow);
 
                 if (estado) {
                     out.println("<script type='text/javascript'> alert('Exito');</script>");
                 } else {
                     out.println("<script type='text/javascript'> alert('Solicitante ya tiene un tramite en Curso');</script>");
                 }
+                //out.println(codigo + ped + tramite + Periodo + codigo + fechanow+);
                 boolean bi = false;
                 rs.next();
                 bi = iVal.agregar_Validacion(rs.getString(9), "", "", "", "", "");
+
                 out.println("</head>");
                 out.println("<body class='text-center' style='color:blue; font-size: 20px;'>");
-
+                out.println("You are here:"+rs.getString(9));
                 out.println("Datos del Alumno: " + rs.getString(1) + "," + rs.getString(2) + "," + " " + rs.getString(3) + "</br>");
                 out.println("Alumno Codigo: " + rs.getString(4) + "</br>");
                 out.println("Tramite: " + rs.getString(5) + "</br>");
@@ -125,7 +129,8 @@ public class ControlPedido extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -143,7 +148,8 @@ public class ControlPedido extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -169,5 +175,4 @@ public class ControlPedido extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }

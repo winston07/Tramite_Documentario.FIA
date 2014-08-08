@@ -68,6 +68,7 @@ public class ModeloPedido implements InterPedido {
     @Override
     public List<Pedido> listar_Id_Pedido(String idPedido) {
         List<Pedido> list = new ArrayList<Pedido>();
+
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
@@ -100,12 +101,31 @@ public class ModeloPedido implements InterPedido {
 
     @Override
     public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String solicitante, String fecha) {
+        Connection connMY = null;
+       
         try {
-            cx = Conexion.getConex();
+
+            connMY = Conexion.getConex();
             //cx.nativeSQL("execute fiainsertpedido ('2014-2','ESC00001','TRM00001','null','07/08/2014','1','SOL00002')");
-          
+
+            connMY.setAutoCommit(false);
+            CallableStatement insert = connMY.prepareCall("{ call fiainsertpedido (?,?,?,?,?,?,?) }");
+            // cargar parametros al SP
+            insert.setString(1, Periodo);
+            insert.setString(2, escuela);
+            insert.setString(3, tipo_Tramite);
+            insert.setString(4, "");
+            insert.setString(5, fecha);
+            insert.setString(6, "1");
+            insert.setString(7, solicitante);
+            
+            // ejecutar el SP
+            insert.executeQuery();
+            // confirmar si se ejecuto sin errores
+            connMY.commit();
             estado = true;
         } catch (Exception ex) {
+            
             estado = false;
         }
 
@@ -191,5 +211,4 @@ public class ModeloPedido implements InterPedido {
 
         return rs;
     }
-
 }

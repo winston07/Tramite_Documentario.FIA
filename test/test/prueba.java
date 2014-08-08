@@ -5,14 +5,7 @@
  */
 package test;
 
-import com.fia.upeu.config.Conexion;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import javafx.scene.input.KeyCode;
+
 
 /**
  *

@@ -78,7 +78,7 @@ public class ControlSolicitante extends HttpServlet {
                 String id = request.getParameter("id");
                 lsoli = is.listar_Id_Solicitante(id);
                 for (int i = 0; i < lsoli.size(); i++) {
-                    out.println("<tr><td>Nombres: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<input type='text' name='nombres' value='"+lsoli.get(i).getNombre()+"' "+read+"/></td></tr>");
+                    out.println("<tr><td  >Nombres: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<input type='text' name='nombres' value='"+lsoli.get(i).getNombre()+"' "+read+" size='15'/></td></tr>");
                     out.println("<tr><td>Apellido Paterno:&nbsp &nbsp &nbsp &nbsp&nbsp<input type='text' name='apellido_p' value='"+lsoli.get(i).getPaterno()+"' "+read+"/></td></tr>");
                     out.println("<tr><td>Apellido Materno:&nbsp &nbsp &nbsp &nbsp<input type='text' name='apellido_m' value='"+lsoli.get(i).getMaterno()+"' "+read+"/></td></tr>");
                 }
