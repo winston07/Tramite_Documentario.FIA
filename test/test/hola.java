@@ -41,4 +41,13 @@ public class hola {
         return respuesta;
     }
 
+    public String hora() {
+        Date dat = new Date();
+        String fechanow;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        fechanow = sdf.format(dat);
+
+        return fechanow;
+    }
+
 }

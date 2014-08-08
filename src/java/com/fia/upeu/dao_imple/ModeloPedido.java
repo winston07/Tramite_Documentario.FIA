@@ -10,7 +10,6 @@ import com.fia.upeu.dao.InterPedido;
 import com.fia.upeu.modelo.Pedido;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -99,33 +98,30 @@ public class ModeloPedido implements InterPedido {
         return list;
     }
 
-    @Override
+    @Override    
     public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String solicitante, String fecha) {
-        Connection connMY = null;
-       
-        try {
 
-            connMY = Conexion.getConex();
+        
+
+        try {
             //cx.nativeSQL("execute fiainsertpedido ('2014-2','ESC00001','TRM00001','null','07/08/2014','1','SOL00002')");
 
-            connMY.setAutoCommit(false);
-            CallableStatement insert = connMY.prepareCall("{ call fiainsertpedido (?,?,?,?,?,?,?) }");
+            cx.setAutoCommit(false);
+            CallableStatement insert = cx.prepareCall("{ call execute fiainsertpedido3 (?,?,?,?,?,?) }");
             // cargar parametros al SP
+            //CallableStatement insert = connMY.prepareCall("{ call execute fiainsertpedido4 ('2014-2','ESC00001','TRM00001','08/08/14','1','01:04:09','USU00001','Ingresando Cursos','SOL00003') }");
             insert.setString(1, Periodo);
             insert.setString(2, escuela);
             insert.setString(3, tipo_Tramite);
-            insert.setString(4, "");
-            insert.setString(5, fecha);
-            insert.setString(6, "1");
-            insert.setString(7, solicitante);
-            
+            insert.setString(4, fecha);
+            insert.setString(5, "1");
+            insert.setString(6, solicitante);
             // ejecutar el SP
             insert.executeQuery();
             // confirmar si se ejecuto sin errores
-            connMY.commit();
+            cx.commit();
             estado = true;
         } catch (Exception ex) {
-            
             estado = false;
         }
 
@@ -196,6 +192,15 @@ public class ModeloPedido implements InterPedido {
 
         }
         return respuesta;
+    }
+
+    public String hora() {
+        Date dat = new Date();
+        String fechanow;
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        fechanow = sdf.format(dat);
+
+        return fechanow;
     }
 
     @Override

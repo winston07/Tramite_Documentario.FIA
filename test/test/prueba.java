@@ -19,8 +19,9 @@ public class prueba {
     public static void main(String[] args) {
         hola h = new hola();
         String a = h.periodo();
+        String b = h.hora();
        
-        System.out.println(a);
+        System.out.println(a+b);
 
     }
 
