@@ -88,8 +88,12 @@
                         <a href="#modal3"  class="btn btn-success right">Agregar</a>
                         <h2>Registro de Solicitud</h2>
                         <div id="modal3" class="modalmask">
+                            
+                            
                             <div class="modalbox resize">
+                                
                                 <a href="#close" title="Close" class="btn btn-danger" style="float: right;">X</a>
+                                <h2>Agregar Solicitante</h2>
                                 <form action="">
                                     <table>
                                         <!--<h2>Agregar Nuevo Solicitante</h2>-->
@@ -99,7 +103,7 @@
                                         <tr><td>Nombres:</td><td><input type="text" /></td></tr>
                                         <tr><td>Apellido Paterno:</td><td><input type="text" /></td></tr>
                                         <tr><td>Apellido Materno:</td><td><input type="text" /></td></tr>                                               
-                                        <td><button type="submit" class="btn btn-success center-block">Insertar</button></td>
+                                        <td><button type="submit" class="btn btn-success center-block">Agregar</button></td>
                                         </tr>
                                     </table>
                                 </form>
@@ -143,7 +147,7 @@
                                                 <td><tr id="resultados">
                                     </table>
                                      </div>
-                                            <input type="submit" name="opc" value="insertar" />
+                                            <input type="submit" name="opc" value="Guardar" class="btn btn-warning" />
                               
                             </form>
                        </center>

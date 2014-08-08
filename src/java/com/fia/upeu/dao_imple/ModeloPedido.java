@@ -8,7 +8,9 @@ package com.fia.upeu.dao_imple;
 import com.fia.upeu.config.Conexion;
 import com.fia.upeu.dao.InterPedido;
 import com.fia.upeu.modelo.Pedido;
+import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -97,11 +99,11 @@ public class ModeloPedido implements InterPedido {
     }
 
     @Override
-    public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String validacion, String solicitante, String pedido, String fecha) {
+    public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String solicitante, String fecha) {
         try {
             cx = Conexion.getConex();
-            stmt = cx.createStatement();
-            stmt.executeQuery("insert into PEDIDO values ('" + Periodo + "','" + escuela + "','" + tipo_Tramite + "','" + validacion + "','" + pedido + "','" + fecha + "','1','" + solicitante + "')");
+            //cx.nativeSQL("execute fiainsertpedido ('2014-2','ESC00001','TRM00001','null','07/08/2014','1','SOL00002')");
+          
             estado = true;
         } catch (Exception ex) {
             estado = false;
@@ -150,7 +152,7 @@ public class ModeloPedido implements InterPedido {
 
     @Override
     public String periodo() {
-        String respuesta=null;
+        String respuesta = null;
         Date dat = new Date();
         String fechanow;
         int diain = 1;
@@ -171,9 +173,23 @@ public class ModeloPedido implements InterPedido {
 
         if (diain2 > diain && mesin2 <= mesout) {
             respuesta = anio + "-2";
-            
+
         }
         return respuesta;
+    }
+
+    @Override
+    public ResultSet ultimo_pedido() {
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            rs = stmt.executeQuery("SELECT * FROM ULTIMOPEDIDO");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
     }
 
 }

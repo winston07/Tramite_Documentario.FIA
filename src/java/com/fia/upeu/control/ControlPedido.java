@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,6 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "ControlPedido", urlPatterns = {"/ControlPedido"})
 public class ControlPedido extends HttpServlet {
 
+    ResultSet upr;
     ResultSet rs;
     InterPedido iPedido = new ModeloPedido();
     boolean estado = false;
@@ -48,17 +51,19 @@ public class ControlPedido extends HttpServlet {
         PrintWriter out = response.getWriter();
         //------------------------------------------------------
         response.setContentType("text/html;charset=UTF-8");
+
+        
         String opc = request.getParameter("opc");
 
-        String fechainicio = iPedido.periodo();
-        
         try {
-            if (opc.equals("insertar")) {
+            if (opc.equals("Guardar")) {
+                String Periodo = iPedido.periodo();
+                String fechanow;
+                Date dat = new Date();
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                fechanow = sdf.format(dat);
                 String codigo = request.getParameter("codigo");
                 String tramite = request.getParameter("tipotramite");
-                String validacion = "null";
-                String ped = "PED081";
-                InterPedido iped = new ModeloPedido();
                 InterValidacion iVal = new ModeloValidacion();
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
@@ -66,13 +71,17 @@ public class ControlPedido extends HttpServlet {
                 out.println("<title>Imprimir</title>");
                 out.println("<link href='css/bootstrap.css' rel='stylesheet'/>");
 
-                estado = iPedido.agregar_Pedido(fechainicio, "1", tramite, validacion, codigo, ped, fechainicio);
-                rs = iped.listar_To_Print(codigo, ped, tramite);
+                estado = iPedido.agregar_Pedido(Periodo, "ESC00001", tramite, codigo, fechanow);
+                upr = iPedido.ultimo_pedido();
+                upr.next();
+                String ped = upr.getString("ULTIMOPEDIDO");
+                rs = iPedido.listar_To_Print(codigo, ped, tramite);
+                out.println(codigo + ped + tramite + Periodo + codigo + fechanow);
 
                 if (estado) {
                     out.println("<script type='text/javascript'> alert('Exito');</script>");
                 } else {
-                    out.println("<script type='text/javascript'> alert('sin Exito');</script>");
+                    out.println("<script type='text/javascript'> alert('Solicitante ya tiene un tramite en Curso');</script>");
                 }
                 boolean bi = false;
                 rs.next();
@@ -89,23 +98,23 @@ public class ControlPedido extends HttpServlet {
                 out.println("</html>");
             }
             if (opc.equals("sync")) {
-                String id=request.getParameter("id");
+                String id = request.getParameter("id");
                 rs = iPedido.listar_To_Evaluar(id);
                 while (rs.next()) {
                     out.println("<tr class='btn-info'>");
-                    out.println("<td>"+rs.getString(6)+"</td><td>"+rs.getString(4)+"</td><td>"+rs.getString(1)+"</td><td>"+rs.getString(2)+", "+rs.getString(3)+"</td><td>"+rs.getString(9)+"</td><td><a href=\"#\" class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></td>");
+                    out.println("<td>" + rs.getString(6) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td><a href=\"#\" class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></td>");
                     out.println("<td><a type=\"button\" class=\"fa fa-check-square-o fa-2x\"></a></td>");
                     out.println("</tr> ");
                 }
 
             }
-            if(opc.equals("synconvalidacion")){
-                String id=request.getParameter("id");
+            if (opc.equals("synconvalidacion")) {
+                String id = request.getParameter("id");
                 rs = iPedido.listar_To_Evaluar(id);
                 while (rs.next()) {
                     out.println("<tr class='btn-info'>");
-                    out.println("<td>"+rs.getString(6)+"</td><td>"+rs.getString(4)+"</td><td>"+rs.getString(1)+"</td><td>"+rs.getString(2)+", "+rs.getString(3)+"</td><td>"+rs.getString(9)+"</td><td><a href=\"#\" class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></a><a></a><a></a></td>");
-                   out.println("</tr> ");
+                    out.println("<td>" + rs.getString(6) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td><a href=\"#\" class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></a><a></a><a></a></td>");
+                    out.println("</tr> ");
                 }
             }
 
