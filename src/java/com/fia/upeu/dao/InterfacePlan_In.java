@@ -18,5 +18,7 @@ public interface InterfacePlan_In {
     public boolean agregar_Plan_In(String plan_codigo, String plan_estado);
     public boolean modificar_Plan_Ino_(String plan_codigo, String plan_estado);
     public boolean eliminar_Plan_In(String idplan);
+
+    public List<Plan_In> list_Plan_In(String id);
             
 }

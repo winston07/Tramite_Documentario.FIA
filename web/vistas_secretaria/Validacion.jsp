@@ -1,4 +1,7 @@
 
+<%@page import="com.fia.upeu.dao_imple.ModeloPlan_In"%>
+<%@page import="com.fia.upeu.dao.InterfacePlan_In"%>
+<%@page import="com.fia.upeu.modelo.Plan_In"%>
 <%@page import="com.fia.upeu.dao_imple.ModeloSolicitante"%>
 <%@page import="com.fia.upeu.modelo.Solicitante"%>
 <%@page import="com.fia.upeu.dao.InterSolicitante"%>
@@ -73,7 +76,7 @@
                 $("#resultados").text('Problemas en el servidor.');
             }
         </script>
-      
+
     </head>
     <body>
 
@@ -182,9 +185,27 @@
                                 </p>
                                 <p>
                                     <strong>Plan</strong>
-                                    <input class="text-box" name="oldplan" type="text" id="plan" size="5" maxlength="50" />
+                                    <select id="plan_in" data-placeholder="Plan" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="plan" onchange="enviarplan_in()">
+                                        <option value=""></option>
+                                        <%  InterfacePlan_In tPlanin=new ModeloPlan_In();
+                                        %>
+                                        <%  List<Plan_In> ltPlanin = tPlanin.list_Plan_In();
+                                        %>
+                                        <%for (int i = 0; i < ltPlanin.size(); i++) {%>
+                                    <option value="<%=ltPlanin.get(i).getIdplan()%>"><%=ltPlanin.get(i).getIdplan()%></option>
+                                    <%}%>
+
+                                    
+
+
+                                    </select>
                                     <strong>Plan Nuevo</strong>
-                                    <input class="text-box" name="newplan" type="text" id="plannuevo" size="5" maxlength="50" /><br />
+                                   <select data-placeholder="Plan Nuevo" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="nuevoplan">
+                                        <option value=""></option>
+
+
+                                    </select>
+                                    <br/>
                                     <button type="submit" class="btn btn-circle btn-inverse" value="cabecera" name="opc">Agregar Cabecera</button>
                                 </p>
                                 <br/>
