@@ -19,6 +19,8 @@
         <link href="../css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
+        <!--IMPRESION-->
+        <link href="../css/Impresion.css" rel="stylesheet" media="print" />
         <!-- MORRIS CHART STYLES-->
         <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
@@ -59,7 +61,7 @@
             </nav>   
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
-                <div class="sidebar-collapse">
+                <div id="contenedor" class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
                         <li class="text-center">
                             <img src="../img/logosecretaria.png" class="user-image img-responsive"/>
@@ -82,7 +84,7 @@
             </nav>  
             <!-- /. NAV SIDE  -->
             <div id="page-wrapper">
-                <div class="row">
+                <div  class="row">
                     <div class="col-md-12">
                         <center>
                         <a href="#modal3"  class="btn btn-success right">Agregar</a>
@@ -115,7 +117,7 @@
                                 
 
                                 
-                                     <div>
+                                <div>
                                     Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"  tabindex="2" style="width: 200px;" name="codigo" onchange="enviar();">
                                                 <option value="null"></option>
                                                 <%
@@ -147,8 +149,9 @@
                                                 <td><tr id="resultados">
                                     </table>
                                      </div>
-                                            <input type="submit" name="opc" value="Guardar" class="btn btn-warning" />
-                              
+                                            <div id="contenedor"><input type="submit" name="opc" value="Guardar" class="btn btn-warning" />
+                                                <input type="submit" name="imp" value="Imprimir" onclick="window.print()" class="btn btn-warning" /></div>
+
                             </form>
                        </center>
 
