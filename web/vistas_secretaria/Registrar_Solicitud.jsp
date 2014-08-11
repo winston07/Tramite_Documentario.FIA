@@ -35,7 +35,7 @@
         <link rel="stylesheet" href="../js/jquery.js" />
         <link rel="stylesheet" href="../js/sec/js.printl.js" />
         <script type="text/javascript">
-            function im(){
+            function im() {
                 $("div#myPrintArea").printArea();
             }
         </script>
@@ -83,79 +83,68 @@
                 </div>
 
             </nav> 
-            
+
             <!-- /. NAV SIDE  -->
             <div id="page-wrapper">
                 <div  class="row">
                     <div class="col-md-12">
                         <center>
-                        <a href="#modal3"  class="btn btn-success right">Agregar</a>
-                        <h2>Registro de Solicitud</h2>
-                        <div id="modal3" class="modalmask">
-                            
-                            
-                            <div class="modalbox resize">
-                                
-                                <a href="#close" title="Close" class="btn btn-danger" style="float: right;">X</a>
-                                <h2>Agregar Solicitante</h2>
-                                <form action="">
-                                    <table>
-                                        <!--<h2>Agregar Nuevo Solicitante</h2>-->
-                                        <tr><td>Nombres:</td><td><input type="text" /></td></tr>
-                                        <tr><td>Apellido Paterno:</td><td><input type="text" /></td></tr>
-                                        <tr><td>Apellido Materno:</td><td><input type="text" /></td></tr>
-                                        <tr><td>Nombres:</td><td><input type="text" /></td></tr>
-                                        <tr><td>Apellido Paterno:</td><td><input type="text" /></td></tr>
-                                        <tr><td>Apellido Materno:</td><td><input type="text" /></td></tr>                                               
-                                        <td><button type="submit" class="btn btn-success center-block">Agregar</button></td>
-                                        </tr>
-                                    </table>
-                                </form>
+                            <!--<a href="#modal3"  class="btn btn-success right">Agregar</a>-->
+                            <h2>Registro de Solicitud</h2>
+                            <div id="modal3" class="modalmask">
+
+
+                                <div class="modalbox resize">
+
+
+                                    <h2>Pedido Agregado Correctamente</h2>
+
+                                    <a href="#close" title="Close" class="btn btn-success" style="float: right;" onclick="window.print()">Imprimir</a>
+                                </div>
                             </div>
-                        </div>
-                       <div id="res"></div>
 
+                            <div id="res"></div>
                             <form class="center-block" >
-                                
 
-                                
+
+
                                 <div>
                                     Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="enviar();" id="cod">
-                                                <option value="null"></option>
-                                                <%
-                                                    InterSolicitante iSolicitante = new ModeloSolicitante();
-                                                %>
-                                                <%
-                                                    List<Solicitante> liSolicitante = iSolicitante.listar_Solicitante();
-                                                %>
-                                                <%for (int i = 0; i < liSolicitante.size(); i++) {%>
-                                                <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
-                                                <%}%>
-                                            </select>
+                                        <option value="null"></option>
+                                        <%
+                                            InterSolicitante iSolicitante = new ModeloSolicitante();
+                                        %>
+                                        <%
+                                            List<Solicitante> liSolicitante = iSolicitante.listar_Solicitante();
+                                        %>
+                                        <%for (int i = 0; i < liSolicitante.size(); i++) {%>
+                                        <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
+                                        <%}%>
+                                    </select>
                                     <br><br>
                                     Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite" id="tra">
-                                                
-                                                <option value=""></option>
-                                                <%
-                                                    InterTipo_Tramite tTramite = new ModelTipo_Tramite();
-                                                %>
-                                                <%
-                                                    List<Tipo_Tramite> ltTramite = tTramite.listar_Tipo_Tramite();
 
-                                                %>
-                                                <%for (int i = 0; i < ltTramite.size(); i++) {%>
-                                                <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
-                                                <%}%>
-                                            </select>
-                                            <table>
-                                                <td><tr id="resultados">
+                                        <option value=""></option>
+                                        <%
+                                            InterTipo_Tramite tTramite = new ModelTipo_Tramite();
+                                        %>
+                                        <%
+                                            List<Tipo_Tramite> ltTramite = tTramite.listar_Tipo_Tramite();
+
+                                        %>
+                                        <%for (int i = 0; i < ltTramite.size(); i++) {%>
+                                        <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
+                                        <%}%>
+                                    </select>
+                                    <table>
+                                        <td><tr id="resultados">
                                     </table>
-                                     </div>
-                                            <div id="contenedor"><input type="submit" name="opc" value="Guardar" class="btn btn-warning" />
-                                                <input type="button" name="imp" value="Imprimir" onclick="window.print();registarPedido()" class="btn btn-warning" /></div>
+                                </div>
+                                <div id="contenedor">
+                                    <a type="button" name="imp" value="Imprimir" onclick="registarPedido()" class="btn btn-warning" href="#modal3">Insertar</a>
 
                             </form>
-                       </center>
+                        </center>
 
                         <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                         <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>

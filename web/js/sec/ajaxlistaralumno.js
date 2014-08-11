@@ -2,7 +2,7 @@
             function enviar()
             {
 
-                var id = $(".chzn-select").val();
+                var id = $("#cod").val();
 
                 $.ajax({
                     async: true,
