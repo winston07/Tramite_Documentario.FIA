@@ -39,6 +39,7 @@
                 $("div#myPrintArea").printArea();
             }
         </script>
+        <script type="text/javascript" src="../js/sec/registrarPedido.js"></script>
     </head>
 
     <body>
@@ -81,7 +82,8 @@
 
                 </div>
 
-            </nav>  
+            </nav> 
+            
             <!-- /. NAV SIDE  -->
             <div id="page-wrapper">
                 <div  class="row">
@@ -111,14 +113,14 @@
                                 </form>
                             </div>
                         </div>
-                       
+                       <div id="res"></div>
 
-                            <form class="center-block" action="../ControlPedido" >
+                            <form class="center-block" >
                                 
 
                                 
                                 <div>
-                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="enviar();">
+                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="enviar();" id="cod">
                                                 <option value="null"></option>
                                                 <%
                                                     InterSolicitante iSolicitante = new ModeloSolicitante();
@@ -131,7 +133,7 @@
                                                 <%}%>
                                             </select>
                                     <br><br>
-                                    Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite">
+                                    Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite" id="tra">
                                                 
                                                 <option value=""></option>
                                                 <%
@@ -150,7 +152,7 @@
                                     </table>
                                      </div>
                                             <div id="contenedor"><input type="submit" name="opc" value="Guardar" class="btn btn-warning" />
-                                                <input type="submit" name="imp" value="Imprimir" onclick="window.print()" class="btn btn-warning" /></div>
+                                                <input type="button" name="imp" value="Imprimir" onclick="window.print();registarPedido()" class="btn btn-warning" /></div>
 
                             </form>
                        </center>

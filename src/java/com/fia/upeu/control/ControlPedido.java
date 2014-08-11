@@ -67,7 +67,6 @@ public class ControlPedido extends HttpServlet {
 
                 String codigo = request.getParameter("codigo");
                 String tramite = request.getParameter("tipotramite");
-                InterValidacion iVal = new ModeloValidacion();
                 out.println("<!DOCTYPE html>");
                 out.println("<html>");
                 out.println("<head>");
@@ -82,12 +81,12 @@ public class ControlPedido extends HttpServlet {
                 // String ped = upr.getString("ULTIMOPEDIDO");
 
                 // rs = iPedido.listar_To_Print(codigo, ped, tramite);
-                out.println(codigo + tramite + Periodo + codigo + fechanow + Periodo);
+                //out.println(codigo + tramite + Periodo + codigo + fechanow + Periodo);
 
                 if (estado) {
-                    out.println("<script type='text/javascript'> alert('Exito');</script>");
+                    out.println("Exito");
                 } else {
-                    out.println("<script type='text/javascript'> alert('Solicitante ya tiene un tramite en Curso'tramite);</script>");
+                    out.println("No Inserto");
                 }
                 // out.println(codigo + ped + tramite + Periodo + codigo );
                 boolean bi = false;

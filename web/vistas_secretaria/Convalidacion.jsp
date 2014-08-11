@@ -6,6 +6,8 @@
         <title>Portal Secretaria</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
+        <link href="../css/chosen.css" rel="stylesheet" />
+
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
         <!-- MORRIS CHART STYLES-->
@@ -16,7 +18,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
-        
+
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/sec/ajaxlistarconvalidaciones.js"></script>
         <!--fin tabla -->
