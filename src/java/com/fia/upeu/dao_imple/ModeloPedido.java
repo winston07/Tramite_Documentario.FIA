@@ -99,15 +99,16 @@ public class ModeloPedido implements InterPedido {
     }
 
     @Override    
-    public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String solicitante, String fecha) {
+    public boolean agregar_Pedido(String Periodo, String escuela, String tipo_Tramite, String solicitante, String fecha,String usuario) {
 
-        
+       
 
         try {
+            cx=Conexion.getConex();
             //cx.nativeSQL("execute fiainsertpedido ('2014-2','ESC00001','TRM00001','null','07/08/2014','1','SOL00002')");
 
             cx.setAutoCommit(false);
-            CallableStatement insert = cx.prepareCall("{ call execute fiainsertpedido3 (?,?,?,?,?,?) }");
+            CallableStatement insert = cx.prepareCall("{ call  fiainsertpedido4(?,?,?,?,?,?,?,?,?) }");
             // cargar parametros al SP
             //CallableStatement insert = connMY.prepareCall("{ call execute fiainsertpedido4 ('2014-2','ESC00001','TRM00001','08/08/14','1','01:04:09','USU00001','Ingresando Cursos','SOL00003') }");
             insert.setString(1, Periodo);
@@ -115,12 +116,16 @@ public class ModeloPedido implements InterPedido {
             insert.setString(3, tipo_Tramite);
             insert.setString(4, fecha);
             insert.setString(5, "1");
-            insert.setString(6, solicitante);
+            insert.setString(6, hora());
+            insert.setString(7, usuario);
+            insert.setString(8, "Ingresando Cursos");
+            insert.setString(9, solicitante);
             // ejecutar el SP
             insert.executeQuery();
             // confirmar si se ejecuto sin errores
             cx.commit();
             estado = true;
+            
         } catch (Exception ex) {
             estado = false;
         }

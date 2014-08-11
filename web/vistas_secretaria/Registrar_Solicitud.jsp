@@ -118,7 +118,7 @@
 
                                 
                                 <div>
-                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"  tabindex="2" style="width: 200px;" name="codigo" onchange="enviar();">
+                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="enviar();">
                                                 <option value="null"></option>
                                                 <%
                                                     InterSolicitante iSolicitante = new ModeloSolicitante();

@@ -61,10 +61,10 @@ public class ControlPedido extends HttpServlet {
                 Date dat = new Date();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String fechanow = sdf.format(dat);
-                String Periodo = iPedido.periodo(); 
+                String Periodo = iPedido.periodo();
                 String escuela = "ESC00001";
                 String usuario = "USU00001";
-                
+
                 String codigo = request.getParameter("codigo");
                 String tramite = request.getParameter("tipotramite");
                 InterValidacion iVal = new ModeloValidacion();
@@ -74,21 +74,22 @@ public class ControlPedido extends HttpServlet {
                 out.println("<title>Imprimir</title>");
                 out.println("<link href='css/bootstrap.css' rel='stylesheet'/>");
 
-               estado = iPedido.agregar_Pedido(Periodo,escuela,tramite,codigo, fechanow);
-                       //estado = iPedido.agregar_Pedido(Periodo,escuela,tramite,codigo, fechanow, usuario, "Ingresando Cursos");
-                upr = iPedido.ultimo_pedido();
-                upr.next();
-                String ped = upr.getString("ULTIMOPEDIDO");
-                
-                rs = iPedido.listar_To_Print(codigo, ped, tramite);
-                out.println(codigo + ped + tramite + Periodo + codigo + fechanow+Periodo);
+                estado = iPedido.agregar_Pedido(Periodo,escuela,tramite,codigo, fechanow,usuario );
+
+                //estado = iPedido.agregar_Pedido(Periodo, escuela, tramite, codigo, fechanow, usuario, "Ingresando Cursos");
+                //upr = iPedido.ultimo_pedido();
+                //upr.next();
+                // String ped = upr.getString("ULTIMOPEDIDO");
+
+                // rs = iPedido.listar_To_Print(codigo, ped, tramite);
+                out.println(codigo + tramite + Periodo + codigo + fechanow + Periodo);
 
                 if (estado) {
                     out.println("<script type='text/javascript'> alert('Exito');</script>");
                 } else {
                     out.println("<script type='text/javascript'> alert('Solicitante ya tiene un tramite en Curso'tramite);</script>");
                 }
-                out.println(codigo + ped + tramite + Periodo + codigo );
+                // out.println(codigo + ped + tramite + Periodo + codigo );
                 boolean bi = false;
                 rs.next();
                 out.println("</head>");
