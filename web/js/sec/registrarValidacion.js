@@ -58,6 +58,7 @@ function registarValidacion()
     var oldplan = $("#plan_in").val();
     var newplan = $("#plan_out").val();
     var vali = $("#validacion").val();
+    var inst_in = $("#inst_in").val();
 
     $.ajax({
         async: true,
@@ -67,24 +68,24 @@ function registarValidacion()
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlValidacion?opc=cabecera&&pedido=" + ped + "&&codigo=" + cod + "&&tramite=" + tra + "&&oldplan=" + oldplan + "&&newplan=" + newplan + "&&validacion=" + vali + "",
-        beforeSend: inicioEnvio,
-        success: llegada,
+        url: "../ControlValidacion?opc=cabecera&&pedido=" + ped + "&&codigo=" + cod + "&&tramite=" + tra + "&&oldplan=" + oldplan + "&&newplan=" + newplan + "&&validacion=" + vali + "&&escuela="+inst_in+"",
+        beforeSend: inicioEnvio1,
+        success: llegada1,
         timeout: 4000,
-        error: problemas
+        error: problemas1
     });
     return false;
 }
-function inicioEnvio()
+function inicioEnvio1()
 {
     var x = $("#res");
     x.html('Cargando...');
 }
-function llegada(datos)
+function llegada1(datos)
 {
     $("#res").html(datos);
 }
-function problemas()
+function problemas1()
 {
     $("#res").text('Problemas en el servidor.');
 }

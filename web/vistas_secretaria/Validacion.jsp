@@ -33,7 +33,7 @@
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
         <link rel="stylesheet" href="../js/dataTables/jquery.js" />
        
-        <link rel="stylesheet" href="../js/sec/registrarValidacion.js" />
+        <script type="text/javascript" src="../js/sec/registrarValidacion.js"></script>
 
     </head>
     <body>
@@ -103,7 +103,7 @@
 
                             <form action="../ControlValidacion" method="post" name="formulario" id="formulario">
                                 <strong> Escuela </strong>
-                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="escuela" required="">
+                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_in" required="">
                                     <option value=""></option>
                                     <%
                                         String ids = request.getParameter("idS");
