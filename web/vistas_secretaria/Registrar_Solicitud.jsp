@@ -91,7 +91,7 @@
                         <center>
                             <!--<a href="#modal3"  class="btn btn-success right">Agregar</a>-->
                             <h2>Registro de Solicitud</h2>
-                            <div id="modal3" class="modalmask">
+                            <div id="modal3" class="modalmask" >
 
 
                                 <div class="modalbox resize">
@@ -105,6 +105,7 @@
 
                             <div id="res"></div>
                             <form class="center-block" >
+                                <a href="../vistas_secretaria/Validacion.jsp"></a>
 
 
 

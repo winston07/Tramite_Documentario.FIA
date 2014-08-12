@@ -148,10 +148,10 @@
                                 <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="escuela">
                                     <option value=""></option>
                                     <%
-                                        String ids = request.getParameter("codigo");
-                                        String tramite = request.getParameter("pedido");
-                                        String pedido = request.getParameter("tramite");
-                                        String validacion = request.getParameter("validacion");
+                                        String ids = request.getParameter("idS");
+                                        String tramite = request.getParameter("idT");
+                                        String pedido = request.getParameter("idP");
+                                        String validacion = request.getParameter("idV");
                                         InterEscuela tEscuela = new ModeloEscuela();
 
                                     %>
@@ -184,7 +184,7 @@
 
                                 </p>
                                 <p>
-                                    <strong>Plan</strong>
+                                    <strong>Plan</strong> 
                                     <select id="plan_in" data-placeholder="Plan" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="plan" onchange="enviarplan_in()">
                                         <option value=""></option>
                                         <%  InterfacePlan_In tPlanin=new ModeloPlan_In();
