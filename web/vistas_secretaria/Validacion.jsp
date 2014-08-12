@@ -65,7 +65,7 @@
             function inicioEnvio()
             {
                 var x = $("#resultados");
-                // x.html('Cargando...');
+               // x.html('<img src="../img/loading.gif"  class="btn-circle"/>');
             }
             function llegada(datos)
             {
