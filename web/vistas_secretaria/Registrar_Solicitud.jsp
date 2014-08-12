@@ -7,7 +7,7 @@
 <%@page import="com.fia.upeu.dao_imple.ModelTipo_Tramite"%>
 <%@page import="com.fia.upeu.dao.InterTipo_Tramite"%>
 <%@page import="java.util.List"%>
-
+ 
 <!DOCTYPE html>
 <html>
     <head>
@@ -45,7 +45,7 @@
     <body>
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
-                <div class="navbar-header">
+                <div id="noimp" class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -54,7 +54,7 @@
                     </button>
                     <a class="navbar-brand" href="portal.jsp"><img src="../img/logoing.png" class="img-responsive" id="logo"/><b class="titulo">Facultad de Ingenieria y Arquitectura</b></a> 
                 </div>
-                <div style="color: white;
+                <div id="noimp" style="color: white;
                      padding: 15px 50px 5px 50px;
                      float: right;
                      font-size: 16px;"> Ultima Conexion : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Cerrar Sesion</a>
@@ -62,7 +62,7 @@
             </nav>   
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
-                <div id="contenedor" class="sidebar-collapse">
+                <div id="noimp" class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
                         <li class="text-center">
                             <img src="../img/logosecretaria.png" class="user-image img-responsive"/>
@@ -90,26 +90,24 @@
                     <div class="col-md-12">
                         <center>
                             <!--<a href="#modal3"  class="btn btn-success right">Agregar</a>-->
-                            <h2>Registro de Solicitud</h2>
-                            <div id="modal3" class="modalmask" >
+                            <h2 id="imp" >Registro de Solicitud</h2>
+                            <div id="modal3" class="modalmask">
 
 
-                                <div class="modalbox resize">
+                                <div id="noimp" class="modalbox resize">
 
 
-                                    <h2>Pedido Agregado Correctamente</h2>
+                                    <h2 id="noimp">Pedido Agregado Correctamente</h2>
 
-                                    <a href="#close" title="Close" class="btn btn-success" style="float: right;" onclick="window.print()">Imprimir</a>
+                                    <a id="noimp" href="#close" title="Close" class="btn btn-success" style="float: right;" onclick="window.print()">Imprimir</a>
                                 </div>
                             </div>
 
-                            <div id="res"></div>
                             <form class="center-block" >
-                                <a href="../vistas_secretaria/Validacion.jsp"></a>
 
 
 
-                                <div>
+                                <div id="imp">
                                     Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="enviar();" id="cod">
                                         <option value="null"></option>
                                         <%
@@ -122,7 +120,9 @@
                                         <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
                                         <%}%>
                                     </select>
-                                    <br><br>
+                                    <table>
+                                        <td><tr id="resultados">
+                                    </table>
                                     Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite" id="tra">
 
                                         <option value=""></option>
@@ -137,13 +137,11 @@
                                         <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
                                         <%}%>
                                     </select>
-                                    <table>
-                                        <td><tr id="resultados">
-                                    </table>
+                                    
                                 </div>
-                                <div id="contenedor">
+                                <div id="noimp">
                                     <a type="button" name="imp" value="Imprimir" onclick="registarPedido()" class="btn btn-warning" href="#modal3">Insertar</a>
-
+                                </div>
                             </form>
                         </center>
 

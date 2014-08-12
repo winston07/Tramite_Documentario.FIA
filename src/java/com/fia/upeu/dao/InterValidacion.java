@@ -20,7 +20,7 @@ public interface InterValidacion {
 
     public boolean agregar_Validacion(String id ,String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in,String val_inst_out);
 
-    public boolean modificar_Validacion(String idValidacion,String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in,String val_inst_out,String estado);
+    public boolean modificar_Validacion(String idValidacion, String val_Plan_in, String val_plan_out, String val_inst_in,String val_inst_out);
 
     public boolean eliminar_Validacion(String idValidacion);
 }

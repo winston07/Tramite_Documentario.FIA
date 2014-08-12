@@ -8,6 +8,7 @@ package com.fia.upeu.dao_imple;
 import com.fia.upeu.config.Conexion;
 import com.fia.upeu.dao.InterValidacion;
 import com.fia.upeu.modelo.Validacion;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -65,11 +66,11 @@ public class ModeloValidacion implements InterValidacion {
     }
 
     @Override
-    public boolean agregar_Validacion(String id,String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out) {
+    public boolean agregar_Validacion(String id, String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out) {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            stmt.executeQuery("insert into VALIDACION values ('"+id+"','"+val_Numero+"','"+val_Plan_in+"','"+val_plan_out+"','"+val_inst_in+"','"+val_inst_out+"','1')");
+            stmt.executeQuery("insert into VALIDACION values ('" + id + "','" + val_Numero + "','" + val_Plan_in + "','" + val_plan_out + "','" + val_inst_in + "','" + val_inst_out + "','1')");
             estado = true;
         } catch (Exception ex) {
             estado = false;
@@ -79,12 +80,24 @@ public class ModeloValidacion implements InterValidacion {
     }
 
     @Override
-    public boolean modificar_Validacion(String idValidacion, String val_Numero, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out, String estadoo) {
-       try {
+    public boolean modificar_Validacion(String idValidacion, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out) {
+        try {
             cx = Conexion.getConex();
-            stmt = cx.createStatement();
-            stmt.executeUpdate("UPDATE validacion SET val_plan_in='"+val_Plan_in+"',val_plan_out='"+val_plan_out+"',val_inst_in='"+val_inst_in+"',val_inst_out='"+val_inst_out+"',val_estado='1' WHERE idvalidacion='"+idValidacion+"'");
-            estado=true;
+            cx.setAutoCommit(false);
+            CallableStatement insert = cx.prepareCall("{ call  fiaupdatevalidacion(?,?,?,?,?,?) }");
+            // cargar parametros al SP
+            //CallableStatement insert = connMY.prepareCall("{ call execute fiainsertpedido4 ('2014-2','ESC00001','TRM00001','08/08/14','1','01:04:09','USU00001','Ingresando Cursos','SOL00003') }");
+            insert.setString(1,idValidacion);
+            insert.setString(2, val_Plan_in );
+            insert.setString(3, val_plan_out);
+            insert.setString(4, val_inst_in);
+            insert.setString(5, val_inst_out);
+            insert.setString(6, "1");
+            // ejecutar el SP
+            insert.executeQuery();
+            // confirmar si se ejecuto sin errores
+            cx.commit();
+            estado = true;
         } catch (Exception ex) {
             estado = false;
         }

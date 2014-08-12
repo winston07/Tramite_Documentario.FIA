@@ -32,50 +32,8 @@
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
         <link rel="stylesheet" href="../js/dataTables/jquery.js" />
-        <script type="text/javascript">
-            function enviar()
-            {
-
-                var id = $("#id").val();
-                var curso = $("#curso").val();
-                var cr = $("#cr").val();
-                var ht = $("#ht").val();
-                var hnp = $("#hnp").val();
-                var th = $("#th").val();
-                var nota = $("#nota").val();
-
-                $.ajax({
-                    async: true,
-                    type: "POST",
-                    dataType: "html",
-                    contentType: "text/html",
-                    //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
-                    //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
-                    url: "../ControlCurso?opc=ajax&id=" + id + "&curso=" + curso + "&cr=" + cr + "&ht=" + ht + "&hnp=" + hnp + "&th=" + th + "&nota=" + nota + "",
-                    //url: "../ControlCurso",
-                    // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
-                    data: "id=" + id,
-                    beforeSend: inicioEnvio,
-                    success: llegada,
-                    timeout: 4000,
-                    error: problemas
-                });
-                return false;
-            }
-            function inicioEnvio()
-            {
-                var x = $("#resultados");
-               // x.html('<img src="../img/loading.gif"  class="btn-circle"/>');
-            }
-            function llegada(datos)
-            {
-                $("#resultados").html(datos);
-            }
-            function problemas()
-            {
-                $("#resultados").text('Problemas en el servidor.');
-            }
-        </script>
+       
+        <link rel="stylesheet" href="../js/sec/registrarValidacion.js" />
 
     </head>
     <body>
@@ -145,7 +103,7 @@
 
                             <form action="../ControlValidacion" method="post" name="formulario" id="formulario">
                                 <strong> Escuela </strong>
-                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="escuela">
+                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="escuela" required="">
                                     <option value=""></option>
                                     <%
                                         String ids = request.getParameter("idS");
@@ -172,10 +130,10 @@
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
                                     <input class="text-box"name="lalal" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" readonly="false" />
-                                    <input type="hidden" name="codigo" value="<%=ids%>" />
-                                    <input type="hidden" name="pedido" value="<%=pedido%>" />
-                                    <input type="hidden" name="tramite" value="<%=tramite%>" />
-                                    <input type="hidden" name="validacion" value="<%=validacion%>" />
+                                    <input type="hidden" id="codigo" value="<%=ids%>" />
+                                    <input type="hidden" id="pedido" value="<%=pedido%>" />
+                                    <input type="hidden" id="tramite" value="<%=tramite%>" />
+                                    <input type="hidden" id="validacion" value="<%=validacion%>" />
                                     <strong>Nombres:</strong>
                                     <input  class="text-box"name="nombres" type="text" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(w).getNombre()%>" readonly="true"/>
                                     <strong>Apellidos:</strong>
@@ -185,31 +143,41 @@
                                 </p>
                                 <p>
                                     <strong>Plan</strong> 
-                                    <select id="plan_in" data-placeholder="Plan" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="plan" onchange="enviarplan_in()">
+                                    <select id="plan_in" data-placeholder="Plan" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="oldplan" onchange="enviarplan_in()" required="">
                                         <option value=""></option>
-                                        <%  InterfacePlan_In tPlanin=new ModeloPlan_In();
+                                        <%  InterfacePlan_In tPlanin = new ModeloPlan_In();
                                         %>
                                         <%  List<Plan_In> ltPlanin = tPlanin.list_Plan_In();
                                         %>
                                         <%for (int i = 0; i < ltPlanin.size(); i++) {%>
-                                    <option value="<%=ltPlanin.get(i).getIdplan()%>"><%=ltPlanin.get(i).getIdplan()%></option>
-                                    <%}%>
+                                        <option value="<%=ltPlanin.get(i).getIdplan()%>"><%=ltPlanin.get(i).getIdplan()%></option>
+                                        <%}%>
 
-                                    
+
 
 
                                     </select>
                                     <strong>Plan Nuevo</strong>
-                                   <select data-placeholder="Plan Nuevo" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="nuevoplan">
+                                    <select id="plan_out" data-placeholder="Plan" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="newplan" onchange="enviarplan_in()" required="">
                                         <option value=""></option>
+                                        <%  InterfacePlan_In tPlanin1 = new ModeloPlan_In();
+                                        %>
+                                        <%  List<Plan_In> ltPlanin1 = tPlanin1.list_Plan_In();
+                                        %>
+                                        <%for (int i = 0; i < ltPlanin1.size(); i++) {%>
+                                        <option value="<%=ltPlanin1.get(i).getIdplan()%>"><%=ltPlanin1.get(i).getIdplan()%></option>
+                                        <%}%>
+
+
 
 
                                     </select>
                                     <br/>
-                                    <button type="submit" class="btn btn-circle btn-inverse" value="cabecera" name="opc">Agregar Cabecera</button>
+                                    <a  class="btn btn-warning" value="cabecera" name="opc"  onclick="registarValidacion()">Agregar Cabecera</a>
                                 </p>
                                 <br/>
                             </form>
+                                        <div id="res"></div>
                             <!--INGRESO DE TRABLA JQUERY -->
 
                             <table align="center" width="800" class="table-responsive">
@@ -229,7 +197,7 @@
                                     <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp"></td>
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th"></td>
                                     <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota"></td>
-                                    <td valign="middle" ><a type="button" class="fa fa-trash-o fa-2x"></a></td>
+                                 
 
 
                                 </tr>

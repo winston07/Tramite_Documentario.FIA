@@ -40,19 +40,19 @@ public class ControlValidacion extends HttpServlet {
             String opc = request.getParameter("opc");
             if (opc.equals("cabecera")) {
                 String oldescuela = request.getParameter("escuela");
-                String newEscuela="Sistemas";
+                String newEscuela="ESC00001";
                 String idSoli = request.getParameter("codigo");
                 String pedido = request.getParameter("pedido");
                 String tramite = request.getParameter("tramite");
                 String oldplan = request.getParameter("oldplan");
                 String newplan = request.getParameter("newplan");
                 String validacion = request.getParameter("validacion");
-                out.println(idSoli+"-"+pedido+"-"+tramite+"-"+oldplan+"-"+newplan+"-"+newEscuela+"-"+oldescuela+"-"+validacion);
-                es=inValidacion.modificar_Validacion(validacion, "5" , oldplan, newplan, oldescuela, newEscuela, "1");
+                //out.println(idSoli+"-"+pedido+"-"+tramite+"-"+oldplan+"-"+newplan+"-"+newEscuela+"-"+oldescuela+"-"+validacion);
+                es=inValidacion.modificar_Validacion(validacion , oldplan, newplan, oldescuela, newEscuela);
                 if(es){
                     out.println("insertado");
                 }else{
-                    out.println("no");
+                    out.println("no Insertado");
                 }
                 
 
