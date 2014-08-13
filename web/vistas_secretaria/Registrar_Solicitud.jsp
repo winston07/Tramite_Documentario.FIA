@@ -19,8 +19,8 @@
         <link href="../css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
-        <!--IMPRESION-->
-        <link href="../css/Impresion.css" rel="stylesheet" media="print" />
+        <!--IMPRIMIR-->
+        <link href="../css/Impresion.css" rel="stylesheet" type="text/css" media="print"/>
         <!-- MORRIS CHART STYLES-->
         <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
@@ -103,7 +103,7 @@
                                 </div>
                             </div>
 
-                            <form class="center-block" >
+                            <form class="center-block" media="print">
 
 
 
@@ -141,6 +141,7 @@
                                 </div>
                                 <div id="noimp">
                                     <a type="button" name="imp" value="Imprimir" onclick="registarPedido()" class="btn btn-warning" href="#modal3">Insertar</a>
+                                    
                                 </div>
                             </form>
                         </center>
@@ -171,7 +172,7 @@
         <script src="../js/morris/morris.js"></script>
         <!-- CUSTOM SCRIPTS -->
         <script src="../js/custom.js"></script>
-
+        
 
     </body>
 </html>
