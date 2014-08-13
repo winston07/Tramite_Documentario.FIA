@@ -17,6 +17,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Portal Secretaria</title>
+        <link rel="stylesheet" href="../css/modal.css" />
         <link href="../css/chosen.css" rel="stylesheet" />
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
@@ -32,7 +33,7 @@
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
         <link rel="stylesheet" href="../js/dataTables/jquery.js" />
-       
+
         <script type="text/javascript" src="../js/sec/registrarValidacion.js"></script>
 
     </head>
@@ -130,7 +131,7 @@
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
                                     <input class="text-box"name="lalal" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" readonly="false" />
-                                    <input type="hidden" id="codigo" value="<%=ids%>" />
+                                    <input type="hidden" id="codigo" value="<%=ids%>"  />
                                     <input type="hidden" id="pedido" value="<%=pedido%>" />
                                     <input type="hidden" id="tramite" value="<%=tramite%>" />
                                     <input type="hidden" id="validacion" value="<%=validacion%>" />
@@ -173,11 +174,11 @@
 
                                     </select>
                                     <br/>
-                                    <a  class="btn btn-warning" value="cabecera" name="opc"  onclick="registarValidacion()">Agregar Cabecera</a>
+                                    <a  class="btn btn-warning" value="cabecera" name="opc"  onclick="registarValidacion()" href="#modal3" id="opc" >Agregar Cabecera</a>
                                 </p>
                                 <br/>
                             </form>
-                                        <div id="res"></div>
+                            <div id="res"></div>
                             <!--INGRESO DE TRABLA JQUERY -->
 
                             <table align="center" width="800" class="table-responsive">
@@ -197,7 +198,7 @@
                                     <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp"></td>
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th"></td>
                                     <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota"></td>
-                                 
+
 
 
                                 </tr>
@@ -253,6 +254,17 @@
 <script src="../js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="../js/custom.js"></script>
+<div id="modal3" class="modalmask">
+
+
+    <div id="noimp" class="modalbox resize">
+
+
+        <h2 id="noimp">Pedido Agregado Correctamente</h2>
+
+        <a id="noimp" href="#close" title="Close" class="btn btn-success" onclick="ocultarBotton()" style="float: right;">Aceptar</a>
+    </div>
+</div>
 
 
 </body>

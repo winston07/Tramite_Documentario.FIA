@@ -4,16 +4,15 @@
  * and open the template in the editor.
  */
 
+
+function ocultarBotton(){
+    document.getElementById("opc").style.visibility="hidden";
+}
 function enviar()
 {
 
-    var id = $("#id").val();
-    var curso = $("#curso").val();
-    var cr = $("#cr").val();
-    var ht = $("#ht").val();
-    var hnp = $("#hnp").val();
-    var th = $("#th").val();
-    var nota = $("#nota").val();
+    var idCu = $("#id").val();
+    var vali = $("#").val();
 
     $.ajax({
         async: true,
@@ -22,7 +21,7 @@ function enviar()
         contentType: "text/html",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
-        url: "../ControlCurso?opc=ajax&id=" + id + "&curso=" + curso + "&cr=" + cr + "&ht=" + ht + "&hnp=" + hnp + "&th=" + th + "&nota=" + nota + "",
+        url: "../ControlValidacion?opc=addcurso&id=" + idCu + "&validacion=" + curso + "&cr=" + cr + "&ht=" + ht + "&hnp=" + hnp + "&th=" + th + "&nota=" + nota + "",
         //url: "../ControlCurso",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         data: "id=" + id,
@@ -41,6 +40,7 @@ function inicioEnvio()
 function llegada(datos)
 {
     $("#resultados").html(datos);
+   
 }
 function problemas()
 {
@@ -75,17 +75,4 @@ function registarValidacion()
         error: problemas1
     });
     return false;
-}
-function inicioEnvio1()
-{
-    var x = $("#res");
-    x.html('Cargando...');
-}
-function llegada1(datos)
-{
-    $("#res").html(datos);
-}
-function problemas1()
-{
-    $("#res").text('Problemas en el servidor.');
-}
+} 
