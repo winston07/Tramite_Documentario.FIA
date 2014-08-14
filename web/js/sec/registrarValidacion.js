@@ -11,8 +11,8 @@ function ocultarBotton(){
 function enviar()
 {
 
-    var idCu = $("#id").val();
-    var vali = $("#").val();
+    var idCu = $("#curso").val();
+    var vali = $("#validacion").val();
 
     $.ajax({
         async: true,
@@ -21,7 +21,7 @@ function enviar()
         contentType: "text/html",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
-        url: "../ControlValidacion?opc=addcurso&id=" + idCu + "&validacion=" + curso + "&cr=" + cr + "&ht=" + ht + "&hnp=" + hnp + "&th=" + th + "&nota=" + nota + "",
+        url: "../ControlValidacion?opc=addcurso&id=" + idCu + "&validacion=" + vali + "",
         //url: "../ControlCurso",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         data: "id=" + id,
