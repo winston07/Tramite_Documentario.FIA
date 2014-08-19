@@ -101,7 +101,7 @@
                         <h1 class="text-info text-center">Validaciones en Espera.</h1>
                         <table class="table table-responsive tabs-stacked text-center  table-bordered">
                             <tr class="btn-lg btn-warning">
-                                <td>IdPedido</td><td>Codigo Solicitante</td><td>Nombres de Solicitante</td><td>Apellidos de Solicitante</td><td>Estado</td><td colspan="2">Opciones</td>
+                                <td>IdPedido</td><td>Codigo Solicitante</td><td>Nombres de Solicitante</td><td>Apellidos de Solicitante</td><td>Estado</td><td colspan="3">Opciones</td>
                             </tr> 
                             <tbody id="resultados"></tbody>
 
