@@ -17,6 +17,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Portal Secretaria</title>
+        <link rel="stylesheet" href="../css/modal.css" />
         <link href="../css/chosen.css" rel="stylesheet" />
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
@@ -32,13 +33,15 @@
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
         <link rel="stylesheet" href="../js/dataTables/jquery.js" />
-       
+        <link rel="stylesheet" href="../css/modal2.css" />
+
         <script type="text/javascript" src="../js/sec/registrarValidacion.js"></script>
 
     </head>
     <body>
 
         <div id="wrapper">
+
 
             <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
 
@@ -103,7 +106,7 @@
 
                             <form action="../ControlValidacion" method="post" name="formulario" id="formulario">
                                 <strong> Escuela </strong>
-                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_in" required="">
+                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_in"  name="escuela" required="">
                                     <option value=""></option>
                                     <%
                                         String ids = request.getParameter("idS");
@@ -111,10 +114,10 @@
                                         String pedido = request.getParameter("idP");
                                         String validacion = request.getParameter("idV");
                                         InterEscuela tEscuela = new ModeloEscuela();
+                                        List<Escuela> ltEscuela = tEscuela.listar_Escuela();
 
                                     %>
-                                    <%                                        List<Escuela> ltEscuela = tEscuela.listar_Escuela();
-                                    %>
+                                    <%                                                                                            %>
                                     <%for (int i = 0; i < ltEscuela.size(); i++) {%>
                                     <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
                                     <%}%>
@@ -123,17 +126,16 @@
                                         InterSolicitante tSolicitante = new ModeloSolicitante();
                                         List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
                                     %>
-
                                 </select>
 
                                 <p>
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
                                     <input class="text-box"name="lalal" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" readonly="false" />
-                                    <input type="hidden" id="codigo" value="<%=ids%>" />
+                                    <input type="hidden" id="codigo" value="<%=ids%>"  />
                                     <input type="hidden" id="pedido" value="<%=pedido%>" />
                                     <input type="hidden" id="tramite" value="<%=tramite%>" />
-                                    <input type="hidden" id="validacion" value="<%=validacion%>" />
+                                    <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
                                     <strong>Nombres:</strong>
                                     <input  class="text-box"name="nombres" type="text" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(w).getNombre()%>" readonly="true"/>
                                     <strong>Apellidos:</strong>
@@ -142,79 +144,62 @@
 
                                 </p>
                                 <p>
-                                    <strong>Plan</strong> 
-                                    <select id="plan_in" data-placeholder="Plan" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="oldplan" onchange="enviarplan_in()" required="">
-                                        <option value=""></option>
-                                        <%  InterfacePlan_In tPlanin = new ModeloPlan_In();
-                                        %>
-                                        <%  List<Plan_In> ltPlanin = tPlanin.list_Plan_In();
-                                        %>
-                                        <%for (int i = 0; i < ltPlanin.size(); i++) {%>
-                                        <option value="<%=ltPlanin.get(i).getIdplan()%>"><%=ltPlanin.get(i).getIdplan()%></option>
-                                        <%}%>
+                                    <strong>Plan In</strong>
+                                    <input  class="text-box"  type="text" size="30" maxlength="50" id="plan_in1" name="oldplan" required=""/>
 
+                                    <strong>Plan Out</strong>
+                                    <input  class="text-box" id="plan_out" type="text" id="plan_out" size="30" maxlength="50" name="newplan" required=""/>
 
-
-
-                                    </select>
-                                    <strong>Plan Nuevo</strong>
-                                    <select id="plan_out" data-placeholder="Plan" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="newplan" onchange="enviarplan_in()" required="">
-                                        <option value=""></option>
-                                        <%  InterfacePlan_In tPlanin1 = new ModeloPlan_In();
-                                        %>
-                                        <%  List<Plan_In> ltPlanin1 = tPlanin1.list_Plan_In();
-                                        %>
-                                        <%for (int i = 0; i < ltPlanin1.size(); i++) {%>
-                                        <option value="<%=ltPlanin1.get(i).getIdplan()%>"><%=ltPlanin1.get(i).getIdplan()%></option>
-                                        <%}%>
-
-
-
-
-                                    </select>
                                     <br/>
-                                    <a  class="btn btn-warning" value="cabecera" name="opc"  onclick="registarValidacion()">Agregar Cabecera</a>
+                                    <!--<a type="submit"  class="btn btn-warning" value="cabecera" name="opc"   id="opc" onclick="toogle('block', 'modal', 'ventana');
+                                            registarValidacion()" >Agregar Cabecera</a>-->
                                 </p>
                                 <br/>
+
                             </form>
-                                        <div id="res"></div>
+
+
                             <!--INGRESO DE TRABLA JQUERY -->
+                            <form action="../ControlValidacion">
+                                <table align="center" width="800" class="table-responsive">
+                                    <tbody id="resultados"> </tbody>
+                                    <caption>Plan academico </caption>
 
-                            <table align="center" width="800" class="table-responsive">
-                                <caption>Plan academico </caption>
-
-                                <tr>
-                                    <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width="40">&nbsp;</th>
-                                </tr> 
-
-
-
-                                <tr style="vertical-align: middle">
-                                    <td valign="middle" ><input type="text"  size="3"class="clsAnchoTotal form-control" name="id" id="id"></td>
-                                    <td valign="middle" ><input type="text" size="20" class="clsAnchoTotal form-control" id="curso"></td>
-                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="cr"></td>
-                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="ht"></td>
-                                    <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp"></td>
-                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th"></td>
-                                    <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota"></td>
-                                 
+                                    <tr>
+                                        <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width="40">&nbsp;</th>
+                                    </tr> 
 
 
-                                </tr>
+                                    <tr style="vertical-align: middle">
+                                    <input type="hidden" id="validacion1" value="<%=validacion%>" />
+                                    <td valign="middle" ><input type="text"  size="3"class="clsAnchoTotal form-control" name="ciclo" id="ciclo1"></td>
+                                    <td valign="middle" ><input type="text" size="20" class="clsAnchoTotal form-control" name="curso" id="curso1"></td>
+                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="cr1" name="cr"></td>
+                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="ht1" name="ht"></td>
+                                    <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp1" name="hnp"></td>
+                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th1" name="th"></td>
+                                    <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota1" name="nota"></td>
 
-                                <div id="resultados"> </div>
 
+
+                                    </tr>
+
+
+
+                                </table>
+                            </form>
+                            <table><tfoot>
+                                <a  class="btn btn-info" onclick="registarValidacion();enviarDatos()" type="submit">Agregar</a> 
+                                </tfoot>
                             </table>
-                            <tr>
-                            <button type="submit" value="insertar" class="btn btn-info" id="enviar" onclick="enviar()">Agregar</button> 
-                            </tr>
+
 
                         </center>
                         <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                         <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
                         <script type="text/javascript">
-                                $(".chzn-select").chosen();
-                                $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                                    $(".chzn-select").chosen();
+                                    $(".chzn-select-deselect").chosen({allow_single_deselect: true});
                         </script>
                     </div>
                 </div>
@@ -254,6 +239,12 @@
 <!-- CUSTOM SCRIPTS -->
 <script src="../js/custom.js"></script>
 
+<div id="modal" style="display:none">
+    <div id="ventana" class="contenedor" style="display:none">
+        <div id="res"></div>
+        <a href="#close" title="Cerrar" onclick="toogle('none', 'modal', 'ventana')" >Close</a>
+    </div>
+</div>
 
 </body>
 </html>
