@@ -116,7 +116,9 @@ public class ControlPedido extends HttpServlet {
                 rs = iPedido.listar_To_Evaluar(id);
                 while (rs.next()) {
                     out.println("<tr class='btn-info'>");
-                    out.println("<td>" + rs.getString(6) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td><a href=\"#\" class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></a><a></a><a></a></td>");
+                    out.println("<td>" + rs.getString(6) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>"
+                            + "<a href='../vistas_secretaria/Validacion.jsp' class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></td>");
+                    out.println("<td><a href='../vistas_secretaria/ValidarConvalidacion.jsp?idP="+rs.getString(6)+"&idT="+rs.getString(7)+"&idS="+rs.getString(8)+"&nom="+rs.getString(1)+"&ape="+rs.getString(2)+"&idV="+rs.getString(10)+"' type=\"button\" class=\"fa fa-check-square-o fa-2x\"></a></td>");
                     out.println("</tr> ");
                 }
             }

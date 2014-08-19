@@ -80,11 +80,11 @@ public class ModeloValidacion implements InterValidacion {
     }
 
     @Override
-    public boolean modificar_Validacion(String idValidacion, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out) {
+    public boolean modificar_Validacion(String idValidacion, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out,String uni,String fac) {
         try {
             cx = Conexion.getConex();
             cx.setAutoCommit(false);
-            CallableStatement insert = cx.prepareCall("{ call  fiaupdatevalidacion(?,?,?,?,?,?) }");
+            CallableStatement insert = cx.prepareCall("{ call  fiaupdatevalidacion(?,?,?,?,?,?,?,?) }");
             // cargar parametros al SP
             //CallableStatement insert = connMY.prepareCall("{ call execute fiainsertpedido4 ('2014-2','ESC00001','TRM00001','08/08/14','1','01:04:09','USU00001','Ingresando Cursos','SOL00003') }");
             insert.setString(1,idValidacion);
@@ -93,6 +93,8 @@ public class ModeloValidacion implements InterValidacion {
             insert.setString(4, val_inst_in);
             insert.setString(5, val_inst_out);
             insert.setString(6, "1");
+            insert.setString(7, uni);
+            insert.setString(8, fac);
             // ejecutar el SP
             insert.executeQuery();
             // confirmar si se ejecuto sin errores

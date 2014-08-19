@@ -17,13 +17,14 @@ import java.util.List;
 public interface InterVal_Cur_Validado {
     public List<Val_Cur_Validado> listar_Val_Cur_Valido();
 
-    public List<Val_Cur_Validado> listar_Id_Val_Cur_Valido(String idV_Cur);
+    public List<Val_Cur_Validado> listar_Id_Val_Cur_Valido(String idcurso);
 
-    public boolean agregar_Val_Cur_Valido(String val, String val_cur_val);
+    public boolean agregar_Val_Cur_Valido(String ciclo, String curso,String cr,String ht,String hnp,String th,String nota,String vali);
 
-    public boolean modificar_Val_Cur_Valido(String idV_Cur ,String val, String val_cur_val, String id_curso);
+    public boolean modificar_Val_Cur_Valido(String idcurso, String ciclo, String curso,String cr,String ht,String hnp,String th,String nota,String vali
+    );
 
-    public boolean eliminar_Val_Cur_Valido(String idV_Cur);
-    
-    public ResultSet listar_Val_Cur(String idV);
+    public boolean eliminar_Val_Cur_Valido(String idcurso);
+
+    public ResultSet listar_Val_Cur(String idcurso);
 }

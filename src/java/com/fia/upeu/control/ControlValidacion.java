@@ -57,48 +57,89 @@ public class ControlValidacion extends HttpServlet {
                 String oldplan = request.getParameter("oldplan");
                 String newplan = request.getParameter("newplan");
                 String validacion = request.getParameter("validacion");
-                //out.println(idSoli+"-"+pedido+"-"+tramite+"-"+oldplan+"-"+newplan+"-"+newEscuela+"-"+oldescuela+"-"+validacion);
-                es = inValidacion.modificar_Validacion(validacion, oldplan, newplan, oldescuela, newEscuela);
+                String uni_in = request.getParameter("uni");
+                String fac_in = request.getParameter("fac");
+                //out.println(""+oldplan+"-"+newplan+"-"+newEscuela+"-"+oldescuela+"-"+validacion);
+                es = inValidacion.modificar_Validacion(validacion, oldplan, newplan, oldescuela, newEscuela,uni_in,fac_in);
 
                 if (es) {
-                    out.println("insertado");
+                    out.println("<img src='../img/exito.png' alt='' />");
 
                 } else {
-                    out.println("No Insertado");
+                    out.println("<img src='../img/can.png' alt='' />");
                 }
 
             }
             if (opc.equals("addcurso")) {
-                String validacion = request.getParameter("validacion");
+                String vali = request.getParameter("validacion");
+                String cr = request.getParameter("cr");
+                String ht = request.getParameter("ht");
+                String hnp = request.getParameter("hnp");
+                String th = request.getParameter("th");
+                String nota = request.getParameter("nota");
+                String ciclo = request.getParameter("ciclo");
                 String curso = request.getParameter("curso");
+                
 
-                es = inVal_Cur_Val.agregar_Val_Cur_Valido(validacion, curso);
+                es = inVal_Cur_Val.agregar_Val_Cur_Valido(ciclo, curso, cr, ht, hnp, th, nota, vali);
                 if (es) {
-                    rs=inVal_Cur_Val.listar_Val_Cur(validacion);
+                    rs = inVal_Cur_Val.listar_Val_Cur(vali);
                     out.println("<table class='table-responsive'>");
                     out.println(" <tr>");
-                    out.println("<table align=\"center\" width=\"800\" class=\"table-responsive\">\n"
-                            + "                                <caption>Cursos Agregados</caption>");
+                    out.println("<table align=\"center\" width=\"800\" class=\"table-responsive\">");
                     out.println(" <tr>");
                     out.println("<th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width=\"40\">&nbsp;</th>");
                     out.println("</tr>");
                     while (rs.next()) {
 
                         out.println("<tr>");
-                        out.println("<td><input type='text' readonly='true'  size='3'class='clsAnchoTotal form-control' value='" + rs.getString(2) + "'></td>");
-                        out.println("<td><input type='text' readonly='true' size='20'class='clsAnchoTotal form-control' value='" + rs.getString(3) + "'></td>");
+                        out.println("<td><input type='text' readonly='true'  size='3'class='clsAnchoTotal form-control' value='" + rs.getString(10) + "'></td>");
+                        out.println("<td><input type='text' readonly='true' size='20'class='clsAnchoTotal form-control' value='" + rs.getString(8) + "'></td>");
                         out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(4) + "'id='cr'></td>");
                         out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(5) + "' id='ht'></td>");
                         out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(6) + "'id='hnp'></td>");
                         out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(7) + "'id='th'></td>");
-                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(8) + "'id='nota'></td>");
+                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(9) + "'id='nota'></td>");
                         out.println("<td><a type=\"button\" class=\"fa fa-trash-o fa-2x\"></a></td>");
                         out.println("<td><a type=\"button\" class=\"fa fa-edit fa-2x\"></a></td>");
                         out.println("</tr>");
                     }
                     out.println("</table>");
 
+                } else {
+                    out.println("Error");
                 }
+            }
+            if (opc.equals("listar")) {
+                String vali = request.getParameter("validacion");
+                rs = inVal_Cur_Val.listar_Val_Cur(vali);
+
+                if (rs!=null) {
+
+                    out.println("<table class='table-responsive'>");
+                    out.println(" <tr>");
+                    out.println("<table align=\"center\" width=\"800\" class=\"table-responsive\">");
+                    
+                    for (int i =0;rs.next();i++) {
+
+                        out.println("<tr>");
+                        out.println("<td><input type='text' readonly='true'  size='3'class='clsAnchoTotal form-control' value='" + rs.getString(10) + "'></td>");
+                        out.println("<td><input type='text' readonly='true' size='20'class='clsAnchoTotal form-control' value='" + rs.getString(8) + "'></td>");
+                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(4) + "'id='cr'></td>");
+                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(5) + "' id='ht'></td>");
+                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(6) + "'id='hnp'></td>");
+                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(7) + "'id='th'></td>");
+                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(9) + "'id='nota'></td>");
+                        out.println("<td><a type=\"button\" class=\"fa fa-trash-o fa-2x\"></a></td>");
+                        out.println("<td><a type=\"button\" class=\"fa fa-edit fa-2x\"></a></td>");
+                        out.println("</tr>");
+                    }
+                    out.println("</table>");
+
+                } else {
+                    out.println("Error");
+                }
+
             }
 
         } finally {

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 window.onload = function() {
     inicio1();
 };
@@ -40,15 +39,6 @@ function llegada2(datos)
 function problemas2()
 {
     $("#resultados").text('Problemas en el servidor.');
-}
-
-function toogle(a, b, c)
-{
-    document.getElementById(b).style.display = a;
-    document.getElementById(c).style.display = a;
-}
-function ocultarBotton() {
-    document.getElementById("opc").style.visibility = "hidden";
 }
 function enviarDatos()
 {
@@ -95,7 +85,7 @@ function problemas()
 }
 
 
-function registarValidacion()
+function registarConvalidacion()
 {
 
 
@@ -106,6 +96,8 @@ function registarValidacion()
     var newplan = $("#plan_out").val();
     var vali = $("#validacion").val();
     var inst_in = $("#inst_in").val();
+    var uni_in = $("#unversidad").val();
+     var fac_in = $("#facultad").val();
 
     $.ajax({
         async: true,
@@ -115,7 +107,7 @@ function registarValidacion()
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlValidacion?opc=cabecera&&pedido=" + ped + "&&codigo=" + cod + "&&tramite=" + tra + "&&oldplan=" + oldplan + "&&newplan=" + newplan + "&&validacion=" + vali + "&&escuela=" + inst_in + "",
+        url: "../ControlValidacion?opc=cabecera&&pedido=" + ped + "&&codigo=" + cod + "&&tramite=" + tra + "&&oldplan=" + oldplan + "&&newplan=" + newplan + "&&validacion=" + vali + "&&escuela=" + inst_in + "&&uni="+uni_in+"&&fac="+fac_in+"",
         beforeSend: inicioEnvio1,
         success: llegada1,
         timeout: 4000,
