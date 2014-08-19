@@ -23,4 +23,6 @@ public interface Inter_Au {
 
     public boolean eliminar_Au(String idAu);
     
+    public boolean modificar_estado(String idvali,String Estado);
+    
 }

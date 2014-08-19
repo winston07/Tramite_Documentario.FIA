@@ -156,11 +156,11 @@
                                 </p>
                                 <br/>
 
-                            </form>
 
 
-                            <!--INGRESO DE TRABLA JQUERY -->
-                            <form action="../ControlValidacion">
+
+                                <!--INGRESO DE TRABLA JQUERY -->
+
                                 <table align="center" width="800" class="table-responsive">
                                     <tbody id="resultados"> </tbody>
                                     <caption>Plan academico </caption>
@@ -187,19 +187,19 @@
 
 
                                 </table>
-                            </form>
-                            <table><tfoot>
-                                <a  class="btn btn-info" onclick="registarValidacion();enviarDatos()" type="submit">Agregar</a> 
-                                </tfoot>
-                            </table>
+
+                                <table><tfoot>
+                                    <a  class="btn btn-info" onclick="registarValidacion();enviarDatos()" type="submit">Agregar</a> 
+                                    </tfoot>
+                                </table>
 
 
                         </center>
                         <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                         <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
                         <script type="text/javascript">
-                                    $(".chzn-select").chosen();
-                                    $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                                        $(".chzn-select").chosen();
+                                        $(".chzn-select-deselect").chosen({allow_single_deselect: true});
                         </script>
                     </div>
                 </div>
@@ -208,8 +208,7 @@
                 <p>
                 <center>
                     <div>
-                        <input type="button" class="btn btn-success"name="ingresar" id="enviar" value="ingresar" />
-                        <input type="button" class="btn btn-danger"name="cancelar" id="cancelar" value="Cancelar" />
+                        <a type="submit" class="btn btn-success" id="enviarcur" value="ingresar" onclick="toogle('block', 'modal', 'ventana');enviarCursos()" >Enviar Cursos</a>
                         <!--<a href="#" onClick="return false" onmouseOver="alert('')">
                         <img src="../img/interrogacion.png" width="45" height="45">
                     </a>-->
@@ -218,7 +217,7 @@
                 </center>
                 </p>
                 </center>
-
+                </form>
 
             </div>
         </div>

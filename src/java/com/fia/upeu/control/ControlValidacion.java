@@ -7,6 +7,8 @@ package com.fia.upeu.control;
 
 import com.fia.upeu.dao.InterVal_Cur_Validado;
 import com.fia.upeu.dao.InterValidacion;
+import com.fia.upeu.dao.Inter_Au;
+import com.fia.upeu.dao_imple.ModeloAuditoria;
 import com.fia.upeu.dao_imple.ModeloVal_Cur_Val;
 import com.fia.upeu.dao_imple.ModeloValidacion;
 import java.io.IOException;
@@ -27,9 +29,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ControlValidacion", urlPatterns = {"/ControlValidacion"})
 public class ControlValidacion extends HttpServlet {
-
+    
     InterValidacion inValidacion = new ModeloValidacion();
     InterVal_Cur_Validado inVal_Cur_Val = new ModeloVal_Cur_Val();
+    Inter_Au iAuditoria = new ModeloAuditoria();
     boolean es;
     ResultSet rs;
 
@@ -140,6 +143,16 @@ public class ControlValidacion extends HttpServlet {
                     out.println("Error");
                 }
 
+            }
+            if(opc.equals("enviocursos")){
+                String validacion = request.getParameter("validacion");
+                es = iAuditoria.modificar_estado(validacion, "Validando");
+                if (es) {
+                    out.println("Desde AHora sera cargo del director de escuela<img src='../img/exito.png' alt='' />");
+
+                } else {
+                    out.println("<img src='../img/can.png' alt='' />");
+                }
             }
 
         } finally {
