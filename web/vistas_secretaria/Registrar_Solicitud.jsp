@@ -7,7 +7,7 @@
 <%@page import="com.fia.upeu.dao_imple.ModelTipo_Tramite"%>
 <%@page import="com.fia.upeu.dao.InterTipo_Tramite"%>
 <%@page import="java.util.List"%>
- 
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -27,11 +27,8 @@
         <link href="../css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-
-
-
-        <script type="text/javascript" src="../js/sec/ajaxlistaralumno.js"></script>     
-        <link rel="stylesheet" href="../css/stylemodal.css" />
+     
+        <link rel="stylesheet" href="../css/modal2.css" />
         <link rel="stylesheet" href="../js/jquery.js" />
         <link rel="stylesheet" href="../js/sec/js.printl.js" />
         <script type="text/javascript">
@@ -91,17 +88,7 @@
                         <center>
                             <!--<a href="#modal3"  class="btn btn-success right">Agregar</a>-->
                             <h2 id="imp" >Registro de Solicitud</h2>
-                            <div id="modal3" class="modalmask">
-
-
-                                <div id="noimp" class="modalbox resize">
-
-
-                                    <h2 id="noimp">Pedido Agregado Correctamente</h2>
-
-                                    <a id="noimp" href="#close" title="Close" class="btn btn-success" style="float: right;" onclick="window.print()">Imprimir</a>
-                                </div>
-                            </div>
+                          
 
                             <form class="center-block" media="print">
 
@@ -137,11 +124,11 @@
                                         <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
                                         <%}%>
                                     </select>
-                                    
+
                                 </div>
                                 <div id="noimp">
-                                    <a type="button" name="imp" value="Imprimir" onclick="registarPedido()" class="btn btn-warning" href="#modal3">Insertar</a>
-                                    
+                                    <a  name="imp" value="Imprimir" onclick="toogle1('block', 'modal', 'ventana');registarPedido()" class="btn btn-warning">Insertar</a>
+
                                 </div>
                             </form>
                         </center>
@@ -172,7 +159,12 @@
         <script src="../js/morris/morris.js"></script>
         <!-- CUSTOM SCRIPTS -->
         <script src="../js/custom.js"></script>
-        
+        <div id="modal" style="display:none">
+            <div id="ventana" class="contenedor" style="display:none">
+                <div id="res"></div>
+                <a href="#close" title="Cerrar" onclick="toogle1('none', 'modal', 'ventana')" >Close</a>
+            </div>
+        </div>
 
     </body>
 </html>
