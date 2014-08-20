@@ -55,6 +55,15 @@ public class ControlPedido extends HttpServlet {
         String opc = request.getParameter("opc");
 
         try {
+            if(opc.equals("eliminarpedido")){
+                
+                String idpedido = request.getParameter("idpedido");
+                String codigo = request.getParameter("codigo");
+                String nombre = request.getParameter("nombre");
+                String apellido = request.getParameter("apellido");
+                out.println("alert('Seguro''"+idpedido+codigo+nombre+apellido+"');");
+                
+            }
             if (opc.equals("Guardar")) {
                 Date dat = new Date();
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -84,7 +93,7 @@ public class ControlPedido extends HttpServlet {
                 if (estado) {
                     out.println("Exito");
                 } else {
-                    out.println("No Inserto");
+                    out.println("No Inserto"+codigo+Periodo+fechanow);
                 }
                 // out.println(codigo + ped + tramite + Periodo + codigo );
                 boolean bi = false;
@@ -106,8 +115,8 @@ public class ControlPedido extends HttpServlet {
                     out.println("<tr class='btn-info'>");
                     out.println("<td>" + rs.getString(6) +"<a type='input' value='rs.getString(6)'></a></td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>"
                             + "<a class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></td>");
-                    out.println("<td><a class=\"fa fa-trash-o fa-2x\" style=\"color: white;\"></a></td>");
-                    out.println("<td><a href='../vistas_secretaria/Validacion.jsp?idP="+rs.getString(6)+"&idT="+rs.getString(7)+"&idS="+rs.getString(8)+"&nom="+rs.getString(1)+"&ape="+rs.getString(2)+"&idV="+rs.getString(10)+"'' class=\"fa fa-check-square-o fa-2x\" style=\"color: white;\"></a></td>");
+                    out.println("<td><a class=\"fa fa-trash-o fa-2x\" onclick='elimanarValidacion('"+rs.getString(6)+"','"+rs.getString(4)+"','"+rs.getString(1)+"','"+rs.getString(2)+"')' style=\"color: white;\"></a></td>");
+                    out.println("<td><a href='../vistas_secretaria/Validacion.jsp?idP="+rs.getString(6)+"&idT="+rs.getString(7)+"&idS="+rs.getString(8)+"&nom="+rs.getString(1)+"&ape="+rs.getString(2)+"&idV="+rs.getString(10)+"'  class=\"fa fa-check-square-o fa-2x\" style=\"color: white;\"></a></td>");
                   
 
                     out.println("</tr> ");

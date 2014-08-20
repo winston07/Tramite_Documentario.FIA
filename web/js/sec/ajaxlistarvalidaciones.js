@@ -40,6 +40,41 @@ function problemas()
 }
 
 
+function elimanarValidacion(id,cod,nom,apell)
+{
 
+    
+
+    $.ajax({
+        async: true,
+        type: "POST",
+        dataType: "html",
+        contentType: "text/html",
+        //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
+        //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
+        //url: "../ControlSolicitante?opc=s&id=" + id,
+        url: "../ControlPedido?opc=eliminarpedido&idpedido="+id+"&codigo="+cod+"&nombre="+nom+"&apellido="+apell+"",
+        // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
+        //data: "id=" + id,
+        beforeSend: inicioEnvio2,
+        success: llegada2,
+        timeout: 4000,
+        error: problemas2
+    });
+    return false;
+}
+function inicioEnvio2()
+{
+    var x = $("#eliminar");
+    //x.html('Cargando...');
+}
+function llegada2(datos)
+{
+    $("#eliminar").html(datos);
+}
+function problemas2()
+{
+    $("#eliminar").text('Problemas en el servidor.');
+}
 
 
