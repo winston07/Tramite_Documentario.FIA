@@ -106,7 +106,7 @@
 
                             <form action="../ControlValidacion" method="post" name="formulario" id="formulario">
                                 <strong> Escuela </strong>
-                                <select data-placeholder="Escuela" class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_in"  name="escuela" required="">
+                                <select data-placeholder="De..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_in"   required="">
                                     <option value=""></option>
                                     <%
                                         String ids = request.getParameter("idS");
@@ -122,24 +122,30 @@
                                     <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
                                     <%}%>
 
-                                    <%
+                                   
+                                </select>
+                                     <%
                                         InterSolicitante tSolicitante = new ModeloSolicitante();
                                         List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
                                     %>
+                                <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
+                                    <option value=""></option>
+                                     <%for (int i = 0; i < ltEscuela.size(); i++) {%>
+                                    <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
+                                    <%}%>
                                 </select>
 
                                 <p>
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
-                                    <input class="text-box"name="lalal" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(w).getCodigo()%>" readonly="false" />
+                                    <label class="text-box"name="lalal" type="text" id="codigo" size="10" maxlength="50" readonly="false" ><%=lsoli.get(w).getCodigo()%></label>
                                     <input type="hidden" id="codigo" value="<%=ids%>"  />
                                     <input type="hidden" id="pedido" value="<%=pedido%>" />
                                     <input type="hidden" id="tramite" value="<%=tramite%>" />
                                     <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
-                                    <strong>Nombres:</strong>
-                                    <input  class="text-box"name="nombres" type="text" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(w).getNombre()%>" readonly="true"/>
-                                    <strong>Apellidos:</strong>
-                                    <input  class="text-box"name="apellidos" type="text" id="apellidos" size="30" maxlength="50" value="<%=lsoli.get(w).getPaterno() + "," + lsoli.get(w).getMaterno()%>" readonly="true"/>
+                                    <strong>Nombres y Apellidos del Solicitante</strong>
+                                    <label  class="text-right" name="nombres" type="text" id="nombre" size="50" maxlength="50" readonly="true"><%=lsoli.get(w).getNombre()+","+""+lsoli.get(w).getPaterno()+lsoli.get(w).getMaterno()%></label>
+                                   
                                     <%}%>
 
                                 </p>
@@ -189,7 +195,8 @@
                                 </table>
 
                                 <table><tfoot>
-                                    <a  class="btn btn-info" onclick="registarValidacion();enviarDatos()" type="submit">Agregar</a> 
+                                    <a  class="btn btn-info" onclick="registarValidacion();
+                                            enviarDatos()" type="submit">Agregar</a> 
                                     </tfoot>
                                 </table>
 
@@ -208,7 +215,8 @@
                 <p>
                 <center>
                     <div>
-                        <a type="submit" class="btn btn-success" id="enviarcur" value="ingresar" onclick="toogle('block', 'modal', 'ventana');enviarCursos()" >Enviar Cursos</a>
+                        <a type="submit" class="btn btn-success" id="enviarcur" value="ingresar" onclick="toogle('block', 'modal', 'ventana');
+                                enviarCursos()" >Enviar Cursos</a>
                         <!--<a href="#" onClick="return false" onmouseOver="alert('')">
                         <img src="../img/interrogacion.png" width="45" height="45">
                     </a>-->

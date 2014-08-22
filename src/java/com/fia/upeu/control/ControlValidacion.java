@@ -52,11 +52,8 @@ public class ControlValidacion extends HttpServlet {
         try {
             String opc = request.getParameter("opc");
             if (opc.equals("cabecera")) {
-                String oldescuela = request.getParameter("escuela");
-                String newEscuela = "ESC00001";
-                //String idSoli = request.getParameter("codigo");
-                //String pedido = request.getParameter("pedido");
-                //String tramite = request.getParameter("tramite");
+                String oldescuela = request.getParameter("inst_in");
+                String newEscuela = request.getParameter("inst_out");
                 String oldplan = request.getParameter("oldplan");
                 String newplan = request.getParameter("newplan");
                 String validacion = request.getParameter("validacion");
@@ -148,7 +145,7 @@ public class ControlValidacion extends HttpServlet {
                 String validacion = request.getParameter("validacion");
                 es = iAuditoria.modificar_estado(validacion, "Validando");
                 if (es) {
-                    out.println("Desde AHora sera cargo del director de escuela<img src='../img/exito.png' alt='' />");
+                    out.println("Desde Ahora sera cargo del director de escuela<img src='../img/exito.png' alt='' />");
 
                 } else {
                     out.println("<img src='../img/can.png' alt='' />");

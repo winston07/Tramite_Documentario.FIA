@@ -120,6 +120,7 @@ function registarValidacion()
     var newplan = $("#plan_out").val();
     var vali = $("#validacion").val();
     var inst_in = $("#inst_in").val();
+    var inst_out = $("#inst_out").val();
 
     $.ajax({
         async: true,
@@ -129,7 +130,7 @@ function registarValidacion()
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlValidacion?opc=cabecera&&pedido=" + ped + "&&codigo=" + cod + "&&tramite=" + tra + "&&oldplan=" + oldplan + "&&newplan=" + newplan + "&&validacion=" + vali + "&&escuela=" + inst_in + "",
+        url: "../ControlValidacion?opc=cabecera&&pedido=" + ped + "&&codigo=" + cod + "&&tramite=" + tra + "&&oldplan=" + oldplan + "&&newplan=" + newplan + "&&validacion=" + vali + "&&inst_in=" + inst_in + "&&inst_out="+inst_out+"",
         beforeSend: inicioEnvio1,
         success: llegada1,
         timeout: 4000,

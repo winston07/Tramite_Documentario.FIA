@@ -1,3 +1,6 @@
+<%@page import="com.fia.upeu.dao_imple.ModeloEscuela"%>
+<%@page import="com.fia.upeu.modelo.Escuela"%>
+<%@page import="com.fia.upeu.dao.InterEscuela"%>
 <%@page import="com.fia.upeu.dao_imple.ModeloSolicitante"%>
 <%@page import="com.fia.upeu.modelo.Solicitante"%>
 <%@page import="java.util.List"%>
@@ -30,6 +33,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+        <link rel="stylesheet" href="../css/modal2.css" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
         <!-- descargadoo ya ! error <script type="text/javascript" src="js/jquery.min.js"></script>-->
         <script type="text/javascript" src="../js/manipulacion.js"></script>
@@ -114,9 +118,22 @@
                                     <input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" />
                                     <strong> Facultad</strong>
                                     <input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50" />
-                                    <strong> Escuela  Profesional</strong>
+                                    <strong> De  E.A.P</strong>
                                     <input class="text-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50" />
+                                    <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
+                                        <option value=""></option>
+                                        <%
+                                            InterEscuela tEscuela = new ModeloEscuela();
+                                            List<Escuela> ltEscuela = tEscuela.listar_Escuela();
 
+                                        %>
+                                        <%                                                                                            %>
+                                        <%for (int i = 0; i < ltEscuela.size(); i++) {%>
+                                        <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
+                                        <%}%>
+
+
+                                    </select>
                                 <p><strong >Codigo </strong>
                                     <input class="text-box" name="Codigo" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(0).getCodigo()%>" readonly="" />
                                     <strong>Plan</strong>
@@ -166,6 +183,12 @@
                                     </tfoot>
                                 </table>
                             </form>
+                            <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
+                            <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
+                            <script type="text/javascript">
+                                        $(".chzn-select").chosen();
+                                        $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                            </script>
                     </div>
                 </div>
 
@@ -174,8 +197,8 @@
                 <p>
                 <center>
                     <div>
-                        <input type="button" class="btn btn-success"name="ingresar" id="enviar" value="ingresar" />
-                        <input type="button" class="btn btn-danger"name="cancelar" id="cancelar" value="Cancelar" />
+                        <a type="submit" class="btn btn-success" id="enviarcur" value="ingresar" onclick="toogle5('block', 'modal', 'ventana');
+                                enviarCursos1()" >Enviar Cursos</a>
 
                         </a>
                         <br />
@@ -203,6 +226,12 @@
 <script src="../js/morris/morris.js"></script>
 <!-- CUSTOM SCRIPTS -->
 <script src="../js/custom.js"></script>
+<div id="modal" style="display:none">
+    <div id="ventana" class="contenedor" style="display:none">
+        <div id="res"></div>
+        <a href="#close" title="Cerrar" onclick="toogle5('none', 'modal', 'ventana')" >Close</a>
+    </div>
+</div>
 
 
 </body>

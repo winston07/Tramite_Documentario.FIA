@@ -96,6 +96,7 @@ function registarConvalidacion()
     var newplan = $("#plan_out").val();
     var vali = $("#validacion").val();
     var inst_in = $("#inst_in").val();
+    var inst_out = $("#inst_out").val();
     var uni_in = $("#unversidad").val();
      var fac_in = $("#facultad").val();
 
@@ -107,7 +108,7 @@ function registarConvalidacion()
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlValidacion?opc=cabecera&&pedido=" + ped + "&&codigo=" + cod + "&&tramite=" + tra + "&&oldplan=" + oldplan + "&&newplan=" + newplan + "&&validacion=" + vali + "&&escuela=" + inst_in + "&&uni="+uni_in+"&&fac="+fac_in+"",
+        url: "../ControlValidacion?opc=cabecera&&pedido=" + ped + "&&codigo=" + cod + "&&tramite=" + tra + "&&oldplan=" + oldplan + "&&newplan=" + newplan + "&&validacion=" + vali + "&&inst_in=" + inst_in + "&&inst_out="+inst_out+"&&uni="+uni_in+"&&fac="+fac_in+"",
         beforeSend: inicioEnvio1,
         success: llegada1,
         timeout: 4000,
@@ -133,4 +134,44 @@ function problemas1(datos)
 
     $("#res").html(datos);
     //toogle('block', 'modal', 'ventana');
+}
+function enviarCursos1(){
+    
+    var vali = $("#validacion1").val();
+
+    $.ajax({
+        async: true,
+        type: "POST",
+        dataType: "html",
+        contentType: "text/html",
+        //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
+        //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
+        url: "../ControlValidacion?opc=enviocursos&&validacion=" + vali + "",
+        //url: "../ControlCurso",
+        // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
+        //data: "id=" + id,
+        beforeSend: inicioEnvioCursos1,
+        success: llegadaCursos1,
+        timeout: 4000,
+        error: problemasCursos1
+    });
+    return false;
+}
+function inicioEnvioCursos1()
+{
+    var x = $("#res");
+   x.html('<img src="../img/loading.gif"  class="btn-circle"/>');
+}
+function llegadaCursos1(datos)
+{
+    $("#res").html(datos);
+}
+function problemasCursos1()
+{
+    $("#res").text('Problemas en el servidor.');
+}
+function toogle5(a, b, c)
+{
+    document.getElementById(b).style.display = a;
+    document.getElementById(c).style.display = a;
 }
