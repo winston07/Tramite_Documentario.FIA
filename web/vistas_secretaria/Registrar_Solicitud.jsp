@@ -162,7 +162,7 @@
         <div id="modal" style="display:none">
             <div id="ventana" class="contenedor" style="display:none">
                 <div id="res"></div>
-                <a href="#close" title="Cerrar" onclick="toogle1('none', 'modal', 'ventana')" >Close</a>
+                <a href="#close" title="Cerrar" onclick="toogle1('none', 'modal', 'ventana');window.print()" >Close</a>
             </div>
         </div>
 

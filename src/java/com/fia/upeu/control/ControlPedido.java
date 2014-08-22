@@ -55,13 +55,22 @@ public class ControlPedido extends HttpServlet {
         String opc = request.getParameter("opc");
 
         try {
-            if(opc.equals("eliminarpedido")){
+            if(opc.equals("eliminarvalidacion")){
+                String idpedido = request.getParameter("idpedido");
+                String idvali = request.getParameter("idvali");
+                estado = iPedido.eliminarcascada(idpedido,idvali);
+                if(estado){
+                    out.println("eliminado");
+                }else{
+                    out.println("no eliminado");
+                }
+            }
+            if(opc.equals("verpro")){
                 
                 String idpedido = request.getParameter("idpedido");
-                String codigo = request.getParameter("codigo");
-                String nombre = request.getParameter("nombre");
-                String apellido = request.getParameter("apellido");
-                out.println("alert('Seguro''"+idpedido+codigo+nombre+apellido+"');");
+                String idvali = request.getParameter("idvali");
+                out.println("Seguro que desea eliminar este archivo"+idpedido+"<button href=\"#close\" title=\"Cerrar\" onclick=\"elimanarValidacion1('"+idpedido+"', '"+idvali+"');toogle3('none', 'modal', 'ventana');\" >Close</button>"); 
+                
                 
             }
             if (opc.equals("Guardar")) {
@@ -114,8 +123,8 @@ public class ControlPedido extends HttpServlet {
                 while (rs.next()) {
                     out.println("<tr class='btn-info'>");
                     out.println("<td>" + rs.getString(6) +"<a type='input' value='rs.getString(6)'></a></td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>"
-                            + "<a class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></td>");
-                    out.println("<td><a class=\"fa fa-trash-o fa-2x\" onclick='elimanarValidacion('"+rs.getString(6)+"','"+rs.getString(4)+"','"+rs.getString(1)+"','"+rs.getString(2)+"')' style=\"color: white;\"></a></td>");
+                            + "<a class=\"fa fa-edit fa-2x\" onclick=\"alert('"+rs.getString(6)+rs.getString(1)+"')\" href='#' style=\"color: white;\"></a></td>");
+                    out.println("<td><a class=\"fa fa-trash-o fa-2x\" style=\"color: white;\" onclick=\"toogle3('block', 'modal', 'ventana');elimanarValidacion('"+rs.getString(6)+"', '"+rs.getString(4)+"', '"+rs.getString(1)+"', '"+rs.getString(2)+"');\" ></a></td>");
                     out.println("<td><a href='../vistas_secretaria/Validacion.jsp?idP="+rs.getString(6)+"&idT="+rs.getString(7)+"&idS="+rs.getString(8)+"&nom="+rs.getString(1)+"&ape="+rs.getString(2)+"&idV="+rs.getString(10)+"'  class=\"fa fa-check-square-o fa-2x\" style=\"color: white;\"></a></td>");
                   
 
@@ -127,10 +136,13 @@ public class ControlPedido extends HttpServlet {
                 String id = request.getParameter("id");
                 rs = iPedido.listar_To_Evaluar(id);
                 while (rs.next()) {
-                    out.println("<tr class='btn-info'>");
-                    out.println("<td>" + rs.getString(6) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>"
-                            + "<a href='../vistas_secretaria/Validacion.jsp' class=\"fa fa-edit fa-2x\" style=\"color: white;\"></a></td>");
-                    out.println("<td><a href='../vistas_secretaria/ValidarConvalidacion.jsp?idP="+rs.getString(6)+"&idT="+rs.getString(7)+"&idS="+rs.getString(8)+"&nom="+rs.getString(1)+"&ape="+rs.getString(2)+"&idV="+rs.getString(10)+"' type=\"button\" class=\"fa fa-check-square-o fa-2x\"></a></td>");
+                   out.println("<tr class='btn-info'>");
+                    out.println("<td>" + rs.getString(6) +"<a type='input' value='rs.getString(6)'></a></td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>"
+                            + "<a class=\"fa fa-edit fa-2x\" onclick=\"alert('"+rs.getString(6)+rs.getString(1)+"')\" href='#' style=\"color: white;\"></a></td>");
+                    out.println("<td><a class=\"fa fa-trash-o fa-2x\" style=\"color: white;\" onclick=\"toogle4('block', 'modal', 'ventana');elimanarConvalidacion('"+rs.getString(6)+"', '"+rs.getString(4)+"', '"+rs.getString(1)+"', '"+rs.getString(2)+"');\" ></a></td>");
+                    out.println("<td><a href='../vistas_secretaria/ValidarConvalidacion.jsp?idP="+rs.getString(6)+"&idT="+rs.getString(7)+"&idS="+rs.getString(8)+"&nom="+rs.getString(1)+"&ape="+rs.getString(2)+"&idV="+rs.getString(10)+"'  class=\"fa fa-check-square-o fa-2x\" style=\"color: white;\"></a></td>");
+                  
+
                     out.println("</tr> ");
                 }
             }

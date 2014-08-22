@@ -64,6 +64,7 @@
 
 
                 </div>
+               
 
             </nav>  
             <!-- /. NAV SIDE  -->
@@ -73,6 +74,8 @@
                         <h2>Bienvenida al Sistema de Tramites Documentarios</h2>
                         <div>
                             <p>Q tall como le va</p>
+                            <button href="" class="btn btn-circle">Peligro</button>
+                
                         </div>
                         
                     </div>

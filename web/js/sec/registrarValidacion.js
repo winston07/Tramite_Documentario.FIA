@@ -91,10 +91,21 @@ function inicioEnvio()
 function llegada(datos)
 {
     $("#resultados").html(datos);
+   // ocultar();
+     
 }
 function problemas()
 {
     $("#resultados").text('Problemas en el servidor.');
+}
+function ocultar(){
+     document.getElementById("ciclo1").value="";
+     document.getElementById("curso1").value="";
+     document.getElementById("cr1").value="";
+     document.getElementById("ht1").value="";
+     document.getElementById("hnp1").value="";
+     document.getElementById("th1").value="";
+     document.getElementById("nota1").value="";
 }
 
 

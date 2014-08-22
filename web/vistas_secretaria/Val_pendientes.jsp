@@ -31,6 +31,7 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <!--tabla ingreso validacion secretaria -->
         <link rel="stylesheet" type="text/css" href="../css/estilos.css">
+        <link rel="stylesheet" href="../css/modal2.css" />
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/sec/ajaxlistarvalidaciones.js"></script>
 
@@ -105,13 +106,18 @@
                             </tr> 
                             <tbody id="resultados"></tbody>
 
+
                         </table>
+                        <div id="ex"></div>
 
 
                     </div>
+                    
+                    <a onclick="toogle3('block', 'modal', 'ventana');elimanarValidacion('kel', 'kel', 'kel', 'kel');" >Aqui xD</a>
                 </div>
             </div>
         </div>
+
 
         <!-- /. PAGE WRAPPER  -->
         <!-- /. WRAPPER  -->
@@ -127,6 +133,12 @@
         <script src="../js/morris/morris.js"></script>
         <!-- CUSTOM SCRIPTS -->
         <script src="../js/custom.js"></script>
+        <div id="modal" style="display:none">
+            <div id="ventana" class="contenedor" style="display:none">
+                <div id="res"></div>
+                <a href="#close" title="Cerrar" onclick="toogle3('none', 'modal', 'ventana');" >Close</a>
+            </div>
+        </div>
 
 
     </body>

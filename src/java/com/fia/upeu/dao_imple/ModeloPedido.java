@@ -162,7 +162,7 @@ public class ModeloPedido implements InterPedido {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from PEDIDOSESPERA where ID_TIPO_TRAMITE='" + idTramite + "'");
+            rs = stmt.executeQuery("select * from PEDIDOSESPERA where ID_TIPO_TRAMITE='" + idTramite + "' and aud_tra_estado='Ingresando Cursos'");
 
         } catch (Exception ex) {
             Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);
@@ -221,4 +221,29 @@ public class ModeloPedido implements InterPedido {
 
         return rs;
     }
+
+    @Override
+    public boolean eliminarcascada(String idpedido, String idvali) {
+          try {
+            cx=Conexion.getConex();
+            //cx.nativeSQL("execute fiainsertpedido ('2014-2','ESC00001','TRM00001','null','07/08/2014','1','SOL00002')");
+
+            cx.setAutoCommit(false);
+            CallableStatement insert = cx.prepareCall("{ call  fiainsertpedido4(?,?,?,?,?,?,?,?,?) }");
+            // cargar parametros al SP
+            //CallableStatement insert = connMY.prepareCall("{ call execute fiainsertpedido4 ('2014-2','ESC00001','TRM00001','08/08/14','1','01:04:09','USU00001','Ingresando Cursos','SOL00003') }");
+            insert.setString(1, idpedido);
+            insert.setString(2, idvali); 
+            // ejecutar el SP
+            insert.executeQuery();
+            // confirmar si se ejecuto sin errores
+            cx.commit();
+            estado = true;
+            
+        } catch (Exception ex) {
+            estado = false;
+        }
+
+        return estado;
+       }
 }
