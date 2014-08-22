@@ -1,50 +1,111 @@
-<%-- 
-    Document   : Convalidacion
-    Created on : Jul 17, 2014, 11:44:34 AM
-    Author     : Wins
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.fia.upeu.dao_imple.ModeloPedido"%>
+<%@page import="com.fia.upeu.dao.InterPedido"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <link type="text/css" href="../css/Boton.css" rel="stylesheet">
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
         <title>Portal Director</title>
+        <!--Chosen con bootsrap-->
+        <link href="../css/chosen.css" rel="stylesheet" />
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
         <!-- MORRIS CHART STYLES-->
         <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+        <!--MODAL ESTILOS-->
+        <style>
+            .modalmask {
+                position: fixed;
+                font-family: Arial, sans-serif;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(0,0,0,0.8);
+                z-index: 99999;
+                opacity:0;
+                -webkit-transition: opacity 400ms ease-in;
+                -moz-transition: opacity 400ms ease-in;
+                transition: opacity 400ms ease-in;
+                pointer-events: none;
+            }
+            .modalmask:target {
+                opacity:1;
+                pointer-events: auto;
+            }
+            .modalbox{
+                width: 400px;
+                position: relative;
+                padding: 5px 20px 13px 20px;
+                background: #fff;
+                border-radius:3px;
+                -webkit-transition: all 500ms ease-in;
+                -moz-transition: all 500ms ease-in;
+                transition: all 500ms ease-in;
+
+            }
+
+            .movedown {
+                margin: 0 auto;
+            }
+            .rotate {
+                margin: 10% auto;
+                -webkit-transform: scale(-5,-5); 
+                transform: scale(-5,-5);
+            }
+            .resize {
+                margin: 10% auto;
+                width:0;
+                height:0;
+
+            }
+            .modalmask:target .movedown{		
+                margin:10% auto;
+            }
+            .modalmask:target .rotate{		
+                transform: rotate(360deg) scale(1,1);
+                -webkit-transform: rotate(360deg) scale(1,1);
+            }
+
+            .modalmask:target .resize{
+                width:400px;
+                height:200px;
+            }
+            .close {
+                background: #606061;
+                color: #FFFFFF;
+                line-height: 25px;
+                position: absolute;
+                right: 1px;
+                text-align: center;
+                top: 1px;
+                width: 24px;
+                text-decoration: none;
+                font-weight: bold;
+                border-radius:3px;
+                font-size:16px;
+            }
+
+            .close:hover { 
+                background: #FAAC58; 
+                color:#222;
+            }         
+            .nsc{
+                position:absolute;
+                bottom:40%;
+                right:0;
+            }
+        </style>
         <!-- CUSTOM STYLES-->
         <link href="../css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <script type="text/javascript" src="../js/jquery.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#mos").click(function() {
-                    $("#div").show("slow");
-                     $("#ocultar").hide("slow");
-                });
-                $("#ocu").click(function() {
-                    $("#div").hide("slow")
-                    $("#ocultar").show("slow");
-                });
-                $("#mos2").click(function() {
-                    $("#div").show("slow");
-                    $("#nomostrar").hide("slow");
-                    $("#div2").show("slow");
+        <script type="text/javascript" src="../js/jsocultar/ocultar.js"></script>
 
-                });
-                $("#ocu2").click(function() {
-                    $("#div").hide("slow");
-                    $("#nomostrar").show("slow");
-                });
-            });
-        </script>
     </head>
     <body>
         <div id="wrapper">
@@ -61,13 +122,8 @@
                 <div style="color: white;
                      padding: 15px 50px 5px 50px;
                      float: right;
-                     font-size: 16px;"> Ultima Conexion : <script>
-                    var meses = new Array("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre");
-                    var diasSemana = new Array("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado");
-                    var f = new Date();
-                    document.write(diasSemana[f.getDay()] + ", " + f.getDate() + " de " + meses[f.getMonth()] + " de " + f.getFullYear());
-                </script> <a href="#" class="btn btn-danger square-btn-adjust">Cerrar Sesion</a> </div>
-                     
+                     font-size: 16px;"> Ultim Conexion : 30 May 2014 &nbsp; <a href="#" class="btn btn-danger square-btn-adjust">Cerrar Sesion</a> 
+                </div>
             </nav>   
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
@@ -76,16 +132,14 @@
                         <li class="text-center">
                             <img src="../img/find_user.png" class="user-image img-responsive"/>
                         </li>
-
-
-                        <li>
+                        <li class="active">
                             <a  href="Validacion.jsp"><i class="fa fa-dashboard fa-3x"></i>Validacion</a>
                         </li>
-                        <li class="active">
+                        <li>
                             <a  href="Convalidacion.jsp"><i class="fa fa-desktop fa-3x"></i>Convalidacion</a>
                         </li>
                         <li>
-                            <a  href="#"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
+                            <a  href="#"><i class="fa fa-qrcode fa-3x"></i> Tabs y Panels</a>
                         </li>
 
 
@@ -97,27 +151,32 @@
                 <div class="row">
                     <div class="col-md-12">
                         <h2>Lista de Solicitudes</h2>   
-                        <h5>Listado de las Solicitudes</h5>     
+                        <h5>Listado de las Solicitudes</h5>                        
+
                         <div class="table-responsive">
-                            <form action="ImprimirConvalidacion.jsp">
+                            <form action="imprimir.jsp">
                                 <table class="table" id="tablita">
                                     <tr style="font-size:17px; font-weight: bold;">
-                                        <td>#</td><td>Universidad</td><td>Facultad</td><td>EAP</td><td>Codigo</td><td>Solicitante</td><td>Plan Priveniente</td><td>Plan Sugerido</td><td colspan="2">Opciones</td>
+                                        <td>#</td><td>Codigo</td><td>Solicitante</td><td>Plan Proveniente</td><td>Plan Sugerido</td><td colspan="3">Opciones</td>
                                     </tr>
+                                    <%
+                                        InterPedido ip= new ModeloPedido();
+                                        
+                                    %>
                                     <tr id="nomostrar">
-                                        <td>1</td><td>Nacional de San Marcos</td><td>Ciencias Empresariales</td><td>FIA</td><td>201122837</td><td>Kelvin Meza E</td><td>2011-2</td><td>2014-2</td>
+                                        <td>1</td><td>201122837</td><td>Kelvin Meza E</td><td>2011-2</td><td>2014-2</td>
                                         <td>
                                             <input id="mos" type="button" value="Mostrar" href="#" class="btn btn-success"/>
                                             <input id="ocu" type="button" value="Ocultar" href="#" class="btn btn-warning"/>
-                                            <input id="ocu" type="submit" value="Imprimir" src="ImprimirConvalidacion.jsp" class="btn btn-info"/>
+                                            <input id="ocu" type="submit" value="Imprimir" src="imprimir.jsp" class="btn btn-info"/>
                                         </td>
                                     </tr>
                                     <tr id="ocultar">
-                                        <td>2</td><td>Nacional de Ingenieria</td><td>Ingenieria</td><td>SALUD</td><td>201122837</td><td>Kelvin Meza E</td><td>2011-2</td><td>2014-2</td>
-                              <td>
-                                  <input id="mos2" type="button" value="Mostrar" href="#" class="btn btn-success"/>
+                                        <td>1</td><td>201122837</td><td>Winston Curasi Quispe</td><td>2011-2</td><td>2014-2</td>
+                                        <td>
+                                            <input id="mos2" type="button" value="Mostrar" href="#" class="btn btn-success"/>
                                             <input id="ocu2" type="button" value="Ocultar" href="#" class="btn btn-warning"/>
-                                            <input id="ocu2" type="submit" value="Imprimir" href="ImprimirConvalidacion.jsp" class="btn btn-info"/>
+                                            <input id="ocu2" type="submit" value="Imprimir" src="imprimir.jsp" class="btn btn-info"/>
                                         </td>
                                     </tr>
                                 </table>
@@ -148,7 +207,7 @@
                                             <td><label class="control-label">8</label></td>
                                             <td><label class="control-label">20</label></td>
                                             <td>
-                                                <label class="control-label"><a href="" class="btn btn-danger">X</a></label>
+                                                <label class="control-label"><a href="#modal3" class="btn btn-danger">X</a></label>
                                             </td>
                                         </tr>
                                         <tr>
@@ -160,9 +219,22 @@
                                             <td><label class="control-label">8</label></td>
                                             <td><label class="control-label">20</label></td>
                                             <td>
-                                                <label class="control-label"><a href="" class="btn btn-danger">X</a></label>
+                                                <label class="control-label"><a href="#modal3" class="btn btn-danger">X</a></label>
+
                                             </td>
-                                        </tr>
+                                        </tr> 
+                                        <!-- modal empieza-->
+                                        
+                                        <div id="modal3" class="modalmask">
+                                            <div class="modalbox resize">
+                                                <a href="#close" title="Close" class="close">X</a>
+                                                <h2>�Seguro que desea Eliminar?</h2>
+                                                <p>Ten Encuenta que no podras Visualizar mas tarde.</p>
+                                                <button class="btn btn-danger">Cancelar</button>
+                                                <button class="btn btn-info">Aceptar</button>
+                                            </div>
+                                        </div>
+                                        <!--modal termina -->
                                     </table>
                                 </div>
                             </div>
@@ -181,8 +253,23 @@
                                                 <th>NOTA</th>
                                             </tr>
                                             <tr>
-                                                <td><input type="text" size="3" class="form-control"></td>
-                                                <td><input type="text" size="20" class="form-control"></td>
+                                                <td>                                 
+                                                    <input type="text" size="3"  class="form-control">
+                                                </td>
+                                                <td>
+                                                    <div class="col-lg-3">
+                                                        <select data-placeholder="Curso.." class="chzn-select form-control"  tabindex="2" style="width: 200px;">
+                                                            <option value=""></option> 
+                                                            <option value="United States">Lenguaje de Programacion 3</option> 
+                                                            <option value="United Kingdom">Contabilidad 2</option> 
+                                                            <option value="Afghanistan">Administrativa</option> 
+                                                            <option value="Albania">Metodos Numericos</option> 
+                                                            <option value="Algeria">Ciencia y Biblia</option> 
+                                                            <option value="American Samoa">Educacion para la Vida</option> 
+                                                            <option value="Andorra">Computacion Grafica</option> 
+                                                        </select>
+                                                    </div>
+                                                </td>
                                                 <td><input type="text" size="3"  class="form-control"></td>
                                                 <td><input type="text" size="3" class="form-control"></td>
                                                 <td><input type="text" size="3" class="form-control"></td>
@@ -202,6 +289,13 @@
                                         <button type="submit" class="btn btn-primary">Guardar</button>
                                         <button type="submit" class="btn btn-danger">Cancelar</button>
                                     </div>
+                                    <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
+                                    <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
+                                    <script type="text/javascript">
+                                        $(".chzn-select").chosen();
+                                        $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                                    </script>
+
                                 </form>
                             </div>
 
@@ -211,7 +305,10 @@
                 </div>
             </div>
             <!-- /. PAGE WRAPPER  -->
-        </div>
+        </div>         
+
+
+
         <!-- /. WRAPPER  -->
         <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
         <!-- JQUERY SCRIPTS -->
