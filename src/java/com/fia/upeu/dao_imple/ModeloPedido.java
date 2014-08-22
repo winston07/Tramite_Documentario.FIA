@@ -158,7 +158,7 @@ public class ModeloPedido implements InterPedido {
     }
 
     @Override
-    public ResultSet listar_To_Evaluar(String idTramite) {
+    public ResultSet listar_To_Evaluar(String idTramite,String estado ) {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();

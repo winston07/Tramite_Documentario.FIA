@@ -64,7 +64,7 @@ public class ControlPedido extends HttpServlet {
                 }else{
                     out.println("no eliminado");
                 }
-            }
+                }
             if(opc.equals("verpro")){
                 
                 String idpedido = request.getParameter("idpedido");
@@ -119,7 +119,8 @@ public class ControlPedido extends HttpServlet {
             }
             if (opc.equals("sync")) {
                 String id = request.getParameter("id");
-                rs = iPedido.listar_To_Evaluar(id);
+                String est = request.getParameter("estado");
+                rs = iPedido.listar_To_Evaluar(id,est);
                 while (rs.next()) {
                     out.println("<tr class='btn-info'>");
                     out.println("<td>" + rs.getString(6) +"<a type='input' value='rs.getString(6)'></a></td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>"
@@ -134,7 +135,8 @@ public class ControlPedido extends HttpServlet {
             }
             if (opc.equals("synconvalidacion")) {
                 String id = request.getParameter("id");
-                rs = iPedido.listar_To_Evaluar(id);
+                String est = request.getParameter("estado");
+                rs = iPedido.listar_To_Evaluar(id,est);
                 while (rs.next()) {
                    out.println("<tr class='btn-info'>");
                     out.println("<td>" + rs.getString(6) +"<a type='input' value='rs.getString(6)'></a></td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>"

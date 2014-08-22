@@ -15,7 +15,7 @@ function enviar()
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlPedido?opc=synconvalidacion&&id=TRM00002",
+        url: "../ControlPedido?opc=synconvalidacion&&id=TRM00002&estado=Ingresando Cursos",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
         beforeSend: inicioEnvio,

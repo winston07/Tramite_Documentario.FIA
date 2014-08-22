@@ -3,7 +3,19 @@
     Created on : Jul 17, 2014, 11:44:34 AM
     Author     : Wins
 --%>
-
+<%@page import="com.fia.upeu.dao_imple.ModeloPlan_In"%>
+<%@page import="com.fia.upeu.dao.InterfacePlan_In"%>
+<%@page import="com.fia.upeu.modelo.Plan_In"%>
+<%@page import="com.fia.upeu.dao_imple.ModeloSolicitante"%>
+<%@page import="com.fia.upeu.modelo.Solicitante"%>
+<%@page import="com.fia.upeu.dao.InterSolicitante"%>
+<%@page import="com.fia.upeu.modelo.Curso_in"%>
+<%@page import="com.fia.upeu.dao_imple.ModeloCurso_in"%>
+<%@page import="com.fia.upeu.dao.InterCurso_in"%>
+<%@page import="com.fia.upeu.modelo.Escuela"%>
+<%@page import="java.util.List"%>
+<%@page import="com.fia.upeu.dao.InterEscuela"%>
+<%@page import="com.fia.upeu.dao_imple.ModeloEscuela"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -99,12 +111,15 @@
                         <h2>Lista de Solicitudes</h2>   
                         <h5>Listado de las Solicitudes</h5>     
                         <div class="table-responsive">
-                            <form action="ImprimirConvalidacion.jsp">
+                            <form action="../ControlValidacion" method="post" name="conva"id="conva">
                                 <table class="table" id="tablita">
+                                    
                                     <tr style="font-size:17px; font-weight: bold;">
+                                        
                                         <td>#</td><td>Universidad</td><td>Facultad</td><td>EAP</td><td>Codigo</td><td>Solicitante</td><td>Plan Priveniente</td><td>Plan Sugerido</td><td colspan="2">Opciones</td>
                                     </tr>
                                     <tr id="nomostrar">
+                                        
                                         <td>1</td><td>Nacional de San Marcos</td><td>Ciencias Empresariales</td><td>FIA</td><td>201122837</td><td>Kelvin Meza E</td><td>2011-2</td><td>2014-2</td>
                                         <td>
                                             <input id="mos" type="button" value="Mostrar" href="#" class="btn btn-success"/>
