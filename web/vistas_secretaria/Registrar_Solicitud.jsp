@@ -1,4 +1,7 @@
 
+<%@page import="com.fia.upeu.dao_imple.ModeloEscuela"%>
+<%@page import="com.fia.upeu.modelo.Escuela"%>
+<%@page import="com.fia.upeu.dao.InterEscuela"%>
 <%@page import="com.fia.upeu.modelo.Tipo_Tramite"%>
 <%@page import="com.fia.upeu.modelo.Solicitante"%>
 <%@page import="com.fia.upeu.dao_imple.ModeloSolicitante"%>
@@ -88,12 +91,7 @@
                         <center>
                             <!--<a href="#modal3"  class="btn btn-success right">Agregar</a>-->
                             <h2 id="imp" >Registro de Solicitud</h2>
-                          
-
                             <form class="center-block" media="print">
-
-
-
                                 <div id="imp">
                                     Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="enviar();" id="cod">
                                         <option value="null"></option>
@@ -107,9 +105,11 @@
                                         <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
                                         <%}%>
                                     </select>
+                                    <!--               -->
                                     <table>
                                         <td><tr id="resultados">
                                     </table>
+                                    <!--               -->
                                     Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite" id="tra">
 
                                         <option value=""></option>
@@ -124,7 +124,24 @@
                                         <option value="<%=ltTramite.get(i).getId_Tipo_Tramite()%>"><%=ltTramite.get(i).getNombreTramite()%></option>
                                         <%}%>
                                     </select>
-
+                                    <!--               -->
+                                    <table>
+                                        <td><tr id="resultados">
+                                    </table>
+                                    <!--             -->
+                                                               
+                                    Escuela:<select data-placeholder="Escuela" <%--class="chzn-select form-control"--%> tabindex="2" style="width: 200px;" name="escuela" id="tra">
+                                    <option value=""></option>
+                                    <%
+                                        InterEscuela lEscuela=new ModeloEscuela();
+                                    %>
+                                    <%   List<Escuela>  ltEscuela=lEscuela.listar_Escuela();                                                                                    
+                                    %>
+                                    <%for (int i = 0; i <ltEscuela.size(); i++) {%>
+                                    <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
+                                    <%}%>  
+                                </select>
+                                    
                                 </div>
                                 <div id="noimp">
                                     <a  name="imp" value="Imprimir" onclick="toogle1('block', 'modal', 'ventana');registarPedido()" class="btn btn-warning">Insertar</a>
