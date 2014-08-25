@@ -5,27 +5,31 @@
  */
 package com.fia.upeu.control;
 
-import com.fia.upeu.dao.InterUsuario;
-import com.fia.upeu.dao_imple.ModeloUsuario;
+import com.fia.upeu.dao.InterPedido;
+import com.fia.upeu.dao_imple.ModeloPedido;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author Kelvin Thony
  */
-public class ControlUsuarios extends HttpServlet {
+@WebServlet(name = "ControlValidacionD", urlPatterns = {"/ControlValidacionD"})
+public class ControlValidacionD extends HttpServlet {
 
-    ResultSet rs = null;
-    InterUsuario mUsuario = new ModeloUsuario();
+    ResultSet upr;
+    ResultSet rs;
+    InterPedido iPedido = new ModeloPedido();
+    boolean estado = false;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,21 +41,26 @@ public class ControlUsuarios extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException, Exception {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        String opc = request.getParameter("opc");
         try {
-            String usuario = request.getParameter("usuario");
-            String clave = request.getParameter("clave");
-            //out.println("aqui"+usuario+clave);
-            rs = mUsuario.validar_Usuario(usuario, clave);
-            if (rs.next()) {
-                HttpSession sesion = request.getSession(true);
-                out.println("si");
-            } else {
-                out.println("no");
-            }
+            if (opc.equals("sync")) {
+                String id = request.getParameter("id");
+                String est = request.getParameter("estado");
+                rs = iPedido.listar_To_Evaluar(id, est);
+                while (rs.next()) {
+                    out.println("<tr class='btn-info'>");
+                    out.println("<td>" + rs.getString(6) + "</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>" + rs.getString(11) + "</td>"
+                            + "<td><a class=\"fa fa-edit fa-2x\" onclick=\"alert('" + rs.getString(6) + rs.getString(1) + "')\" href='#' style=\"color: white;\"></a></td>");
+                    out.println("<td><a class=\"fa fa-trash-o fa-2x\" style=\"color: white;\" onclick=\"toogle3('block', 'modal', 'ventana');elimanarValidacion('" + rs.getString(6) + "', '" + rs.getString(4) + "', '" + rs.getString(1) + "', '" + rs.getString(2) + "');\" ></a></td>");
+                    out.println("<td><a href='../vistas_secretaria/Validacion.jsp?idP=" + rs.getString(6) + "&idT=" + rs.getString(7) + "&idS=" + rs.getString(8) + "&nom=" + rs.getString(1) + "&ape=" + rs.getString(2) + "&idV=" + rs.getString(10) + "'  class=\"fa fa-check-square-o fa-2x\" style=\"color: white;\"></a></td>");
 
+                    out.println("</tr> ");
+                }
+
+            }
         } finally {
             out.close();
         }
@@ -71,8 +80,8 @@ public class ControlUsuarios extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ControlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlValidacionD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -89,8 +98,8 @@ public class ControlUsuarios extends HttpServlet {
             throws ServletException, IOException {
         try {
             processRequest(request, response);
-        } catch (Exception ex) {
-            Logger.getLogger(ControlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlValidacionD.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

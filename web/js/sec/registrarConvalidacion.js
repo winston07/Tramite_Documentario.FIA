@@ -29,7 +29,7 @@ function inicio1() {
 function inicioEnvio2()
 {
     var x = $("#resultados");
-    x.html('<img src="../img/loading.gif"  class="btn-circle"/>');
+    x.html('<img src="../img/loading.gif"  />');
 }
 function llegada2(datos)
 {

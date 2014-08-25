@@ -158,11 +158,11 @@ public class ModeloPedido implements InterPedido {
     }
 
     @Override
-    public ResultSet listar_To_Evaluar(String idTramite,String estado ) {
+    public ResultSet listar_To_Evaluar(String idTramite,String estado1 ) {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from PEDIDOSESPERA where ID_TIPO_TRAMITE='" + idTramite + "' and aud_tra_estado='Ingresando Cursos'");
+            rs = stmt.executeQuery("select * from pedidosespera pe,validacion va where pe.idvalidacion=va.idvalidacion and id_tipo_tramite='"+idTramite+"' and aud_tra_estado='"+estado1+"'");
 
         } catch (Exception ex) {
             Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);

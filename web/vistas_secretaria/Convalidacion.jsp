@@ -89,7 +89,7 @@
                         <h1 class="text-info text-center">Convalidaciones en Espera.</h1>
                         <table class="table table-responsive tabs-stacked text-center  table-bordered">
                             <tr class="btn-lg btn-warning">
-                                <td>IdPedido</td><td>Codigo Solicitante</td><td>Nombres de Solicitante</td><td>Apellidos de Solicitante</td><td>Estado</td><td colspan="2">Opciones</td>
+                                <td>IdPedido</td><td>Codigo Solicitante</td><td>Nombres de Solicitante</td><td>Apellidos de Solicitante</td><td>Estado</td><td>Escuela</td><td colspan="5">Opciones</td>
                             </tr> 
                             <tbody id="resultados"></tbody>
 
