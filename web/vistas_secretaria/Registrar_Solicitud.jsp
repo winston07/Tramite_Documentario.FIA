@@ -130,7 +130,7 @@
                                     </table>
                                     <!--             -->
                                                                
-                                    Escuela:<select data-placeholder="Escuela" <%--class="chzn-select form-control"--%> tabindex="2" style="width: 200px;" name="escuela" id="tra">
+                                    Escuela:<select data-placeholder="Escuela" class="chzn-select form-control" tabindex="2" style="width: 200px;" name="escuela" id="escu">
                                     <option value=""></option>
                                     <%
                                         InterEscuela lEscuela=new ModeloEscuela();
