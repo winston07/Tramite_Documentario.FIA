@@ -33,8 +33,13 @@ function inicioEnvio2()
 }
 function llegada2(datos)
 {
-    
-    $("#resultados").html('<img src="img/loading.gif"  />');
+    if(datos){
+        alert("exito"+datos);
+    }
+    else{
+        alert("no"+datos);
+    }
+    //$("#resultados").html('<img src="img/loading.gif"  />');
 
 }
 function problemas2()

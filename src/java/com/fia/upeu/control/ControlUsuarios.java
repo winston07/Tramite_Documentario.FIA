@@ -47,9 +47,9 @@ public class ControlUsuarios extends HttpServlet {
             rs = mUsuario.validar_Usuario(usuario, clave);
             if (rs.next()) {
                 HttpSession sesion = request.getSession(true);
-                out.println("si");
+                out.println("true");
             } else {
-                out.println("no");
+                out.println("false");
             }
 
         } finally {
