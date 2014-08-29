@@ -113,6 +113,8 @@
                                         String tramite = request.getParameter("idT");
                                         String pedido = request.getParameter("idP");
                                         String validacion = request.getParameter("idV");
+                                        String escuela = request.getParameter("ide");
+                                      
                                         InterEscuela tEscuela = new ModeloEscuela();
                                         List<Escuela> ltEscuela = tEscuela.listar_Escuela();
 
@@ -128,13 +130,7 @@
                                         InterSolicitante tSolicitante = new ModeloSolicitante();
                                         List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
                                     %>
-                                <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
-                                    <option value=""></option>
-                                     <%for (int i = 0; i < ltEscuela.size(); i++) {%>
-                                    <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
-                                    <%}%>
-                                </select>
-
+                                    <strong><input type="text" value="<%=%>"></strong>
                                 <p>
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>

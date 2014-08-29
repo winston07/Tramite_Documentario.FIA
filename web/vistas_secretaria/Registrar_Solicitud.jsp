@@ -18,6 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link href="../css/chosen.css" rel="stylesheet" />
         <title>Registro de Solicitud</title>
+        <!-- <link rel="shortcut icon" href="img/logo3.png">--!>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->

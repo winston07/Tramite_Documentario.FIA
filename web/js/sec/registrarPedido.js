@@ -10,6 +10,7 @@ function registarPedido()
 
     var cod = $("#cod").val();
     var tiptra = $("#tra").val();
+    var escuela=$("#escu").val();
 
     $.ajax({
         async: true,
@@ -19,7 +20,7 @@ function registarPedido()
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlPedido?opc=Guardar&&codigo=" + cod + "&&tipotramite=" + tiptra + "",
+        url: "../ControlPedido?opc=Guardar&&codigo=" + cod + "&&tipotramite=" + tiptra + "& escuela="+escuela+"",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
         beforeSend: inicioEnvio,
