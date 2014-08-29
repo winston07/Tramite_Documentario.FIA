@@ -24,6 +24,7 @@
         <link href="../css/Buttons.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/x-icon" href="../img/logoing.png">
         <!-- MORRIS CHART STYLES-->
         <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
@@ -113,6 +114,8 @@
                                         String tramite = request.getParameter("idT");
                                         String pedido = request.getParameter("idP");
                                         String validacion = request.getParameter("idV");
+                                        String escuela = request.getParameter("ide");
+                                      
                                         InterEscuela tEscuela = new ModeloEscuela();
                                         List<Escuela> ltEscuela = tEscuela.listar_Escuela();
 
@@ -128,13 +131,7 @@
                                         InterSolicitante tSolicitante = new ModeloSolicitante();
                                         List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
                                     %>
-                                <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
-                                    <option value=""></option>
-                                     <%for (int i = 0; i < ltEscuela.size(); i++) {%>
-                                    <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
-                                    <%}%>
-                                </select>
-
+                                    <strong>Escuela Actual: <input type="text" value="<%=escuela%>"  readonly=?readonly?  tabindex="2"></strong>
                                 <p>
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
@@ -143,7 +140,7 @@
                                     <input type="hidden" id="pedido" value="<%=pedido%>" />
                                     <input type="hidden" id="tramite" value="<%=tramite%>" />
                                     <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
-                                    <strong>Nombres y Apellidos del Solicitante</strong>
+                                    <strong>"Nombres y Apellidos del Solicitante":</strong>
                                     <label  class="text-right" name="nombres" type="text" id="nombre" size="50" maxlength="50" readonly="true"><%=lsoli.get(w).getNombre()+","+""+lsoli.get(w).getPaterno()+lsoli.get(w).getMaterno()%></label>
                                    
                                     <%}%>

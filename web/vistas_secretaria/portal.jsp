@@ -6,6 +6,7 @@
         <title>Portal Secretaria </title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/x-icon" href="../img/logoing.png">
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
         <!-- MORRIS CHART STYLES-->

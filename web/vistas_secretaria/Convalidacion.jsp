@@ -10,6 +10,7 @@
 
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/x-icon" href="../img/logoing.png">
         <!-- MORRIS CHART STYLES-->
         <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
