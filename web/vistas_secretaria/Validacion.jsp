@@ -130,7 +130,7 @@
                                         InterSolicitante tSolicitante = new ModeloSolicitante();
                                         List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
                                     %>
-                                    <strong><input type="text" value="<%=%>"></strong>
+                                    <strong>Escuela Actual: <input type="text" value="<%=escuela%>" tabindex="2"></strong>
                                 <p>
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>
@@ -139,7 +139,7 @@
                                     <input type="hidden" id="pedido" value="<%=pedido%>" />
                                     <input type="hidden" id="tramite" value="<%=tramite%>" />
                                     <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
-                                    <strong>Nombres y Apellidos del Solicitante</strong>
+                                    <strong>"Nombres y Apellidos del Solicitante":</strong>
                                     <label  class="text-right" name="nombres" type="text" id="nombre" size="50" maxlength="50" readonly="true"><%=lsoli.get(w).getNombre()+","+""+lsoli.get(w).getPaterno()+lsoli.get(w).getMaterno()%></label>
                                    
                                     <%}%>
