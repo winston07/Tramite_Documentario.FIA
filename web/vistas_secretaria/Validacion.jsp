@@ -24,6 +24,7 @@
         <link href="../css/Buttons.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->
         <link href="../css/font-awesome.css" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/x-icon" href="../img/logoing.png">
         <!-- MORRIS CHART STYLES-->
         <link href="../js/morris/morris-0.4.3.min.css" rel="stylesheet" />
         <!-- CUSTOM STYLES-->
@@ -130,7 +131,7 @@
                                         InterSolicitante tSolicitante = new ModeloSolicitante();
                                         List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
                                     %>
-                                    <strong>Escuela Actual: <input type="text" value="<%=escuela%>" tabindex="2"></strong>
+                                    <strong>Escuela Actual: <input type="text" value="<%=escuela%>"  readonly=?readonly?  tabindex="2"></strong>
                                 <p>
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo </strong>

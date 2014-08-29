@@ -21,6 +21,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Portal Secretaria</title>
         <!-- BOOTSTRAP STYLES-->
+        <link rel="shortcut icon" type="image/x-icon" href="../img/logoing.png">
         <link rel="stylesheet" href="../css/chosen.css" />
         <link href="../css/bootstrap.css" rel="stylesheet" />
         <!-- FONTAWESOME STYLES-->

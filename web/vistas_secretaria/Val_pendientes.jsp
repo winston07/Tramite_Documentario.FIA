@@ -18,6 +18,7 @@
         <meta charset="utf-8" />
         <title>Portal Secretaria</title>
         <link href="../css/chosen.css" rel="stylesheet" />
+        <link rel="shortcut icon" type="image/x-icon" href="../img/logoing.png">
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
         <link href="../css/Buttons.css" rel="stylesheet" />
