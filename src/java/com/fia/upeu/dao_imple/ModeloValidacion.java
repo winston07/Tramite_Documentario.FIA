@@ -72,6 +72,7 @@ public class ModeloValidacion implements InterValidacion {
             stmt = cx.createStatement();
             stmt.executeQuery("insert into VALIDACION values ('" + id + "','" + val_Numero + "','" + val_Plan_in + "','" + val_plan_out + "','" + val_inst_in + "','" + val_inst_out + "','1')");
             estado = true;
+            cx.close();
         } catch (Exception ex) {
             estado = false;
         }
@@ -80,15 +81,15 @@ public class ModeloValidacion implements InterValidacion {
     }
 
     @Override
-    public boolean modificar_Validacion(String idValidacion, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out,String uni,String fac) {
+    public boolean modificar_Validacion(String idValidacion, String val_Plan_in, String val_plan_out, String val_inst_in, String val_inst_out, String uni, String fac) {
         try {
             cx = Conexion.getConex();
             cx.setAutoCommit(false);
             CallableStatement insert = cx.prepareCall("{ call  fiaupdatevalidacion(?,?,?,?,?,?,?,?) }");
             // cargar parametros al SP
             //CallableStatement insert = connMY.prepareCall("{ call execute fiainsertpedido4 ('2014-2','ESC00001','TRM00001','08/08/14','1','01:04:09','USU00001','Ingresando Cursos','SOL00003') }");
-            insert.setString(1,idValidacion);
-            insert.setString(2, val_Plan_in );
+            insert.setString(1, idValidacion);
+            insert.setString(2, val_Plan_in);
             insert.setString(3, val_plan_out);
             insert.setString(4, val_inst_in);
             insert.setString(5, val_inst_out);
@@ -100,6 +101,7 @@ public class ModeloValidacion implements InterValidacion {
             // confirmar si se ejecuto sin errores
             cx.commit();
             estado = true;
+            cx.close();
         } catch (Exception ex) {
             estado = false;
         }
@@ -110,6 +112,20 @@ public class ModeloValidacion implements InterValidacion {
     @Override
     public boolean eliminar_Validacion(String idValidacion) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public ResultSet listarValidacion(String idValidacion) {
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            rs = stmt.executeQuery("select * from validacionespera where idvalidacion='"+idValidacion+"'");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
     }
 
 }

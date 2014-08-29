@@ -92,6 +92,7 @@
                                 <td>IdPedido</td><td>Codigo Solicitante</td><td>Nombres de Solicitante</td><td>Apellidos de Solicitante</td><td>Estado</td><td>Escuela</td><td colspan="5">Opciones</td>
                             </tr> 
                             <tbody id="resultados"></tbody>
+                            <div id="ex"></div>
 
                         </table>
 
@@ -117,7 +118,7 @@
         <div id="modal" style="display:none">
             <div id="ventana" class="contenedor" style="display:none">
                 <div id="res"></div>
-                <a href="#close" title="Cerrar" onclick="toogle4('none', 'modal', 'ventana')" >Close</a>
+                <a href="#close" title="Cerrar" onclick="toogle3('none', 'modal', 'ventana')" >Close</a>
             </div>
         </div>
 

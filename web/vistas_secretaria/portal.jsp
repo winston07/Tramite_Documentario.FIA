@@ -15,16 +15,7 @@
         <!-- GOOcmdGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <script type="text/javascript" src="js/jquery.js"></script>
-        <script>
-            $(document).ready(function() {
-                $("#mos").click(function() {
-                    $("#div").show("slow");
-                });
-                $("#ocu").click(function() {
-                    $("#div").hide("slow");
-                });
-            });
-        </script>
+      
     </head>
     <body>
         <div id="wrapper">

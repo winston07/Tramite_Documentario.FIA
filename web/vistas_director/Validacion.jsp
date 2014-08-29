@@ -75,7 +75,7 @@
                             <form action="imprimir.jsp">
                                 <table class="table" id="tablita">
                                     <tr style="font-size:17px; font-weight: bold;">
-                                        <td>#</td><td>Codigo</td><td colspan="2">Solicitante</td><td>Plan Proveniente</td><td>Plan Sugerido</td><td colspan="3">Opciones</td>
+                                        <td>#</td><td>Codigo</td><td>Solicitante</td><td>Plan Proveniente</td><td>Plan Sugerido</td><td>Escuela In</td><td>Escuela On</td><td colspan="3">Opciones</td>
                                     </tr>
                                     <tbody id="resultados"></tbody>                                   
                                 </table>
@@ -110,6 +110,7 @@
         <div id="modal" style="display:none">
             <div id="ventana" class="contenedor" style="display:none">
                 <div id="res"></div>
+                
                 <a href="#close" title="Cerrar" onclick="toogle3('none', 'modal', 'ventana');" >Close</a>
             </div>
         </div>

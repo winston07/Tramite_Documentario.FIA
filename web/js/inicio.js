@@ -33,17 +33,15 @@ function inicioEnvio2()
 }
 function llegada2(datos)
 {
-    if(datos){
-        alert("exito"+datos);
-    }
-    else{
-        alert("no"+datos);
-    }
-    //$("#resultados").html('<img src="img/loading.gif"  />');
+   
+    $("#resultados").html('<img src="img/loading.gif"/> ');
+    $("#resultados").css("background-color","green");
+    setTimeout("location.href='vistas_director/portal.jsp'", 3000);
 
 }
 function problemas2()
 {
+    $("#resultados").css("background-color","red");
     $("#resultados").html('<img src="img/loading.gif"  />');
 }
 

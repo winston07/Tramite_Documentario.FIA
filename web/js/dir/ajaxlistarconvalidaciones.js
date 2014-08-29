@@ -1,8 +1,8 @@
 
-var x;
-x = $(document);
-x.ready(enviar());
-function enviar()
+window.onload = function() {
+    enviar2();
+};
+function enviar2()
 {
 
     //var id = $("#revisar").val();
@@ -15,7 +15,7 @@ function enviar()
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlPedido?opc=synconvalidacion&&id=TRM00002&estado=Ingresando Cursos",
+        url: "../ControlPedidoD?opc=synconvalidacion&&id=TRM00002&estado=Validando",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
         beforeSend: inicioEnvio,
@@ -28,7 +28,7 @@ function enviar()
 function inicioEnvio()
 {
     var x = $("#resultados");
-    //x.html('Cargando...');
+     x.html('<img src="../img/loading.gif"  />');
 }
 function llegada(datos)
 {
@@ -36,15 +36,21 @@ function llegada(datos)
 }
 function problemas()
 {
-    $("#resultados").text('Problemas en el servidor.');
+    $("#resultados").html('<img src="../img/loading.gif"  />');
 }
 function toogle3(a, b, c)
 {
     document.getElementById(b).style.display = a;
     document.getElementById(c).style.display = a;
 }
+function tooglevalidar(a, b, c,idva,idPed)
+{
+    document.getElementById(b).style.display = a;
+    document.getElementById(c).style.display = a;
+    validarValidacion(idva,idPed);
+}
 
-function elimanarValidacion(id, cod, nom, apell)
+function validarValidacion(idvali,idPed)
 {
 
 
@@ -57,7 +63,7 @@ function elimanarValidacion(id, cod, nom, apell)
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlPedido?opc=verpro&idpedido=" + id + "&codigo=" + cod + "&nombre=" + nom + "&apellido=" + apell + "&tramite=TRM00001",
+        url: "../ControlPedidoD?opc=validar&idvali="+idvali+"&idPed="+idPed+"",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
         beforeSend: inicioEnvio2,
@@ -70,44 +76,7 @@ function elimanarValidacion(id, cod, nom, apell)
 function inicioEnvio2()
 {
     var x = $("#res");
-    x.html('Cargando...');
-}
-function llegada2(datos)
-{
-    $("#res").html(datos);
-}
-function problemas2()
-{
-    $("#res").text('Problemas en el servidor.');
-}
-
-function verpro(id, cod, nom, apell)
-{
-
-
-
-    $.ajax({
-        async: true,
-        type: "POST",
-        dataType: "html",
-        contentType: "text/html",
-        //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
-        //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
-        //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlPedido?opc=verpro&idpedido=" + id + "&codigo=" + cod + "&nombre=" + nom + "&apellido=" + apell + "&tramite=TRM00001",
-        // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
-        //data: "id=" + id,
-        beforeSend: inicioEnvio2,
-        success: llegada2,
-        timeout: 4000,
-        error: problemas2
-    });
-    return false;
-}
-function inicioEnvio2()
-{
-    var x = $("#res");
-    x.html('Cargando...');
+    x.html('<img src="../img/loading.gif"  />');
 }
 function llegada2(datos)
 {
@@ -143,7 +112,7 @@ function elimanarValidacion1(id, idvali)
 }
 function inicioEnvio3()
 {
-    var x = $("#res");
+    var x = $("#ex");
     x.html('Cargando...');
 }
 function llegada3(datos)
@@ -154,4 +123,5 @@ function problemas3()
 {
     $("#ex").text('Problemas en el servidor.');
 }
+
 

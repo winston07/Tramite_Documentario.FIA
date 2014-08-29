@@ -4,76 +4,91 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 06/08/2014, 12:17:56 AM
+    Created on : 15/08/2014, 01:47:35 AM
     Author     : Kelvin Thony
 */
 
-            .modalmask {
-                position: fixed;
-                font-family: Arial, sans-serif;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                background: rgba(0,0,0,0.8);
-                z-index: 99999;
-                opacity:0;
-                -webkit-transition: opacity 400ms ease-in;
-                -moz-transition: opacity 400ms ease-in;
-                transition: opacity 400ms ease-in;
-                pointer-events: none;
-            }
-            .modalmask:target {
-                opacity:1;
-                pointer-events: auto;
-            }
-            .modalbox{
-                width: 430px;
-                position: relative;
-                padding: 5px 20px 13px 20px;
-                background: #fff;
-                border-radius:3px;
-                -webkit-transition: all 500ms ease-in;
-                -moz-transition: all 500ms ease-in;
-                transition: all 500ms ease-in;
+#modal1
+{
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  filter: alpha(opacity=50);
+  opacity: 0.98;
+  -moz-opacity:0.98;
+  -webkit-opacity:0.98;
+  -o-opacity:0.98;
+  -ms-opacity:0.98;
+  //background-color: #808080;
+  background-color: #808080;
+  left: 0;
+  top: 0;
+  overflow: auto;
+}
 
-            }
+.contenedor1
+{
+  width: 90%;
+  height: 70%;
+  background: #fff;
+  position: relative;
+  margin: 3% auto;
+  padding: 30px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  -webkit-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  -moz-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  box-shadow: 0 3px 20px rgba(0,0,0,0.9);
+  background: -moz-linear-gradient(#fff, #ccc);
+  background: -webkit-gradient(linear, right bottom, right top, color-stop(1, rgb(255,255,255)), color-stop(0.57,       rgb(230,230,230)));
+  text-shadow: 0 1px 0 #fff;
+}
 
-            
-            .resize {
-                margin: 10% auto;
-                
+.contenedor1 h2 {
+  font-size: 36px;
+  padding: 0 0 20px;
+}
 
-            }
-            
+.contenedor1 a[href="#close"] {
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: transparent;
+}
 
-            .modalmask:target .resize{
-                width:430px;
-                height:310px;
-            }
-            .close {
-                background: #606061;
-                color: #FFFFFF;
-                line-height: 25px;
-                position: absolute;
-                right: 1px;
-                text-align: center;
-                top: 1px;
-                width: 24px;
-                text-decoration: none;
-                font-weight: bold;
-                border-radius:3px;
-                font-size:16px;
-            }
+.contenedor1 a[href="#close"]:focus {
+  outline: none;
+}
 
-            .close:hover { 
-                background: #FAAC58; 
-                color:#222;
-            }         
-            .nsc{
-                position:absolute;
-                bottom:40%;
-                right:0;
-            }
-    
+.contenedor1 a[href="#close"]:after {
+  content: 'Guardar y Salir';
+  display: block;
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  width: 10em;
+  padding: 1px 1px 1px 2px;
+  text-decoration: none;
+  text-shadow: none;
+  text-align: center;
+  font-weight: bold;
+  background: #000;
+  color: #fff;
+  border: 3px solid #fff;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.contenedor1 a[href="#close"]:focus:after,
+.contenedor1 a[href="#close"]:hover:after {
+  -webkit-transform: scale(1.1,1.1);
+  -moz-transform: scale(1.1,1.1);
+}
+
 

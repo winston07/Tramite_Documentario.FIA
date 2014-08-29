@@ -1,0 +1,34 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 29/08/2014, 12:05:30 PM
+    Author     : Kelvin Thony
+*/
+.caja {
+position: relative; /*Para poder ubicar la info dentro de la caja*/
+margin: 10px auto;
+}
+.caja img {
+border:2px solid black;
+}
+.info {
+position: absolute; /*Info sobre la imagen*/
+top: 5%;
+left: 10%; /*Desplazamos a partir de la esquina superior izquierda*/
+zoom: 1;
+filter: alpha(opacity=0); /*Opacidad Para IE */
+opacity: 0; /*Inicialmente transparente */
+padding: 5px;
+color: white;
+background: black;
+-moz-transition:all ease .8s; /*Aplicamos una ligera transición*/
+-webkit-transition:all ease .8s ;
+transition:all ease .8s;
+}
+.caja:hover .info {
+filter: alpha(opacity=80);
+opacity: .8; /*Al hacer hover sobre la caja hacemos visible los datos*/
+}

@@ -7,6 +7,7 @@
 package com.fia.upeu.dao;
 
 import com.fia.upeu.modelo.Validacion;
+import java.sql.ResultSet;
 import java.util.List;
 
 /**
@@ -23,4 +24,6 @@ public interface InterValidacion {
     public boolean modificar_Validacion(String idValidacion, String val_Plan_in, String val_plan_out, String val_inst_in,String val_inst_out,String uni,String fac);
 
     public boolean eliminar_Validacion(String idValidacion);
+    
+    public ResultSet listarValidacion(String idValidacion);
 }
