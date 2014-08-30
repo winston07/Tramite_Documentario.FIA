@@ -38,8 +38,9 @@ public class ControlPedidoD extends HttpServlet {
     boolean estado = false;
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -212,11 +213,9 @@ public class ControlPedidoD extends HttpServlet {
                                 + "                                        <td><input type=\"text\" size=\"3\" class=\"form-control\"></td>\n"
                                 + "                                        <td><input type=\"text\" size=\"3\" class=\"form-control\"></td>\n"
                                 + "                                        <td><input type=\"text\" size=\"3\" class=\"form-control\"></td>\n"
-                                + "                                        <td><div class=\"caja\"><a href=\"URL_ENLACE\"><img src='' /><div class=\"info\"><img src=\"../img/1.jpg\" alt=\"\" /></div></a></div></td>"
-                                + "                                    </tr>\n");
+                                + "                                         <td><div class=\"image_holder1\">HolaMundo<div class=\"image_info1\">Lorem ipsum dolor sit amet, consectetur adipisicing elit... <br /> <a href=\"#\" class=\"btn btn-danger left\">x</a></div></div></td> "
+                                + " </tr>\n");
                     }
-                   out.println("<div class=\"caja\"><a href=\"URL_ENLACE\">Hola Mundo cruel<div class=\"info\"><img src=\"../img/1.jpg\" alt=\"\" /></div></a></div>");
-                  
                     out.println("                                </table>\n"
                             + "                                <button type=\"submit\" class=\"btn btn-primary\">Guardar</button>\n"
                             + "                                <button type=\"submit\" class=\"btn btn-danger\">Cancelar</button>\n"
@@ -236,7 +235,8 @@ public class ControlPedidoD extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -254,7 +254,8 @@ public class ControlPedidoD extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response

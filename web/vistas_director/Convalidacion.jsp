@@ -35,6 +35,7 @@
         <link rel="stylesheet" href="../css/stylemodal.css" />
         <link rel="stylesheet" href="../css/modal2.css" />
         <link rel="stylesheet" href="../css/stylehover.css" />
+        <link rel="stylesheet" href="../css/hurto.css" />
 
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
@@ -97,6 +98,8 @@
                                     </tr>
                                     <tbody id="resultados"></tbody>
                                 </table>
+                                <!-- <div class="caja"><a href="URL_ENLACE"><img src='' /><div class="info"><img src="../img/1.jpg" alt="" /></div></a></div>-->
+                                <div class="image_holder1"><img src="../img/x.png" alt="" width="20px" height="20px"/><div class="image_info1"> <div class="text-justify">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href="#" class="btn btn-danger center-block">Eliminar...!</a></div></div>
                             </form>
                         </div>
 
