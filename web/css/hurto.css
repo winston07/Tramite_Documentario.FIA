@@ -1,5 +1,5 @@
 .image_holder1 {
-    width: 70px;
+    width: 20px;
    /* text-align: center;
     /*margin: 15% auto;*/
    position: relative;
@@ -11,8 +11,8 @@
     position: absolute;
     color: white;
    /* top: 10px;*/
-    right: 40px;
-    background-color: rgba(215, 102, 0, 1);
+    right: 5px;
+    background-color: rgba(215, 40, 40, 0.9);
     z-index: 12;
 }
 .image_info1 a{

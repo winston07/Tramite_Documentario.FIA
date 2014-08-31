@@ -38,9 +38,8 @@ public class ControlPedidoD extends HttpServlet {
     boolean estado = false;
 
     /**
-     * Processes requests for both HTTP
-     * <code>GET</code> and
-     * <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -169,19 +168,20 @@ public class ControlPedidoD extends HttpServlet {
                             + "   <th>HT</th>\n"
                             + "   <th>HNP</th>\n"
                             + "   <th>TH</th>\n"
-                            + "   <th>NOTA</th>\n"
+                            + "   <th colspan='2'>NOTA</th>\n"
                             + "  </tr>");
                     while (rs.next()) {
                         out.println(""
                                 + "<tr>\n"
-                                + " <td><label class=\"control-label\">" + rs.getString(6) + "</label></td>\n"
-                                + " <td><label class=\"control-label\">" + rs.getString(7) + "</label></td>\n"
-                                + " <td><label class=\"control-label\">" + rs.getString(8) + "</label></td>\n"
-                                + " <td><label class=\"control-label\">" + rs.getString(9) + "</label></td>\n"
-                                + " <td><label class=\"control-label\">" + rs.getString(10) + "</label></td>\n"
-                                + " <td><label class=\"control-label\">" + rs.getString(11) + "</label></td>\n"
-                                + " <td><label class=\"control-label\">" + rs.getString(12) + "</label></td>\n"
+                                + " <td><label id='" + rs.getString(5) + "ciclo0' class=\"form-control\">" + rs.getString(6) + "</label></td>\n"
+                                + " <td><label id='" + rs.getString(5) + "nombre0' class=\"form-control\">" + rs.getString(7) + "</label></td>\n"
+                                + " <td><label id='" + rs.getString(5) + "cr0' class=\"form-control\">" + rs.getString(8) + "</label></td>\n"
+                                + " <td><label id='" + rs.getString(5) + "ht0' class=\"form-control\">" + rs.getString(9) + "</label></td>\n"
+                                + " <td><label id='" + rs.getString(5) + "hnp0' class=\"form-control\">" + rs.getString(10) + "</label></td>\n"
+                                + " <td><label id='" + rs.getString(5) + "th0' class=\"form-control\">" + rs.getString(11) + "</label></td>\n"
+                                + " <td><label id='" + rs.getString(5) + "nota0' class=\"form-control\">" + rs.getString(12) + "</label></td>\n"
                                 + " <td>\n"
+                                + "                                <div class=\"image_holder1\"><a href=\"#\"><img src=\"../img/fle.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1\"> <div class=\"text-justify\">Enviar la Informacion Directamente.</div></div>"
                                 + " </td>\n"
                                 + " </tr> ");
                     }
@@ -201,27 +201,33 @@ public class ControlPedidoD extends HttpServlet {
                             + "                                        <th>HNP</th>\n"
                             + "                                        <th>TH</th>\n"
                             + "                                        <th>NOTA</th>\n"
-                            + "                                        <th>OPCIONES</th>\n"
+                            + "                                        <th colspan='3'>OPCIONES</th>\n"
                             + "                                    </tr>\n");
                     while (val.next()) {
                         out.println("   "
-                                + "                                 <tr>\n"
-                                + "                                        <td><input type=\"text\" size=\"3\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input type=\"text\" size=\"20\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input type=\"text\" size=\"3\"  class=\"form-control\"></td>\n"
-                                + "                                        <td><input type=\"text\" size=\"3\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input type=\"text\" size=\"3\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input type=\"text\" size=\"3\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input type=\"text\" size=\"3\" class=\"form-control\"></td>\n"
-                                + "                                         <td><div class=\"image_holder1\">HolaMundo<div class=\"image_info1\">Lorem ipsum dolor sit amet, consectetur adipisicing elit... <br /> <a href=\"#\" class=\"btn btn-danger left\">x</a></div></div></td> "
+                                + " <tr>\n"
+                                + "                                        <td><input id='" + val.getString(5) + "ciclo' type=\"text\" size=\"\" class=\"form-control\"></td>\n"
+                                + "                                        <td><input id='" + val.getString(5) + "nombre'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
+                                + "                                        <td><input id='" + val.getString(5) + "cr'type=\"text\" size=\"\"  class=\"form-control\"></td>\n"
+                                + "                                        <td><input id='" + val.getString(5) + "ht'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
+                                + "                                        <td><input id='" + val.getString(5) + "hnp'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
+                                + "                                        <td><input id='" + val.getString(5) + "th'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
+                                + "                                        <td><input id='" + val.getString(5) + "nota'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
+                                + "                                        <td>                                <div class=\"image_holder1\"><a href=\"#\"><img src=\"../img/x.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1  btn-info\"> <div class=\"text-justify\">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href=\"#\" class=\"btn btn-danger center-block\">Eliminar...!</a></div></div></td> "
+                                + "                                        <td><a href=\"#\" onclick=\"pImprimir(document.getElementById('" + val.getString(5) + "ciclo').value, document.getElementById('" + val.getString(5) + "nombre').value,document.getElementById('" + val.getString(5) + "cr').value,document.getElementById('" + val.getString(5) + "ht').value,document.getElementById('" + val.getString(5) + "hnp').value,document.getElementById('" + val.getString(5) + "th').value,document.getElementById('" + val.getString(5) + "nota').value);\" ><img src=\"../img/save.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a></td> "
+                                + "                                        <td><a href=\"#\"><img src=\"../img/edit.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a></td> "
                                 + " </tr>\n");
                     }
                     out.println("                                </table>\n"
-                            + "                                <button type=\"submit\" class=\"btn btn-primary\">Guardar</button>\n"
-                            + "                                <button type=\"submit\" class=\"btn btn-danger\">Cancelar</button>\n"
                             + "                            </div>\n"
                             + "                        </form>\n"
-                            + "                    </div>");
+                            + "                    </div>"
+                            + "<div class='col-md-12 text-center'>"
+                            
+                            + "                                <button type=\"submit\" class=\"btn btn-primary\">Guardar</button>\n"
+                            + "                                <button type=\"submit\" class=\"btn btn-danger\">Cancelar</button>\n"
+                            + "</div>"
+                            + "");
                 } else {
                     out.println("No Hubo Conexion con el Servidor");
                 }
@@ -235,8 +241,7 @@ public class ControlPedidoD extends HttpServlet {
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP
-     * <code>GET</code> method.
+     * Handles the HTTP <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -254,8 +259,7 @@ public class ControlPedidoD extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP
-     * <code>POST</code> method.
+     * Handles the HTTP <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response

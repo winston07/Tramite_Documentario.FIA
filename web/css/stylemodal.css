@@ -31,12 +31,12 @@ and open the template in the editor.
 
 .contenedor1
 {
-  width: 90%;
+  width: 96%;
   height: 70%;
   background: #fff;
   position: relative;
-  margin: 3% auto;
-  padding: 30px;
+  margin: 15px auto;
+  padding: 10px;
   -moz-border-radius: 7px;
   border-radius: 7px;
   -webkit-box-shadow: 0 3px 20px rgba(0,0,0,0.9);

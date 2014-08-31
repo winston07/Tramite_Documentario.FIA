@@ -124,4 +124,8 @@ function problemas3()
     $("#ex").text('Problemas en el servidor.');
 }
 
+function pImprimir(a,b,c,d,e,f,g){
+    alert(a+b+c+d+e+f+g);
+}
+
 

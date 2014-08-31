@@ -9,7 +9,7 @@ and open the template in the editor.
 */
 .caja {
 position: relative; /*Para poder ubicar la info dentro de la caja*/
-margin: 10px auto;
+/* margin: 10px auto;*/
 }
 .caja img {
 border:2px solid black;
@@ -20,7 +20,7 @@ top: 5%;
 left: 10%; /*Desplazamos a partir de la esquina superior izquierda*/
 zoom: 1;
 filter: alpha(opacity=0); /*Opacidad Para IE */
-opacity: 0; /*Inicialmente transparente */
+opacity: 0; /*Inicialmente transparente */                   
 padding: 5px;
 color: white;
 background: black;

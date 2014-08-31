@@ -3,19 +3,7 @@
    Created on : Jul 17, 2014, 11:44:34 AM
    Author     : Wins
 --%>
-<%@page import="com.fia.upeu.dao_imple.ModeloPlan_In"%>
-<%@page import="com.fia.upeu.dao.InterfacePlan_In"%>
-<%@page import="com.fia.upeu.modelo.Plan_In"%>
-<%@page import="com.fia.upeu.dao_imple.ModeloSolicitante"%>
-<%@page import="com.fia.upeu.modelo.Solicitante"%>
-<%@page import="com.fia.upeu.dao.InterSolicitante"%>
-<%@page import="com.fia.upeu.modelo.Curso_in"%>
-<%@page import="com.fia.upeu.dao_imple.ModeloCurso_in"%>
-<%@page import="com.fia.upeu.dao.InterCurso_in"%>
-<%@page import="com.fia.upeu.modelo.Escuela"%>
-<%@page import="java.util.List"%>
-<%@page import="com.fia.upeu.dao.InterEscuela"%>
-<%@page import="com.fia.upeu.dao_imple.ModeloEscuela"%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -94,12 +82,15 @@
                                     <tr style="font-size:17px; font-weight: bold;">
                                     <a onclick="modal()" >hola</a>
 
-                                    <td>#</td><td>Universidad</td><td>Facultad</td><td>EAP-in</td><td>EAP-out</td><td>Codigo</td><td>Solicitante</td><td>Plan Priveniente</td><td>Plan Sugerido</td><td colspan="3">Opciones</td>
+                                    <td >#</td><td>Universidad</td><td>Facultad</td><td>EAP-in</td><td>EAP-out</td><td>Codigo</td><td>Solicitante</td><td>Plan Priveniente</td><td>Plan Sugerido</td><td colspan="3">Opciones</td>
                                     </tr>
                                     <tbody id="resultados"></tbody>
                                 </table>
                                 <!-- <div class="caja"><a href="URL_ENLACE"><img src='' /><div class="info"><img src="../img/1.jpg" alt="" /></div></a></div>-->
-                                <div class="image_holder1"><img src="../img/x.png" alt="" width="20px" height="20px"/><div class="image_info1"> <div class="text-justify">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href="#" class="btn btn-danger center-block">Eliminar...!</a></div></div>
+                                <div class="image_holder1"><a href="#"><img src="../img/x.png" alt="" width="20px" height="20px"/></a><div class="image_info1  btn-info"> <div class="text-justify">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href="#" class="btn btn-danger center-block">Eliminar...!</a></div></div>
+                                <a href="#"><img src="../img/save.png" alt="" width="20px" height="20px"/></a>
+                                <a href="#"><img src="../img/edit.png" alt="" width="20px" height="20px"/></a>
+                                <div class="image_holder1"><a href="#"><img src="../img/fle.png" alt="" width="20px" height="20px"/></a><div class="btn-info"><div class="image_info1"> <div class="text-justify">Enviar la Informacion Directamente: <br /> Podras Editarlo..!!!</div></div></div>
                             </form>
                         </div>
 
@@ -128,11 +119,7 @@
                 <div id="res">                 
 
                 </div>
-                <ACRONYM  title="Aquí el texto emergente de ayuda ">
-
-                    <p> Texto de cualquier tipo </p>  
-
-                </ACRONYM>
+            
             </div>
         </div>
         <div id="modal" style="display:none">
