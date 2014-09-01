@@ -67,6 +67,7 @@ public class ControlValidacionD extends HttpServlet {
             }
             if(opc.equals("guardarCursos")){
                 String idValidacion = request.getParameter("idvalidacion");
+                String idCursoV = request.getParameter("idcursov");
                 String ciclo = request.getParameter("ciclo");
                 String curso = request.getParameter("curso");
                 String cr = request.getParameter("cr");
@@ -74,7 +75,7 @@ public class ControlValidacionD extends HttpServlet {
                 String hnp = request.getParameter("hnp");
                 String th = request.getParameter("th");
                 String nota = request.getParameter("nota");
-                 estado= iVCV.agregar_Val_Cur_Valido(ciclo, curso, cr, ht, hnp, th, nota, idValidacion);
+                 estado= iVCV.modificar_Val_Cur_Valido(idCursoV, ciclo, curso, cr, ht, hnp, th, nota, idValidacion);
                  if(estado){
                      
                  }else{

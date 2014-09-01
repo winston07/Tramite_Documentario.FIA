@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-function enviardatos(idPedido,a, b, c, d, e, f, g, ciclo, nombre, cr, ht, hnp, th, nota) {
+function enviardatos(idCursoV,idPedido,a, b, c, d, e, f, g, ciclo, nombre, cr, ht, hnp, th, nota) {
     document.getElementById(ciclo).value = a;
     document.getElementById(nombre).value = b;
     document.getElementById(cr).value = c;
@@ -12,7 +12,7 @@ function enviardatos(idPedido,a, b, c, d, e, f, g, ciclo, nombre, cr, ht, hnp, t
     document.getElementById(nota).value = g;
     guardarCursos(a,b,c,d,e,f,g,idPedido);
 }
-function guardarCursos(ciclo, curso, cr, ht, hnp, th, nota,idvalidacion)
+function guardarCursos(ciclo, curso, cr, ht, hnp, th, nota,idvalidacion,idCursoV)
 {
     $.ajax({
         async: true,
@@ -22,7 +22,7 @@ function guardarCursos(ciclo, curso, cr, ht, hnp, th, nota,idvalidacion)
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlValidacionD?opc=guardarCursos&ciclo=" + ciclo + "&curso=" + curso + "&cr="+cr+"&ht="+ht+"&hnp="+hnp+"&th="+th+"&nota="+nota+"&idvalidacion="+idvalidacion+"",
+        url: "../ControlValidacionD?opc=guardarCursos&ciclo=" + ciclo + "&curso=" + curso + "&cr="+cr+"&ht="+ht+"&hnp="+hnp+"&th="+th+"&nota="+nota+"&idvalidacion="+idvalidacion+"&idcursov="+idCursoV+"",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
         beforeSend: iniE,
