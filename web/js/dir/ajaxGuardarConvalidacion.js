@@ -40,4 +40,32 @@ function llega(){
 function errores(){
     
 }
+function guardarIndividual(columna,idCurso,valor)
+{
+    $.ajax({
+        async: true,
+        type: "POST",
+        dataType: "html",
+        contentType: "text/html",
+        //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
+        //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
+        //url: "../ControlSolicitante?opc=s&id=" + id,
+        url: "../ControlValidacionD?opc=guardarIndividual&columna=" + columna + "&idcurso=" + idCurso + "&valor="+valor+"",
+        // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
+        //data: "id=" + id,
+        beforeSend: iniEIndividual,
+        success: llegaIndividual,
+        timeout: 4000,
+        error: erroresIndividual
+    });
+}
+function iniEIndividual(){
+    
+}
+function llegaIndividual(){
+    
+}
+function erroresIndividual(){
+    
+}
 
