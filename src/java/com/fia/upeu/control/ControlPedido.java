@@ -117,6 +117,26 @@ public class ControlPedido extends HttpServlet {
                 out.println("</body>");
                 out.println("</html>");
             }
+            if(opc.equals("mostrarestado")){
+                String id = request.getParameter("id");
+                rs = iPedido.mostrarpedido(id);
+                if(rs!=null){
+                
+                while(rs.next()){
+                    out.println("<table>");
+                    out.println("<tr class='btn-info'>");
+                    out.println("<td>" + rs.getString(6) +"</td><td>" + rs.getString(4) + "</td><td>" + rs.getString(1) + "</td><td>" + rs.getString(2) + ", " + rs.getString(3) + "</td><td>" + rs.getString(9) + "</td><td>"+rs.getString(11)+"</td>"
+                            + "<td><a class=\"fa fa-edit fa-2x\" onclick=\"alert('"+rs.getString(6)+rs.getString(1)+"')\" href='#' style=\"color: white;\"></a></td>");
+                    out.println("<td><a class=\"fa fa-trash-o fa-2x\" href='#' style=\"color: white;\" onclick=\"toogle3('block', 'modal', 'ventana');elimanarValidacion('"+rs.getString(6)+"', '"+rs.getString(4)+"', '"+rs.getString(1)+"', '"+rs.getString(2)+"');\" ></a></td>");
+                    out.println("<td><a href='../vistas_secretaria/Validacion.jsp?idP="+rs.getString(6)+"&idT="+rs.getString(7)+"&idS="+rs.getString(8)+"&nom="+rs.getString(1)+"&ape="+rs.getString(2)+"&idV="+rs.getString(10)+"&ide="+rs.getString(11)+"'  class=\"fa fa-check-square-o fa-2x\" style=\"color: white;\"></a></td>");                 
+                    out.println("</tr> ");
+                    out.println("</table>");
+                }
+                
+                }else{out.println("no hay datos ");
+                }
+                
+            }
             if (opc.equals("sync")) {
                 String id = request.getParameter("id");
                 String est = request.getParameter("estado");

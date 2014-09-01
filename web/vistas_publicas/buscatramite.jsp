@@ -34,8 +34,11 @@
         <link rel="stylesheet" href="../css/modal2.css" />
         <link rel="stylesheet" href="../js/jquery.js" />
         <link rel="stylesheet" href="../js/sec/js.printl.js" />
+        <script src="../js/jquery.js" ></script>
+        <script src="../js/public/ajaxmostrarestado.js" ></script>
         
-        <script type="text/javascript" src="../js/sec/registrarPedido.js"></script>
+        
+        
     </head>
 
     <body>
@@ -64,7 +67,7 @@
                             <img src="../img/logosecretaria.png" class="user-image img-responsive"/>
                         </li>
                         <li>
-                            <a  href="../vistas_secretaria/Registrar_Solicitud.jsp"><i class="fa fa-dashboard fa-3x"></i>busqueda de proceso</a>
+                            <a  href="../vistas_publicas/buscatramite.jsp"><i class="fa fa-dashboard fa-3x"></i>busqueda de proceso</a>
                         </li>
                     </ul>
                 </div>
@@ -80,7 +83,7 @@
                             <h2 id="imp" >Busqueda Tramite </h2>
                             <form class="center-block" media="print">
                                 <div id="imp">
-                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="enviar();" id="cod">
+                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="mostrarestado();" id="cod">
                                         <option value="null"></option>
                                         <%
                                             InterSolicitante iSolicitante = new ModeloSolicitante();
@@ -93,9 +96,9 @@
                                         <%}%>
                                     </select>
                                     <!--               -->
-                                    <table>
-                                        <td><tr id="resultados">
-                                    </table>
+                                    
+                                    <div id="resultados"></div>
+                                    
                                  
                                     <!--               
                                     <table>
@@ -104,8 +107,9 @@
                                     <!--             -->
                                   
                                 </div>
+                                    
                                 <div id="noimp">
-                                    <a  name="imp" value="Imprimir" onclick="toogle1('block', 'modal', 'ventana');registarPedido()" class="btn btn-warning">Insertar</a>
+                                    <a  name="imp" value="Imprimir" onclick="toogle1('block', 'modal', 'ventana');registarPedido()" class="btn btn-warning">-buscar-</a>
 
                                 </div>
                             </form>
