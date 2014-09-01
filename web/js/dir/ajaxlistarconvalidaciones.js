@@ -28,7 +28,7 @@ function enviar2()
 function inicioEnvio()
 {
     var x = $("#resultados");
-     x.html('<img src="../img/loading.gif"  />');
+    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada(datos)
 {
@@ -36,21 +36,21 @@ function llegada(datos)
 }
 function problemas()
 {
-    $("#resultados").html('<img src="../img/loading.gif"  />');
+    $("#resultados").html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function toogle3(a, b, c)
 {
     document.getElementById(b).style.display = a;
     document.getElementById(c).style.display = a;
 }
-function tooglevalidar(a, b, c,idva,idPed)
+function tooglevalidar(a, b, c, idva, idPed)
 {
     document.getElementById(b).style.display = a;
     document.getElementById(c).style.display = a;
-    validarValidacion(idva,idPed);
+    validarValidacion(idva, idPed);
 }
 
-function validarValidacion(idvali,idPed)
+function validarValidacion(idvali, idPed)
 {
 
 
@@ -63,7 +63,7 @@ function validarValidacion(idvali,idPed)
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlPedidoD?opc=validar&idvali="+idvali+"&idPed="+idPed+"",
+        url: "../ControlPedidoD?opc=validar&idvali=" + idvali + "&idPed=" + idPed + "",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
         beforeSend: inicioEnvio2,
@@ -76,7 +76,7 @@ function validarValidacion(idvali,idPed)
 function inicioEnvio2()
 {
     var x = $("#res");
-    x.html('<img src="../img/loading.gif"  />');
+    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada2(datos)
 {
@@ -100,7 +100,7 @@ function elimanarValidacion1(id, idvali)
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlPedido?opc=eliminarvalidacion&idpedido=" + id + "&idvali=" + idvali +"",
+        url: "../ControlPedido?opc=eliminarvalidacion&idpedido=" + id + "&idvali=" + idvali + "",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
         beforeSend: inicioEnvio3,
@@ -113,7 +113,7 @@ function elimanarValidacion1(id, idvali)
 function inicioEnvio3()
 {
     var x = $("#ex");
-    x.html('Cargando...');
+    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada3(datos)
 {
@@ -124,8 +124,17 @@ function problemas3()
     $("#ex").text('Problemas en el servidor.');
 }
 
-function pImprimir(a,b,c,d,e,f,g){
-    alert(a+b+c+d+e+f+g);
+function pImprimir(a, b, c, d, e, f, g) {
+    alert(a + b + c + d + e + f + g);
+}
+
+function cambiarcolor(a, b) {
+    document.getElementById(a).style.background = "red";
+    document.getElementById(b).style.background = "red";
+}
+function cambiarcolor2(a, b) {
+    document.getElementById(a).style.background = "#fff";
+    document.getElementById(b).style.background = "#fff";
 }
 
 

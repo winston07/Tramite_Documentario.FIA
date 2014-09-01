@@ -45,11 +45,11 @@ public class ControlUsuarios extends HttpServlet {
             String clave = request.getParameter("clave");
             //out.println("aqui"+usuario+clave);
             rs = mUsuario.validar_Usuario(usuario, clave);
-            if (rs.next()) {
+            if (rs.next()==true) {
                 HttpSession sesion = request.getSession(true);
-                out.println("true");
+                out.println("location.href='vistas_director/portal.jsp'");
             } else {
-                out.println("false");
+               
             }
 
         } finally {

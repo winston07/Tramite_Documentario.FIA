@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 function validar() {
-        
+
 
     var usu = $("#usu").val();
     var clave = $("#cla").val();
@@ -15,7 +15,7 @@ function validar() {
         contentType: "text/html",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
-        url: "ControlUsuarios?usuario=" + usu + "&&clave="+clave+"",
+        url: "ControlUsuarios?usuario=" + usu + "&&clave=" + clave + "",
         //url: "../ControlCurso",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
@@ -29,20 +29,27 @@ function validar() {
 function inicioEnvio2()
 {
     var x = $("#resultados");
-    x.html('<img src="img/loading.gif"  />');
+    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada2(datos)
 {
-   
-    $("#resultados").html('<img src="img/loading.gif"/> ');
-    $("#resultados").css("background-color","green");
-    setTimeout("location.href='vistas_director/portal.jsp'", 3000);
+    if (datos === "") {
+        $("#resultados").html('<img src="img/loading.gif" alt="" height="50px" width="50px" />');
+        $("#resultados").css("background-color", "red");
+        $("#resultados").text("Usuario o Clave Invalida");
+
+    }
+    if (datos !== "") {
+        $("#resultados").html('<img src="img/loading.gif" alt="" height="50px" width="50px" />');
+        $("#resultados").css("background-color", "green");
+        setTimeout(datos, 3000);
+    }
 
 }
 function problemas2()
 {
-    $("#resultados").css("background-color","red");
-    $("#resultados").html('<img src="img/loading.gif"  />');
+    $("#resultados").css("background-color", "red");
+    $("#resultados").html('<img src="img/loading.gif" alt="" height="50px" width="50px" />');
 }
 
 

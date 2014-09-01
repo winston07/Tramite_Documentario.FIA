@@ -147,7 +147,7 @@ public class ControlPedidoD extends HttpServlet {
             }
             if (opc.equals("validar")) {
                 String idvali = request.getParameter("idvali");
-                String idPed = request.getParameter("idPed");
+                //String idPed = request.getParameter("idPed");
 
                 //out.println("olas" + idvali + idPed);
                 rs = iV.listarValidacion(idvali);
@@ -170,20 +170,22 @@ public class ControlPedidoD extends HttpServlet {
                             + "   <th>TH</th>\n"
                             + "   <th colspan='2'>NOTA</th>\n"
                             + "  </tr>");
+                    int i=0;
                     while (rs.next()) {
                         out.println(""
-                                + "<tr>\n"
-                                + " <td><label id='" + rs.getString(5) + "ciclo0' class=\"form-control\">" + rs.getString(6) + "</label></td>\n"
-                                + " <td><label id='" + rs.getString(5) + "nombre0' class=\"form-control\">" + rs.getString(7) + "</label></td>\n"
-                                + " <td><label id='" + rs.getString(5) + "cr0' class=\"form-control\">" + rs.getString(8) + "</label></td>\n"
-                                + " <td><label id='" + rs.getString(5) + "ht0' class=\"form-control\">" + rs.getString(9) + "</label></td>\n"
-                                + " <td><label id='" + rs.getString(5) + "hnp0' class=\"form-control\">" + rs.getString(10) + "</label></td>\n"
-                                + " <td><label id='" + rs.getString(5) + "th0' class=\"form-control\">" + rs.getString(11) + "</label></td>\n"
-                                + " <td><label id='" + rs.getString(5) + "nota0' class=\"form-control\">" + rs.getString(12) + "</label></td>\n"
+                                + "<tr id='"+i+"'>\n"
+                                + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "ciclo0' value='" + rs.getString(6) + "'/></td>\n"
+                                + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "nombre0' value='" + rs.getString(7) + "'/></td>\n"
+                                + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "cr0' value='" + rs.getString(8) + "'/></td>\n"
+                                + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "ht0' value='" + rs.getString(9) + "'/></td>\n"
+                                + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "hnp0' value='" + rs.getString(10) + "'/></td>\n"
+                                + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "th0' value='" + rs.getString(11) + "'/></td>\n"
+                                + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "nota0' value='" + rs.getString(12) + "'/></td>\n"
                                 + " <td>\n"
-                                + "                                <div class=\"image_holder1\"><a href=\"#\"><img src=\"../img/fle.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1\"> <div class=\"text-justify\">Enviar la Informacion Directamente.</div></div>"
+                                + "                                <div class=\"image_holder1\"><a href=\"#\" onclick=\"enviardatos('"+rs.getString(3)+"',document.getElementById('" + rs.getString(5) + "ciclo0').value, document.getElementById('" + rs.getString(5) + "nombre0').value,document.getElementById('" + rs.getString(5) + "cr0').value,document.getElementById('" + rs.getString(5) + "ht0').value,document.getElementById('" + rs.getString(5) + "hnp0').value,document.getElementById('" + rs.getString(5) + "th0').value,document.getElementById('" + rs.getString(5) + "nota0').value,'"+rs.getString(5)+"ciclo','"+rs.getString(5)+"nombre','"+rs.getString(5)+"cr','"+rs.getString(5)+"ht','"+rs.getString(5)+"hnp','"+rs.getString(5)+"th','"+rs.getString(5)+"nota');\"><img src=\"../img/fle.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1\"> <div class=\"text-justify\">Enviar la Informacion Directamente.</div></div>"
                                 + " </td>\n"
                                 + " </tr> ");
+                        i++;
                     }
                     out.println("</table>");
                     out.println(" </div>");
@@ -203,9 +205,11 @@ public class ControlPedidoD extends HttpServlet {
                             + "                                        <th>NOTA</th>\n"
                             + "                                        <th colspan='3'>OPCIONES</th>\n"
                             + "                                    </tr>\n");
+                    int e=0;
+                    int f=1000;
                     while (val.next()) {
                         out.println("   "
-                                + " <tr>\n"
+                                + " <tr id='"+f+"'>\n"
                                 + "                                        <td><input id='" + val.getString(5) + "ciclo' type=\"text\" size=\"\" class=\"form-control\"></td>\n"
                                 + "                                        <td><input id='" + val.getString(5) + "nombre'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
                                 + "                                        <td><input id='" + val.getString(5) + "cr'type=\"text\" size=\"\"  class=\"form-control\"></td>\n"
@@ -213,10 +217,12 @@ public class ControlPedidoD extends HttpServlet {
                                 + "                                        <td><input id='" + val.getString(5) + "hnp'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
                                 + "                                        <td><input id='" + val.getString(5) + "th'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
                                 + "                                        <td><input id='" + val.getString(5) + "nota'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
-                                + "                                        <td>                                <div class=\"image_holder1\"><a href=\"#\"><img src=\"../img/x.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1  btn-info\"> <div class=\"text-justify\">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href=\"#\" class=\"btn btn-danger center-block\">Eliminar...!</a></div></div></td> "
+                                + "                                        <td><div class=\"image_holder1\"><a href=\"#\"><img src=\"../img/x.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1  btn-info\" onmouseout=\"cambiarcolor2('"+e+"','"+f+"')\" onmousemove=\"cambiarcolor('"+e+"','"+f+"');\"> <div class=\"text-justify\">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href=\"#\" class=\"btn btn-danger center-block\">Eliminar...!</a></div></div></td> "
                                 + "                                        <td><a href=\"#\" onclick=\"pImprimir(document.getElementById('" + val.getString(5) + "ciclo').value, document.getElementById('" + val.getString(5) + "nombre').value,document.getElementById('" + val.getString(5) + "cr').value,document.getElementById('" + val.getString(5) + "ht').value,document.getElementById('" + val.getString(5) + "hnp').value,document.getElementById('" + val.getString(5) + "th').value,document.getElementById('" + val.getString(5) + "nota').value);\" ><img src=\"../img/save.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a></td> "
                                 + "                                        <td><a href=\"#\"><img src=\"../img/edit.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a></td> "
                                 + " </tr>\n");
+                        e++;
+                        f++;
                     }
                     out.println("                                </table>\n"
                             + "                            </div>\n"

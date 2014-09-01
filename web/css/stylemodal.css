@@ -22,7 +22,6 @@ and open the template in the editor.
   -webkit-opacity:0.98;
   -o-opacity:0.98;
   -ms-opacity:0.98;
-  //background-color: #808080;
   background-color: #808080;
   left: 0;
   top: 0;
@@ -32,7 +31,7 @@ and open the template in the editor.
 .contenedor1
 {
   width: 96%;
-  height: 70%;
+  height: 500%;
   background: #fff;
   position: relative;
   margin: 15px auto;
@@ -42,7 +41,7 @@ and open the template in the editor.
   -webkit-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
   -moz-box-shadow: 0 3px 20px rgba(0,0,0,0.9);
   box-shadow: 0 3px 20px rgba(0,0,0,0.9);
-  background: -moz-linear-gradient(#fff, #ccc);
+  background: -moz-linear-gradient(#fff, #fff);
   background: -webkit-gradient(linear, right bottom, right top, color-stop(1, rgb(255,255,255)), color-stop(0.57,       rgb(230,230,230)));
   text-shadow: 0 1px 0 #fff;
 }

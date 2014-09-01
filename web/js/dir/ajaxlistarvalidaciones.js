@@ -28,7 +28,7 @@ function enviar2()
 function inicioEnvio()
 {
     var x = $("#resultados");
-     x.html('<img src="../img/loading.gif"  />');
+     x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada(datos)
 {
@@ -36,7 +36,7 @@ function llegada(datos)
 }
 function problemas()
 {
-    $("#resultados").html('<img src="../img/loading.gif"  />');
+    $("#resultados").html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function toogle3(a, b, c)
 {
@@ -70,7 +70,7 @@ function elimanarValidacion(id, cod, nom, apell)
 function inicioEnvio2()
 {
     var x = $("#res");
-    x.html('Cargando...');
+    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada2(datos)
 {
@@ -107,7 +107,7 @@ function elimanarValidacion1(id, idvali)
 function inicioEnvio3()
 {
     var x = $("#res");
-    x.html('Cargando...');
+    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada3(datos)
 {

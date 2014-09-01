@@ -25,7 +25,7 @@
             function inicioEnvio()
             {
                 var x = $("#resultados");
-                 x.html('<img src="../img/loading.gif"  class="btn-circle"/>');
+                 x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
             }
             function llegada(datos)
             {

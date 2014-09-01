@@ -6,7 +6,10 @@
 package com.fia.upeu.control;
 
 import com.fia.upeu.dao.InterPedido;
+import com.fia.upeu.dao.InterVal_Cur_Validado;
 import com.fia.upeu.dao_imple.ModeloPedido;
+import com.fia.upeu.dao_imple.ModeloVal_Cur_Val;
+import com.fia.upeu.dao_imple.ModeloValidacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -30,6 +33,7 @@ public class ControlValidacionD extends HttpServlet {
     ResultSet rs;
     InterPedido iPedido = new ModeloPedido();
     boolean estado = false;
+    InterVal_Cur_Validado iVCV = new ModeloVal_Cur_Val();
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -60,6 +64,22 @@ public class ControlValidacionD extends HttpServlet {
                     out.println("</tr> ");
                 }
 
+            }
+            if(opc.equals("guardarCursos")){
+                String idValidacion = request.getParameter("idvalidacion");
+                String ciclo = request.getParameter("ciclo");
+                String curso = request.getParameter("curso");
+                String cr = request.getParameter("cr");
+                String ht = request.getParameter("ht");
+                String hnp = request.getParameter("hnp");
+                String th = request.getParameter("th");
+                String nota = request.getParameter("nota");
+                 estado= iVCV.agregar_Val_Cur_Valido(ciclo, curso, cr, ht, hnp, th, nota, idValidacion);
+                 if(estado){
+                     
+                 }else{
+                     
+                 }
             }
         } finally {
             out.close();

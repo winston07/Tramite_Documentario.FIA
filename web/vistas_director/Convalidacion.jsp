@@ -29,7 +29,8 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
         <script type="text/javascript" src="../js/jquery.js"></script>
         <script type="text/javascript" src="../js/dir/ajaxlistarconvalidaciones.js"></script>
-       
+        <script type="text/javascript" src="../js/dir/ajaxGuardarConvalidacion.js"></script>
+
     </head>
     <body>
         <div id="wrapper">
@@ -65,7 +66,7 @@
                             <a  href="#"><i class="fa fa-qrcode fa-3x"></i> Tabs & Panels</a>
                         </li>
 
-                        
+
                 </div>
 
             </nav>  
@@ -87,12 +88,22 @@
                                     <tbody id="resultados"></tbody>
                                 </table>
                                 <!-- <div class="caja"><a href="URL_ENLACE"><img src='' /><div class="info"><img src="../img/1.jpg" alt="" /></div></a></div>-->
-                                <div class="image_holder1"><a href="#"><img src="../img/x.png" alt="" width="20px" height="20px"/></a><div class="image_info1  btn-info"> <div class="text-justify">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href="#" class="btn btn-danger center-block">Eliminar...!</a></div></div>
-                                <a href="#"><img src="../img/save.png" alt="" width="20px" height="20px"/></a>
+                                <div class="image_holder1"><a href="#"><img src="../img/x.png" alt="" width="20px" height="20px"/></a><div class="image_info1  btn-info" onmousemove="cambiarcolor();" onmouseout="cambiarcolor2()"> <div class="text-justify">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href="#" class="btn btn-danger center-block">Eliminar...!</a></div></div>
+                                <a href="#" onclick="hola"><img src="../img/save.png" alt="" width="20px" height="20px"/></a>
                                 <a href="#"><img src="../img/edit.png" alt="" width="20px" height="20px"/></a>
                                 <div class="image_holder1"><a href="#"><img src="../img/fle.png" alt="" width="20px" height="20px"/></a><div class="btn-info"><div class="image_info1"> <div class="text-justify">Enviar la Informacion Directamente: <br /> Podras Editarlo..!!!</div></div></div>
+                                    <input type="hidden" readonly="" />
+                                    <label for=""></label>
+
                             </form>
+                            
+
                         </div>
+                                <table>
+                                <tr id="cambiar" title="ja">
+                                    <td>jajajaj</td>
+                                </tr>
+                            </table>
 
                     </div>
                 </div>
@@ -119,7 +130,7 @@
                 <div id="res">                 
 
                 </div>
-            
+
             </div>
         </div>
         <div id="modal" style="display:none">
