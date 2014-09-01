@@ -80,7 +80,7 @@
                     <div class="col-md-12">
                         <center>
                             <!--<a href="#modal3"  class="btn btn-success right">Agregar</a>-->
-                            <h2 id="imp" >Busqueda Tramite </h2>
+                            <h2 id="imp" >Busqueda Tramite:</h2>
                             <form class="center-block" media="print">
                                 <div id="imp">
                                     Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="mostrarestado();" id="cod">
@@ -92,7 +92,7 @@
                                             List<Solicitante> liSolicitante = iSolicitante.listar_Solicitante();
                                         %>
                                         <%for (int i = 0; i < liSolicitante.size(); i++) {%>
-                                        <option value="<%=liSolicitante.get(i).getIdSolicitante()%>"><%=liSolicitante.get(i).getCodigo()%></option>
+                                        <option value="<%=liSolicitante.get(i).getCodigo()%>"><%=liSolicitante.get(i).getCodigo()%></option>
                                         <%}%>
                                     </select>
                                     <!--               -->
@@ -107,11 +107,11 @@
                                     <!--             -->
                                   
                                 </div>
-                                    
+                                  <!--  
                                 <div id="noimp">
                                     <a  name="imp" value="Imprimir" onclick="toogle1('block', 'modal', 'ventana');registarPedido()" class="btn btn-warning">-buscar-</a>
 
-                                </div>
+                                </div>-->
                             </form>
                         </center>
 

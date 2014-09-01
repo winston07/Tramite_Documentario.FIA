@@ -33,6 +33,7 @@ public interface InterPedido {
 
     public ResultSet ultimo_pedido();
     public ResultSet mostrarpedido(String pedido);
+ 
     
     public boolean eliminarcascada(String idpedido, String idvali);
 }
