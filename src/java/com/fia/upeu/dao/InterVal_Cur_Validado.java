@@ -21,10 +21,11 @@ public interface InterVal_Cur_Validado {
 
     public boolean agregar_Val_Cur_Valido(String ciclo, String curso,String cr,String ht,String hnp,String th,String nota,String idValidacion);
 
-    public boolean modificar_Val_Cur_Valido(String idCursoV, String ciclo, String curso,String cr,String ht,String hnp,String th,String nota,String idValidacion
-    );
+    public boolean modificar_Val_Cur_Valido(String idCursoV, String ciclo, String curso,String cr,String ht,String hnp,String th,String nota);
 
     public boolean eliminar_Val_Cur_Valido(String idcurso);
 
     public ResultSet listar_Val_Cur(String idcurso);
+    
+    public boolean modificarIndividual(String columna,String idCurso,String valor);
 }

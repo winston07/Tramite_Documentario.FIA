@@ -107,7 +107,7 @@ public class ControlValidacion extends HttpServlet {
                     out.println("</table>");
 
                 } else {
-                    out.println("Error");
+                    out.println("Error"+vali);
                 }
             }
             if (opc.equals("listar")) {

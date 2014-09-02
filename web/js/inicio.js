@@ -28,20 +28,22 @@ function validar() {
 }
 function inicioEnvio2()
 {
-    var x = $("#resultados");
-    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
+    //var x = $("#resultados");
+    //x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada2(datos)
 {
     if (datos === "") {
-        $("#resultados").html('<img src="img/loading.gif" alt="" height="50px" width="50px" />');
         $("#resultados").css("background-color", "red");
+        $("#resultados").html('<img src="img/loading.gif" alt="" height="50px" width="50px" />');
+        
         $("#resultados").text("Usuario o Clave Invalida");
 
     }
     if (datos !== "") {
+         $("#resultados").css("background-color", "green");
         $("#resultados").html('<img src="img/loading.gif" alt="" height="50px" width="50px" />');
-        $("#resultados").css("background-color", "green");
+       
         setTimeout(datos, 3000);
     }
 

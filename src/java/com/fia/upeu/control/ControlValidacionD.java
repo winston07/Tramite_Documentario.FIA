@@ -9,7 +9,6 @@ import com.fia.upeu.dao.InterPedido;
 import com.fia.upeu.dao.InterVal_Cur_Validado;
 import com.fia.upeu.dao_imple.ModeloPedido;
 import com.fia.upeu.dao_imple.ModeloVal_Cur_Val;
-import com.fia.upeu.dao_imple.ModeloValidacion;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -66,7 +65,6 @@ public class ControlValidacionD extends HttpServlet {
 
             }
             if(opc.equals("guardarCursos")){
-                String idValidacion = request.getParameter("idvalidacion");
                 String idCursoV = request.getParameter("idcursov");
                 String ciclo = request.getParameter("ciclo");
                 String curso = request.getParameter("curso");
@@ -75,12 +73,23 @@ public class ControlValidacionD extends HttpServlet {
                 String hnp = request.getParameter("hnp");
                 String th = request.getParameter("th");
                 String nota = request.getParameter("nota");
-                 estado= iVCV.modificar_Val_Cur_Valido(idCursoV, ciclo, curso, cr, ht, hnp, th, nota, idValidacion);
+                 estado= iVCV.modificar_Val_Cur_Valido(idCursoV, ciclo, curso, cr, ht, hnp, th, nota);
                  if(estado){
-                     
+                     out.println("si");
                  }else{
-                     
+                     out.println("no");
                  }
+            }
+            if(opc.equals("guardarIndividual")){
+                String columna= request.getParameter("columna");
+                String idCurso = request.getParameter("idcurso");
+                String valor = request.getParameter("valor");
+                estado = iVCV.modificarIndividual(columna, idCurso, valor);
+                if(estado){
+                    out.println("Guardado Correctamente");
+                }else{
+                    //out.println("Hubo un Error con los Datos de Entrada");
+                }
             }
         } finally {
             out.close();

@@ -192,11 +192,12 @@ public class ModeloPedido implements InterPedido {
             respuesta = anio + "-1";
         }
 
-        if (diain2 > diain && mesin2 <= mesout) {
+        if (diain2 >= diain && mesin2 <= mesout) {
             respuesta = anio + "-2";
 
         }
-        return respuesta;
+       // return respuesta;
+        return "2014-2";
     }
 
     public String hora() {

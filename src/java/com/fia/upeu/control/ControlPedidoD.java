@@ -149,7 +149,7 @@ public class ControlPedidoD extends HttpServlet {
                 String idvali = request.getParameter("idvali");
                 //String idPed = request.getParameter("idPed");
 
-                //out.println("olas" + idvali + idPed);
+                //out.println( idvali);
                 rs = iV.listarValidacion(idvali);
                 ResultSet plan = iV.listarValidacion(idvali);
                 ResultSet val = iV.listarValidacion(idvali);
@@ -170,10 +170,10 @@ public class ControlPedidoD extends HttpServlet {
                             + "   <th>TH</th>\n"
                             + "   <th colspan='2'>NOTA</th>\n"
                             + "  </tr>");
-                    int i=0;
+                    int i = 0;
                     while (rs.next()) {
                         out.println(""
-                                + "<tr id='"+i+"'>\n"
+                                + "<tr id='" + i + "'>\n"
                                 + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "ciclo0' value='" + rs.getString(6) + "'/></td>\n"
                                 + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "nombre0' value='" + rs.getString(7) + "'/></td>\n"
                                 + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "cr0' value='" + rs.getString(8) + "'/></td>\n"
@@ -182,7 +182,7 @@ public class ControlPedidoD extends HttpServlet {
                                 + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "th0' value='" + rs.getString(11) + "'/></td>\n"
                                 + " <td><input class=\"form-control\" type=\"text\" readonly id='" + rs.getString(5) + "nota0' value='" + rs.getString(12) + "'/></td>\n"
                                 + " <td>\n"
-                                + "                                <div class=\"image_holder1\"><a href=\"#\" onclick=\"enviardatos('"+rs.getString(5)+"','"+rs.getString(3)+"',document.getElementById('" + rs.getString(5) + "ciclo0').value, document.getElementById('" + rs.getString(5) + "nombre0').value,document.getElementById('" + rs.getString(5) + "cr0').value,document.getElementById('" + rs.getString(5) + "ht0').value,document.getElementById('" + rs.getString(5) + "hnp0').value,document.getElementById('" + rs.getString(5) + "th0').value,document.getElementById('" + rs.getString(5) + "nota0').value,'"+rs.getString(5)+"ciclo','"+rs.getString(5)+"nombre','"+rs.getString(5)+"cr','"+rs.getString(5)+"ht','"+rs.getString(5)+"hnp','"+rs.getString(5)+"th','"+rs.getString(5)+"nota');\"><img src=\"../img/fle.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1\"> <div class=\"text-justify\">Enviar la Informacion Directamente.</div></div>"
+                                + " <div class=\"image_holder1\"><a href=\"#\" onclick=\"enviardatos('" + rs.getString(5) + "',document.getElementById('" + rs.getString(5) + "ciclo0').value, document.getElementById('" + rs.getString(5) + "nombre0').value,document.getElementById('" + rs.getString(5) + "cr0').value,document.getElementById('" + rs.getString(5) + "ht0').value,document.getElementById('" + rs.getString(5) + "hnp0').value,document.getElementById('" + rs.getString(5) + "th0').value,document.getElementById('" + rs.getString(5) + "nota0').value,'" + rs.getString(5) + "ciclo','" + rs.getString(5) + "nombre','" + rs.getString(5) + "cr','" + rs.getString(5) + "ht','" + rs.getString(5) + "hnp','" + rs.getString(5) + "th','" + rs.getString(5) + "nota');\"><img src=\"../img/fle.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1\"> <div class=\"text-justify\">Enviar la Informacion Directamente.</div></div>"
                                 + " </td>\n"
                                 + " </tr> ");
                         i++;
@@ -203,33 +203,35 @@ public class ControlPedidoD extends HttpServlet {
                             + "                                        <th>HNP</th>\n"
                             + "                                        <th>TH</th>\n"
                             + "                                        <th>NOTA</th>\n"
-                            + "                                        <th colspan='3'>OPCIONES</th>\n"
+                            + "                                        <th>OPCIONES</th>\n"
                             + "                                    </tr>\n");
-                    int e=0;
-                    int f=1000;
+                    int e = 0;
+                    
+                    int f = 1000;
                     while (val.next()) {
-                        out.println("   "
-                                + " <tr id='"+f+"'>\n"
-                                + "                                        <td><input onkeyup=\"guardarIndividual('CICLO','"+val.getString(5)+"',document.getElementById('" + val.getString(5) + "ciclo').value)\" id='" + val.getString(5) + "ciclo' type=\"text\" size=\"\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input onkeyup=\"guardarIndividual('CUR_NOMBRE','"+val.getString(5)+"',document.getElementById('" + val.getString(5) + "nombre').value)\" id='" + val.getString(5) + "nombre'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input onkeyup=\"guardarIndividual('CR','"+val.getString(5)+"',document.getElementById('" + val.getString(5) + "cr').value)\" id='" + val.getString(5) + "cr'type=\"text\" size=\"\"  class=\"form-control\"></td>\n"
-                                + "                                        <td><input onkeyup=\"guardarIndividual('HT','"+val.getString(5)+"',document.getElementById('" + val.getString(5) + "ht').value)\" id='" + val.getString(5) + "ht'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input onkeyup=\"guardarIndividual('HNP','"+val.getString(5)+"',document.getElementById('" + val.getString(5) + "hnp').value)\" id='" + val.getString(5) + "hnp'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input onkeyup=\"guardarIndividual('TH','"+val.getString(5)+"',document.getElementById('" + val.getString(5) + "th').value)\" id='" + val.getString(5) + "th'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
-                                + "                                        <td><input onkeyup=\"guardarIndividual('NOTA','"+val.getString(5)+"',document.getElementById('" + val.getString(5) + "nota').value)\" id='" + val.getString(5) + "nota'type=\"text\" size=\"\" class=\"form-control\"></td>\n"
-                                + "                                        <td><div class=\"image_holder1\"><a href=\"#\"><img src=\"../img/x.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1  btn-info\" onmouseout=\"cambiarcolor2('"+e+"','"+f+"')\" onmousemove=\"cambiarcolor('"+e+"','"+f+"');\"> <div class=\"text-justify\">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href=\"#\" class=\"btn btn-danger center-block\">Eliminar...!</a></div></div></td> "
-                                + "                                        <td><a href=\"#\" onclick=\"pImprimir(document.getElementById('" + val.getString(5) + "ciclo').value, document.getElementById('" + val.getString(5) + "nombre').value,document.getElementById('" + val.getString(5) + "cr').value,document.getElementById('" + val.getString(5) + "ht').value,document.getElementById('" + val.getString(5) + "hnp').value,document.getElementById('" + val.getString(5) + "th').value,document.getElementById('" + val.getString(5) + "nota').value);\" ><img src=\"../img/save.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a></td> "
-                                + "                                        <td><a href=\"#\"><img src=\"../img/edit.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a></td> "
-                                + " </tr>\n");
+                        
+                        out.println("  "
+                                + " "
+                                + " <tr id='" + f + "' class=" + val.getRow() + ">\n"
+                                + "                                        <td><input value='" + val.getString(13) + "' onkeyup=\"guardarIndividual('CUR_CICLO','" + val.getString(5) + "',document.getElementById('" + val.getString(5) + "ciclo').value)\" id='" + val.getString(5) + "ciclo' type=\"text\" size=\"\" class=\"form-control "+e+"ciclo\"></td>\n"
+                                + "                                        <td><input value='" + val.getString(14) + "' onkeyup=\"guardarIndividual('CUR_NOMBRE','" + val.getString(5) + "',document.getElementById('" + val.getString(5) + "nombre').value)\" id='" + val.getString(5) + "nombre'type=\"text\" size=\"\" class=\"form-control "+e+"curso\"></td>\n"
+                                + "                                        <td><input value='" + val.getString(15) + "' onkeyup=\"guardarIndividual('CUR_CR','" + val.getString(5) + "',document.getElementById('" + val.getString(5) + "cr').value)\" id='" + val.getString(5) + "cr'type=\"text\" size=\"\"  class=\"form-control "+e+"cr\"></td>\n"
+                                + "                                        <td><input value='" + val.getString(16) + "' onkeyup=\"guardarIndividual('CUR_HT','" + val.getString(5) + "',document.getElementById('" + val.getString(5) + "ht').value)\" id='" + val.getString(5) + "ht'type=\"text\" size=\"\" class=\"form-control "+e+"ht\"></td>\n"
+                                + "                                        <td><input value='" + val.getString(17) + "' onkeyup=\"guardarIndividual('CUR_HNP','" + val.getString(5) + "',document.getElementById('" + val.getString(5) + "hnp').value)\" id='" + val.getString(5) + "hnp'type=\"text\" size=\"\" class=\"form-control "+e+"hnp\"></td>\n"
+                                + "                                        <td><input value='" + val.getString(18) + "' onkeyup=\"guardarIndividual('CUR_TH','" + val.getString(5) + "',document.getElementById('" + val.getString(5) + "th').value)\" id='" + val.getString(5) + "th'type=\"text\" size=\"\" class=\"form-control "+e+"th\"></td>\n"
+                                + "                                        <td><input value='" + val.getString(19) + "' onkeyup=\"guardarIndividual('CUR_NOTA','" + val.getString(5) + "',document.getElementById('" + val.getString(5) + "nota').value)\" id='" + val.getString(5) + "nota'type=\"text\" size=\"\" class=\"form-control "+e+"nota\"></td>\n"
+                                + "                                        <td><div class=\"image_holder1\"><a class='center-block' href=\"#\"><img src=\"../img/x.png\" alt=\"\" width=\"20px\" height=\"20px\"/></a><div class=\"image_info1  btn-info\" onmouseout=\"cambiarcolor2('" + e + "','" + f + "')\" onmousemove=\"cambiarcolor('" + e + "','" + f + "');\"> <div class=\"text-justify\">Ten Encuenta que luego no podras recuperar la informacion. <br /> ¿Estas seguro?</div> <br /> <a href=\"#\" class=\"btn btn-danger center-block\">Eliminar...!</a></div></div></td> "
+                                + " </tr>\n"
+                        );
                         e++;
                         f++;
+                      
                     }
                     out.println("                                </table>\n"
                             + "                            </div>\n"
                             + "                        </form>\n"
                             + "                    </div>"
                             + "<div class='col-md-12 text-center'>"
-                            
                             + "                                <button type=\"submit\" class=\"btn btn-primary\">Guardar</button>\n"
                             + "                                <button type=\"submit\" class=\"btn btn-danger\">Cancelar</button>\n"
                             + "</div>"

@@ -119,7 +119,22 @@ public class ModeloValidacion implements InterValidacion {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
-            rs = stmt.executeQuery("select * from validacionespera where idvalidacion='"+idValidacion+"'");
+            rs = stmt.executeQuery("select * from validacionenespera_v where IDVALIDACION = '"+idValidacion+"'");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
+    }
+
+    @Override
+    public ResultSet listarValidacion_Validado(String idv) {
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            rs = stmt.executeQuery("select cu.cur_ciclo,cu.cur_nombre,cu.cur_cr,cu.cur_ht,cu.cur_hnp,cu.cur_th,cu.cur_nota,cu.cur_estado\n"
+                    + "from validacionespera VE , CURSO CU where ve.idcurso=cu.idcurso AND VE.idvalidacion='"+idv+"';");
 
         } catch (Exception ex) {
             Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);

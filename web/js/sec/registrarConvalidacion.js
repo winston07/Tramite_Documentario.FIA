@@ -29,7 +29,7 @@ function inicio1() {
 function inicioEnvio2()
 {
     var x = $("#resultados");
-    x.html('<img src="../img/loading.gif"  />');
+    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada2(datos)
 {
@@ -120,7 +120,7 @@ function inicioEnvio1()
 {
     // toogle('block', 'modal', 'ventana');
     var x = $("#res");
-    x.html('<img src="../img/loading.gif"  class="btn-circle"/>');
+    x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegada1(datos)
 {
@@ -160,7 +160,7 @@ function enviarCursos1(){
 function inicioEnvioCursos1()
 {
     var x = $("#res");
-   x.html('<img src="../img/loading.gif"  class="btn-circle"/>');
+   x.html('<img src="../img/loading.gif" alt="" height="50px" width="50px" />');
 }
 function llegadaCursos1(datos)
 {

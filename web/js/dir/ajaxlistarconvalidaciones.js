@@ -1,7 +1,36 @@
 
 window.onload = function() {
     enviar2();
+
 };
+function anularNull() {
+    var e = 900;
+    for (var i = 0; i < e; i++) {
+        var ciclo = $("." + i + "ciclo").val();
+        var curso = $("." + i + "curso").val();
+        var cr = $("." + i + "cr").val();
+        var ht = $("." + i + "ht").val();
+        var hnp = $("." + i + "hnp").val();
+        var th = $("." + i + "th").val();
+        var nota = $("." + i + "nota").val();
+        if(ciclo==="null") {
+            $("." + i + "ciclo").val("");
+        }if(curso==="null"){
+            $("." + i + "curso").val("");
+        }if(cr==="null"){
+            $("." + i + "cr").val("");
+        }if(ht==="null"){
+            $("." + i + "ht").val("");
+        }if(hnp==="null"){
+            $("." + i + "hnp").val("");
+        }if(th==="null"){
+            $("." + i + "th").val("");
+        }if(nota==="null"){
+            $("." + i + "nota").val("");
+        }
+    }
+    
+}
 function enviar2()
 {
 
@@ -81,6 +110,7 @@ function inicioEnvio2()
 function llegada2(datos)
 {
     $("#res").html(datos);
+    anularNull();
 }
 function problemas2()
 {
@@ -124,9 +154,7 @@ function problemas3()
     $("#ex").text('Problemas en el servidor.');
 }
 
-function pImprimir(a, b, c, d, e, f, g) {
-    alert(a + b + c + d + e + f + g);
-}
+
 
 function cambiarcolor(a, b) {
     document.getElementById(a).style.background = "red";

@@ -26,4 +26,6 @@ public interface InterValidacion {
     public boolean eliminar_Validacion(String idValidacion);
     
     public ResultSet listarValidacion(String idValidacion);
+    
+    public ResultSet listarValidacion_Validado(String id);
 }

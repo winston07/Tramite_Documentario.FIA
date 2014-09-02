@@ -127,7 +127,10 @@
             <div id="ventana1" class="contenedor1" style="display:none">                
 
                 <a href="#close" title="Cerrar" onclick="tooglevalidar('none', 'modal1', 'ventana1')" >Close</a>
-                <div id="res">                 
+                <div id="pr" class="text text-center">F.I.A</div>
+                
+                <div id="res"> 
+                    
 
                 </div>
 
