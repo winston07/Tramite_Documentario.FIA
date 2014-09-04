@@ -79,6 +79,7 @@ public class ModeloUsuario implements InterUsuario {
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
+           
             rs = stmt.executeQuery("select * from usuario where usu_login='" + usuario + "' and usu_pasword='" + clave + "'");
             
         } catch (SQLException ex) {
@@ -88,4 +89,6 @@ public class ModeloUsuario implements InterUsuario {
         }
         return rs;
     }
+    
+    
 }
