@@ -247,4 +247,19 @@ public class ModeloPedido implements InterPedido {
 
         return estado;
        }
+
+    @Override
+    public ResultSet mostrarpedido(String pedido) {
+        
+            try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            rs = stmt.executeQuery("select * from pedidosespera where codigo='"+pedido+"'");
+
+        } catch (Exception ex) {
+            Logger.getLogger(ModeloPedido.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return rs;
+    }
 }

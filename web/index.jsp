@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="css/sing.css" />
         <script type="text/javascript" src="js/dataTables/jquery.js"></script>
         <script type="text/javascript" src="js/inicio.js"></script>
+        
     </head>
     <body>
         <div class="container">
