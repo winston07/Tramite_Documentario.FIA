@@ -7,6 +7,13 @@
 <%@page import="com.fia.upeu.dao.InterSolicitante"%>
 <!DOCTYPE html>
 <%
+    HttpSession sesion = request.getSession(true);
+    String usuario = (String) sesion.getAttribute("IDUSER");
+    String idRol = (String) sesion.getAttribute("IDROL");
+    if (usuario != null) {       
+        out.println("alert('"+usuario+"')");
+%>
+<%
     String ids = request.getParameter("idS");
     String tramite = request.getParameter("idT");
     String pedido = request.getParameter("idP");
@@ -237,3 +244,6 @@
 
 </body>
 </html>
+<%
+    }
+%>

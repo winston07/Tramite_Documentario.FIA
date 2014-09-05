@@ -1,8 +1,10 @@
-<%-- 
-   Document   : Convalidacion
-   Created on : Jul 17, 2014, 11:44:34 AM
-   Author     : Wins
---%>
+<%
+    HttpSession sesion = request.getSession(true);
+    String usuario = (String) sesion.getAttribute("IDUSER");
+    String idRol = (String) sesion.getAttribute("IDROL");
+    if (usuario != null) {       
+        out.println("alert('"+usuario+"')");
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -150,3 +152,4 @@
 
     </body>
 </html>
+<%}%>

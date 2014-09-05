@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.fia.upeu.dao_imple;
 
 import com.fia.upeu.config.Conexion;
 import com.fia.upeu.dao.InterEscuela;
 import com.fia.upeu.modelo.Escuela;
+import com.fia.upeu.modelo.Escuela_Usuario_Listar;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -22,7 +22,8 @@ import java.util.logging.Logger;
  *
  * @author Kelvin Thony
  */
-public class ModeloEscuela implements InterEscuela{
+public class ModeloEscuela implements InterEscuela {
+
     ResultSet rs = null;
     Statement stmt = null;
     Connection cx = null;
@@ -30,7 +31,7 @@ public class ModeloEscuela implements InterEscuela{
 
     @Override
     public List<Escuela> listar_Escuela() {
-         List<Escuela> list = new ArrayList<Escuela>();
+        List<Escuela> list = new ArrayList<Escuela>();
         try {
             cx = Conexion.getConex();
             stmt = cx.createStatement();
@@ -39,7 +40,7 @@ public class ModeloEscuela implements InterEscuela{
                 Escuela esc = new Escuela();
                 esc.setEscuela(rs.getString("IDESCUELA"));
                 esc.setIdFacultad(rs.getString("IDFACULTAD"));
-                esc.setNombre(rs.getString("ESC_NOMBRE"));                
+                esc.setNombre(rs.getString("ESC_NOMBRE"));
                 list.add(esc);
             }
         } catch (SQLException e) {
@@ -75,5 +76,34 @@ public class ModeloEscuela implements InterEscuela{
     public boolean eliminar_Pedido(String idPedido) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public List<Escuela_Usuario_Listar> listar_Id_Escuela_Usuario(String idUsuario) {
+    List<Escuela_Usuario_Listar> list = new ArrayList<Escuela_Usuario_Listar>();
+        try {
+            cx = Conexion.getConex();
+            stmt = cx.createStatement();
+            rs = stmt.executeQuery("select e.idescuela,e.esc_nombre from escuela e,escuela_usuario eu where e.idescuela=eu.idescuela and eu.idusuario='"+idUsuario+"'");
+            while (rs.next()) {
+                Escuela_Usuario_Listar esc = new Escuela_Usuario_Listar();
+                esc.setIdEscuela(rs.getString("IDESCUELA"));
+                esc.setNombre(rs.getString("ESC_NOMBRE"));
+                list.add(esc);
+            }
+        } catch (SQLException e) {
+        } catch (Exception ex) {
+            Logger.getLogger(ModeloUsuario.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                this.cx.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(ModeloUsuario.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return list;
+    }
+
+   
+
 }

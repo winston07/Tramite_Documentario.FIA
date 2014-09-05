@@ -1,4 +1,5 @@
 
+<%@page import="com.fia.upeu.modelo.Escuela_Usuario_Listar"%>
 <%@page import="com.fia.upeu.dao_imple.ModeloEscuela"%>
 <%@page import="com.fia.upeu.modelo.Escuela"%>
 <%@page import="com.fia.upeu.dao.InterEscuela"%>
@@ -10,7 +11,13 @@
 <%@page import="com.fia.upeu.dao_imple.ModelTipo_Tramite"%>
 <%@page import="com.fia.upeu.dao.InterTipo_Tramite"%>
 <%@page import="java.util.List"%>
-
+<%
+    HttpSession sesion = request.getSession(true);
+    String usuario = (String) sesion.getAttribute("IDUSER");
+    String idRol = (String) sesion.getAttribute("IDROL");
+    if (usuario != null) {       
+        out.println("alert('"+usuario+"')");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -136,10 +143,10 @@
                                     <%
                                         InterEscuela lEscuela=new ModeloEscuela();
                                     %>
-                                    <%   List<Escuela>  ltEscuela=lEscuela.listar_Escuela();                                                                                    
+                                    <%   List<Escuela_Usuario_Listar>  ltEscuela=lEscuela.listar_Id_Escuela_Usuario(usuario);                                                                                    
                                     %>
                                     <%for (int i = 0; i <ltEscuela.size(); i++) {%>
-                                    <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
+                                    <option value="<%=ltEscuela.get(i).getIdEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
                                     <%}%>  
                                 </select>
                                     
@@ -186,3 +193,6 @@
 
     </body>
 </html>
+<%
+    }
+%>

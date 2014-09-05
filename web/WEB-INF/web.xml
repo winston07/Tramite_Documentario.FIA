@@ -10,7 +10,7 @@
     </servlet>
     <servlet>
         <servlet-name>ControlUsuarios</servlet-name>
-        <servlet-class>com.fia.upeu.control.ControlUsuarios</servlet-class>
+        <servlet-class>com.fia.upeu.control.ControlUsuario</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ControlUsuarios</servlet-name>

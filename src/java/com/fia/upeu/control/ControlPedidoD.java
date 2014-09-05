@@ -232,8 +232,7 @@ public class ControlPedidoD extends HttpServlet {
                             + "                        </form>\n"
                             + "                    </div>"
                             + "<div class='col-md-12 text-center'>"
-                            + "                                <button type=\"submit\" class=\"btn btn-primary\">Guardar</button>\n"
-                            + "                                <button type=\"submit\" class=\"btn btn-danger\">Cancelar</button>\n"
+                            + "                                <button type=\"submit\" class=\"btn btn-primary\">Terminar el Proceso</button>\n"
                             + "</div>"
                             + "");
                 } else {

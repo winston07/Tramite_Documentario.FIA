@@ -1,3 +1,10 @@
+<%
+    HttpSession sesion = request.getSession(true);
+    String usuario = (String) sesion.getAttribute("IDUSER");
+    String idRol = (String) sesion.getAttribute("IDROL");
+    if (usuario != null) {       
+        out.println("alert('"+usuario+"')");
+%>
 <%@page import="com.fia.upeu.dao_imple.ModeloPedido"%>
 <%@page import="com.fia.upeu.dao.InterPedido"%>
 <!DOCTYPE html>
@@ -117,3 +124,4 @@
 
     </body>
 </html>
+<%}%>

@@ -1,3 +1,11 @@
+
+<%
+    HttpSession sesion = request.getSession(true);
+    String usuario = (String) sesion.getAttribute("IDUSER");
+    String idRol = (String) sesion.getAttribute("IDROL");
+    if (usuario != null) {       
+        out.println("alert('"+usuario+"')");
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -66,7 +74,7 @@
                         <h2>Bienvenida al Sistema de Tramites Documentarios</h2>
                         <div>
                             <p>Q tall como le va</p>
-                            <button href="" class="btn btn-circle">Peligro</button>
+                           
                 
                         </div>
                         
@@ -92,3 +100,6 @@
 
     </body>
 </html>
+<%
+    }
+%>

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpSession;
  *
  * @author Kelvin Thony
  */
-public class ControlUsuarios extends HttpServlet {
+public class ControlUsuario extends HttpServlet {
 
     ResultSet rs = null;
     InterUsuario mUsuario = new ModeloUsuario();
@@ -46,8 +46,15 @@ public class ControlUsuarios extends HttpServlet {
             //out.println("aqui"+usuario+clave);
             rs = mUsuario.validar_Usuario(usuario, clave);
             if (rs.next()==true) {
+                for(int i=0;i<1;i++){
                 HttpSession sesion = request.getSession(true);
-                out.println("location.href='vistas_director/portal.jsp'");
+                sesion.setAttribute("IDUSER", rs.getString(1));
+                sesion.setAttribute("NOMBRE", rs.getString(4));
+                sesion.setAttribute("APELLIDO", rs.getString(5));
+                sesion.setAttribute("SEXO", rs.getString(6)); 
+                sesion.setAttribute("IDROL", rs.getString(10));
+                out.println("location.href='"+rs.getString(9)+"'");
+                }
             } else {
                
             }
@@ -72,7 +79,7 @@ public class ControlUsuarios extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ControlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -90,7 +97,7 @@ public class ControlUsuarios extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(ControlUsuarios.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ControlUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
