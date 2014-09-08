@@ -88,7 +88,7 @@ public class ControlValidacion extends HttpServlet {
                     out.println(" <tr>");
                     out.println("<table align=\"center\" width=\"800\" class=\"table-responsive\">");
                     out.println(" <tr>");
-                    out.println("<th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width=\"40\">&nbsp;</th>");
+                    out.println("<th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>Nota</th><th width=\"40\">&nbsp;</th>");
                     out.println("</tr>");
                     while (rs.next()) {
 
@@ -96,9 +96,6 @@ public class ControlValidacion extends HttpServlet {
                         out.println("<td><input type='text' readonly='true'  size='3'class='clsAnchoTotal form-control' value='" + rs.getString(10) + "'></td>");
                         out.println("<td><input type='text' readonly='true' size='20'class='clsAnchoTotal form-control' value='" + rs.getString(8) + "'></td>");
                         out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(4) + "'id='cr'></td>");
-                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(5) + "' id='ht'></td>");
-                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(6) + "'id='hnp'></td>");
-                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(7) + "'id='th'></td>");
                         out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(9) + "'id='nota'></td>");
                         out.println("<td><a type=\"button\" class=\"fa fa-trash-o fa-2x\"></a></td>");
                         out.println("<td><a type=\"button\" class=\"fa fa-edit fa-2x\"></a></td>");
@@ -126,9 +123,6 @@ public class ControlValidacion extends HttpServlet {
                         out.println("<td><input type='text' readonly='true'  size='3'class='clsAnchoTotal form-control' value='" + rs.getString(10) + "'></td>");
                         out.println("<td><input type='text' readonly='true' size='20'class='clsAnchoTotal form-control' value='" + rs.getString(8) + "'></td>");
                         out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(4) + "'id='cr'></td>");
-                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(5) + "' id='ht'></td>");
-                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(6) + "'id='hnp'></td>");
-                        out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(7) + "'id='th'></td>");
                         out.println("<td><input type='text' readonly='true' size='3'class='clsAnchoTotal form-control' value='" + rs.getString(9) + "'id='nota'></td>");
                         out.println("<td><a type=\"button\" class=\"fa fa-trash-o fa-2x\"></a></td>");
                         out.println("<td><a type=\"button\" class=\"fa fa-edit fa-2x\"></a></td>");

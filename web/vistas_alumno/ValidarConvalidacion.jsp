@@ -110,7 +110,7 @@
                     <div class="col-md-12">
 
                         <!--ingrese datos tabla-->  
-                        <p>Registro de Convalidacion del Alumno</p>
+                        <p>Registro de Convalidacion del Alumno</p><p><%=ids+pedido%></p>
                         <center>
 
                             <form action="" method="post" name="formulario" id="formulario">
