@@ -46,9 +46,10 @@ function enviarDatos()
     var ciclo = $("#ciclo1").val();
     var curso = $("#curso1").val();
     var cr = $("#cr1").val();
+   /*
     var ht = $("#ht1").val();
     var hnp = $("#hnp1").val();
-    var th = $("#th1").val();
+    var th = $("#th1").val();*/
     var nota = $("#nota1").val();
     var vali = $("#validacion1").val();
 
@@ -59,7 +60,7 @@ function enviarDatos()
         contentType: "text/html",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
-        url: "../ControlValidacion?opc=addcurso&ciclo=" + ciclo + "&&curso=" + curso + "&&cr=" + cr + "&&ht=" + ht + "&&hnp=" + hnp + "&&th=" + th + "&&nota=" + nota + "&&validacion=" + vali + "",
+        url: "../ControlValidacion?opc=addcurso&ciclo=" + ciclo + "&&curso=" + curso + "&&cr=" + cr + /*"&&ht=" + ht + "&&hnp=" + hnp + "&&th=" + th + */"&&nota=" + nota + "&&validacion=" + vali + "",
         //url: "../ControlCurso",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,

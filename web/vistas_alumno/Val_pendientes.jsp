@@ -23,7 +23,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Portal Secretaria</title>
+        <title>Portal Alumno</title>
         <link href="../css/chosen.css" rel="stylesheet" />
         <link rel="shortcut icon" type="image/x-icon" href="../img/logoing.png">
         <!-- BOOTSTRAP STYLES-->

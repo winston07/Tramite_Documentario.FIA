@@ -23,7 +23,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Portal Secretaria</title>
+        <title>Portal Alumno</title>
         <link rel="stylesheet" href="../css/modal.css" />
         <link href="../css/chosen.css" rel="stylesheet" />
         <!-- BOOTSTRAP STYLES-->
@@ -174,7 +174,7 @@
                                     <caption>Plan academico </caption>
 
                                     <tr>
-                                        <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width="40">&nbsp;</th>
+                                        <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><%--<th>HT</th><th>HNP</th><th>TH</th>--%><th>Nota</th><th width="40">&nbsp;</th>
                                     </tr> 
 
 
@@ -182,10 +182,10 @@
                                     <input type="hidden" id="validacion1" value="<%=validacion%>" />
                                     <td valign="middle" ><input type="text"  size="3"class="clsAnchoTotal form-control" name="ciclo" id="ciclo1"></td>
                                     <td valign="middle" ><input type="text" size="20" class="clsAnchoTotal form-control" name="curso" id="curso1"></td>
-                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="cr1" name="cr"></td>
+                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="cr1" name="cr"></td><%--
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="ht1" name="ht"></td>
                                     <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp1" name="hnp"></td>
-                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th1" name="th"></td>
+                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th1" name="th"></td>--%>
                                     <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota1" name="nota"></td>
 
 

@@ -16,7 +16,7 @@ public class Conexion {
 
     public static Connection getConex() throws Exception {
         String usuario = "bd";
-   String ja =" ";
+  String ja =" ";
         String password = "bd";
         String host = "localhost";
         String puerto = "1521";

@@ -93,6 +93,7 @@
             <div id="page-wrapper">
                 <div  class="row">
                     <div class="col-md-12">
+                        <div id="an"  class=""border="2" radious="5">
                         <center>
                             <!--<a href="#modal3"  class="btn btn-success right">Agregar</a>-->
                             <h2 id="imp" >Registro de Solicitud</h2>
@@ -152,7 +153,7 @@
                                             registarPedido()" class="btn btn-warning">Registrar</a>
                                     
                                 </div>
-
+                                    </div>
                             </form>
                         </center>
 

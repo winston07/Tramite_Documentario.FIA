@@ -26,7 +26,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Portal Secretaria</title>
+        <title>Portal Alumno</title>
         <!-- BOOTSTRAP STYLES-->
         <link rel="shortcut icon" type="image/x-icon" href="../img/logoing.png">
         <link rel="stylesheet" href="../css/chosen.css" />
@@ -65,8 +65,6 @@
                         <span class="icon-bar"></span>
 
                     </button>
-
-
                     <a class="navbar-brand" href="portal.jsp"><img src="../img/logoupeu.png" class="img-responsive" id="logo"/><b class="titulo">Facultad de Ingenieria y Arquitectura</b></a> 
 
                 </div>
@@ -81,7 +79,6 @@
 
                 <h1>TRAMITES DOCUMENTALES DE CONVALIDACION</h1>
                 <div style="position:absolute; left:1200px; top:10px; width:728px; height:70px "><a href="#" class="btn btn-danger square-btn-adjust" >Cerrar Sesion</a></div> 
-
             </nav>
             <!-- /. NAV TOP  -->
             <nav class="navbar-default navbar-side" role="navigation">
@@ -90,17 +87,12 @@
                         <li class="text-center">
                             <img src="../img/alumno.png" class="user-image img-responsive"/>
                         </li>
-
-
-                        
                         <li>
                             <a  href="../vistas_alumno/Val_pendientes.jsp"><i class="fa fa-check-square-o fa-3x"></i>Validacion</a>
                         </li>
                         <li>
                             <a  href="../vistas_alumno/Convalidacion.jsp"><i class="fa fa-th-list fa-3x"></i>Convalidacion</a>
                         </li>
-
-
                 </div>
 
             </nav>  
@@ -108,24 +100,35 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-md-12">
-
-                        <!--ingrese datos tabla-->  
-                        <p>Registro de Convalidacion del Alumno</p><p><%=ids+pedido%></p>
+                        <!--ingrese datos tabla-->
+                        <p>Convalidacion del alumno:<%=lsoli.get(0).getNombre()%> , <%=lsoli.get(0).getPaterno() + " " + lsoli.get(0).getMaterno()%> Con Su Codigo:<%=lsoli.get(0).getCodigo()%></p><p><%=ids+pedido%></p>
                         <center>
-
                             <form action="" method="post" name="formulario" id="formulario">
-
+                                <%-- <table>
+                                <tr><td colspan="2" align="center">AUTENTIFICACIÓN</td></tr>
+                                <tr><td colspan="2"align="center"><hr></td></tr>
+                                <tr><td align="right">Usuario:</td><td><input type="text" name="usuario"></td></tr>
+                                <tr><td align="right">Clave:</td><td><input type="password" name="clave"></td></tr>
+                                <tr><td align="right" colspan="2"><input type="submit" name="boton" value="Enviar"></td></tr>
+                                </table>--%>
                                 <input type="hidden" id="codigo" value="<%=ids%>"  />
                                 <input type="hidden" id="pedido" value="<%=pedido%>" />
                                 <input type="hidden" id="tramite" value="<%=tramite%>" />
                                 <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
-                                <p>
-                                    <strong> Universidad</strong>
+                                <table>
+                                    <tr><td align="rigth">Universidad</td><td><input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" /></td></tr>
+                                    <p></p>
+                                    <tr><td align="right">Facultad</td><td><input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50"/> </td></tr>
+                                    <p></p>
+                                    <tr><td align="right">EAP</td><td><input class="textaca-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50"/> </td></tr>
+                                    <%--<p> Universidad</p>
                                     <input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" />
                                     <strong> Facultad</strong>
-                                    <input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50" />
+                                    <input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50" /> 
                                     <strong> De  E.A.P</strong>
-                                    <input class="text-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50" />
+                                    <input class="textaca-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50" />--%>
+                                   <!--COMBO BOX-->
+                                    <%--
                                     <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
                                         <option value=""></option>
                                         <%
@@ -137,22 +140,15 @@
                                         <%for (int i = 0; i < ltEscuela.size(); i++) {%>
                                         <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
                                         <%}%>
-
-
-                                    </select>
-                                <p><strong >Codigo </strong>
-                                    <input class="text-box" name="Codigo" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(0).getCodigo()%>" readonly="" />
-                                    <strong>Plan</strong>
-                                    <input class="text-box" name="plan" type="text" id="plan_in1" size="5" maxlength="50" />
-                                    <strong>Plan Nuevo</strong>
-                                    <input class="text-box" name="plannuevo" type="text" id="plan_out" size="5" maxlength="50" />
-                                </p>
-                                <p><strong>Nombres:</strong>
-                                    <input  class="text-box" type="text" name="descripcion" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(0).getNombre()%>" readonly/>
-                                    <strong>Apellidos:</strong>
-                                    <input  class="text-box" type="text" name="apellidos" id="apellidos" size="30" maxlength="50" value="<%=lsoli.get(0).getPaterno() + "," + lsoli.get(0).getMaterno()%>" readonly/>
-                                </p>
+                                    </select>--%>
+                                <!--<strong >Codigo  </strong><input class="text-box" name="Codigo" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(0).getCodigo()%>" readonly="" />
+                                --><strong>Plan</strong><input class="text-box" name="plan" type="text" id="plan_in1" size="5" maxlength="50" />
+                                    <strong>Plan Nuevo</strong><input class="text-box" name="plannuevo" type="text" id="plan_out" size="5" maxlength="50" />
+                                <%--<p><strong>Nombres:</strong><input  class="text-box" type="text" name="descripcion" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(0).getNombre()%>" readonly/>
+                                   <strong>Apellidos:</strong><input  class="text-box" type="text" name="apellidos" id="apellidos" size="30" maxlength="50" value="<%=lsoli.get(0).getPaterno() + "," + lsoli.get(0).getMaterno()%>" readonly/>
+                                </p>--%>
                                 <br/>
+                                </table>
                                 <!--INGRESO DE TRABLA JQUERY -->
                                 <!--<a href="#" onClick="return false" onmouseOver="alert('Ingrese cursos del alumno ')">
                                 <img src="../img/interrogacion.png" width="45" height="45">-->
@@ -160,28 +156,19 @@
                                 <table align="center" width="800" class="table-responsive">
                                     <tbody id="resultados"> </tbody>
                                     <caption>Plan academico </caption>
-
                                     <tr>
-                                        <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><th>HT</th><th>HNP</th><th>TH</th><th>Nota</th><th width="40">&nbsp;</th>
+                                        <th>Ciclo</th><th>Nombre Curso</th><th>CR</th><!--<th>HT</th><th>HNP</th><th>TH</th>--><th>Nota</th><th width="40">&nbsp;</th>
                                     </tr> 
-
-
                                     <tr style="vertical-align: middle">
                                     <input type="hidden" id="validacion1" value="<%=validacion%>" />
                                     <td valign="middle" ><input type="text"  size="3"class="clsAnchoTotal form-control" name="ciclo" id="ciclo1"></td>
                                     <td valign="middle" ><input type="text" size="20" class="clsAnchoTotal form-control" name="curso" id="curso1"></td>
-                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="cr1" name="cr"></td>
+                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="cr1" name="cr"></td><!--
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="ht1" name="ht"></td>
                                     <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp1" name="hnp"></td>
-                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th1" name="th"></td>
+                                    <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th1" name="th"></td>-->
                                     <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota1" name="nota"></td>
-
-
-
-                                    </tr>
-
-
-
+                                </tr>
                                 </table>
                                 <table><tfoot>
                                     <a  class="btn btn-info" onclick="registarConvalidacion();
@@ -204,19 +191,13 @@
                 <center>
                     <div>
                         <a type="submit" class="btn btn-success" id="enviarcur" value="ingresar" onclick="toogle5('block', 'modal', 'ventana');
-                                enviarCursos1()" >Enviar Cursos</a>
-
+                                enviarCursos1()">Enviar Cursos</a>
                         </a>
                         <br />
                     </div>
                 </center>
-                </p>
-                </center>
-
-
             </div>
         </div>
-    </div>
     <!-- /. PAGE WRAPPER  -->
 </div>
 <!-- /. WRAPPER  -->

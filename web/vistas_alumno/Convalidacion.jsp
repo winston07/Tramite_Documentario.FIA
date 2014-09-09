@@ -10,7 +10,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Portal Secretaria</title>
+        <title>Portal Alumno</title>
         <!-- BOOTSTRAP STYLES-->
         <link href="../css/bootstrap.css" rel="stylesheet" />
         <link href="../css/chosen.css" rel="stylesheet" />
