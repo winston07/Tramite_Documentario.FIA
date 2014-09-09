@@ -11,7 +11,7 @@
     String usuario = (String) sesion.getAttribute("IDUSER");
     String idRol = (String) sesion.getAttribute("IDROL");
     if (usuario != null) {       
-        out.println("alert('"+usuario+"')");
+       
 %>
 <%
     String ids = request.getParameter("idS");

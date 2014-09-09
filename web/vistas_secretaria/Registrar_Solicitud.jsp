@@ -15,8 +15,8 @@
     HttpSession sesion = request.getSession(true);
     String usuario = (String) sesion.getAttribute("IDUSER");
     String idRol = (String) sesion.getAttribute("IDROL");
-    if (usuario != null) {       
-        out.println("alert('"+usuario+"')");
+    if (usuario != null) {
+
 %>
 <!DOCTYPE html>
 <html>
@@ -38,16 +38,13 @@
         <link href="../css/custom.css" rel="stylesheet" />
         <!-- GOOGLE FONTS-->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
-     
+
         <link rel="stylesheet" href="../css/modal2.css" />
         <link rel="stylesheet" href="../js/jquery.js" />
         <link rel="stylesheet" href="../js/sec/js.printl.js" />
-        <script type="text/javascript">
-            function im() {
-                $("div#myPrintArea").printArea();
-            }
-        </script>
+
         <script type="text/javascript" src="../js/sec/registrarPedido.js"></script>
+        <script type="text/javascript" src="../js/sec/registroSolicitante.js"></script>
     </head>
 
     <body>
@@ -101,10 +98,9 @@
                             <h2 id="imp" >Registro de Solicitud</h2>
                             <form class="center-block" media="print">
                                 <div id="imp">
-                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select"   style="width: 200px;" name="codigo" onchange="enviar();" id="cod">
+                                    Codigo:<select data-placeholder="Codigo del Alumno" class="chzn-select2"   style="width: 200px;" name="codigo" onchange="enviar();" id="cod" required="">
                                         <option value="null"></option>
-                                        <%
-                                            InterSolicitante iSolicitante = new ModeloSolicitante();
+                                        <%                                            InterSolicitante iSolicitante = new ModeloSolicitante();
                                         %>
                                         <%
                                             List<Solicitante> liSolicitante = iSolicitante.listar_Solicitante();
@@ -118,9 +114,9 @@
                                         <td><tr id="resultados">
                                     </table>
                                     <!--               -->
-                                    Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite" id="tra">
+                                    Tramite:<select data-placeholder="Tipo de Tramite" class="chzn-select form-control"  tabindex="2" style="width: 200px;" name="tipotramite" id="tra" required>
 
-                                        <option value=""></option>
+                                        <option value="" ></option>
                                         <%
                                             InterTipo_Tramite tTramite = new ModelTipo_Tramite();
                                         %>
@@ -134,27 +130,30 @@
                                     </select>
                                     <!--               -->
                                     <table>
-                                        <td><tr id="resultados">
+                                        <tbody id="resultados"></tbody>
                                     </table>
                                     <!--             -->
-                                                               
-                                    Escuela:<select data-placeholder="Escuela" class="chzn-select form-control" tabindex="2" style="width: 200px;" name="escuela" id="escu">
-                                    <option value=""></option>
-                                    <%
-                                        InterEscuela lEscuela=new ModeloEscuela();
-                                    %>
-                                    <%   List<Escuela_Usuario_Listar>  ltEscuela=lEscuela.listar_Id_Escuela_Usuario(usuario);                                                                                    
-                                    %>
-                                    <%for (int i = 0; i <ltEscuela.size(); i++) {%>
-                                    <option value="<%=ltEscuela.get(i).getIdEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
-                                    <%}%>  
-                                </select>
-                                    
-                                </div>
-                                <div id="noimp">
-                                    <a  name="imp" value="Imprimir" onclick="toogle1('block', 'modal', 'ventana');registarPedido()" class="btn btn-warning">Insertar</a>
+
+                                    Escuela:<select data-placeholder="Escuela" class="chzn-select form-control" tabindex="2" style="width: 200px;" name="escuela" id="escu" required="true">
+                                        <option value=""></option>
+                                        <%
+                                            InterEscuela lEscuela = new ModeloEscuela();
+                                        %>
+                                        <%   List<Escuela_Usuario_Listar> ltEscuela = lEscuela.listar_Id_Escuela_Usuario(usuario);
+                                        %>
+                                        <%for (int i = 0; i < ltEscuela.size(); i++) {%>
+                                        <option value="<%=ltEscuela.get(i).getIdEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
+                                        <%}%>  
+                                    </select>
 
                                 </div>
+                                <div id="noimp" >
+                                    <a  name="imp" value="Imprimir" onclick="toogle1('block', 'modal', 'ventana');
+                                            registarPedido()" class="btn btn-warning">Registrar</a>
+                                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">HolaMundo</a>
+
+                                </div>
+
                             </form>
                         </center>
 
@@ -164,10 +163,17 @@
                                         $(".chzn-select").chosen();
                                         $(".chzn-select-deselect").chosen({allow_single_deselect: true});
                         </script>
+                        <script src="../js/jsocultar/chosen.jquery2.js" type="text/javascript"></script>
+                        <script type="text/javascript">
+                                        $(".chzn-select2").chosen();
+                                        $(".chzn-select-deselect2").chosen({allow_single_deselect: true});
+                        </script>
+
 
                     </div>
                 </div>
-            </div
+            </div>
+
 
             <!-- /. PAGE WRAPPER  -->
         </div>
@@ -187,7 +193,46 @@
         <div id="modal" style="display:none">
             <div id="ventana" class="contenedor" style="display:none">
                 <div id="res"></div>
-                <a href="#close" title="Cerrar" onclick="toogle1('none', 'modal', 'ventana');window.print()" >Close</a>
+                <a href="#close" title="Cerrar" onclick="toogle1('none', 'modal', 'ventana');
+                                            window.print()" >Close</a>
+            </div>
+        </div>
+        <!-- Portfolio Modals -->
+        <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 col-lg-offset-2">
+                            <div class="modal-body">
+                                <h2>Registrar Nuevo Solicitante</h2>
+                                <form class="form form-control-static" action="#" >
+                                    <label class="label label-info">Codigo</label> <input type="text" class="form-control" placeholder="Codigo del Portal Academico" required autofocus id="codigo">
+                                    <label class="label label-info">Nombres</label> <input type="text" class="form-control" placeholder="Nombres" required autofocus id="nombres">
+                                    <label class="label label-info">Apellido Paterno</label><input type="text" class="form-control" placeholder="Apellido Paterno" required  id="ap_paterno">
+                                    <label class="label label-info">Apellido Materno</label><input type="text" class="form-control" placeholder="Apellido Materno" required  id="ap_materno">
+                                    <label class="label label-info">Correo Electronico</label><input type="email" class="form-control" placeholder="Correo Electronico" required  id="email">
+                                    <label class="label label-info">Numero de Telefono</label><input type="tel" class="form-control" placeholder="Numero de Telefono" required  id="tel">
+                                    <label class="label label-info">Sexo</label><select name="" id="sexo" class="chzn-select form-control">
+                                        <option value="-" disabled="" selected="">Selecione Una Opcion</option>
+                                        <option value="M">Masculino</option>
+                                        <option value="F">Femenino</option>
+                                    </select>
+                                    <label class="label label-info">Direccion</label><input type="text" class="form-control" placeholder="Direccion..."   id="direccion">
+                                    <div class="checkbox">                
+                                    </div>                                
+                                    <button type="submit" class="btn btn-success" onclick="registrarSolicitante(document.getElementById('codigo').value,document.getElementById('nombres').value, document.getElementById('ap_paterno').value, document.getElementById('ap_materno').value,
+                                                                                                                document.getElementById('email').value, document.getElementById('tel').value, document.getElementById('sexo').value,document.getElementById('direccion').value);"> Registrar Nuevo Solicitante</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

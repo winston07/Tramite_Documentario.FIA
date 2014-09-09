@@ -19,9 +19,10 @@
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" value="remember-me"> Recordar
+                           
                         </label>
                     </div>
-                    <div class="btn btn-lg btn-primary btn-block"   onclick="validar();" id="resultados">Iniciar</div>
+                    <div class="btn btn-lg btn-primary btn-block" style="height: 70px"  onclick="validar();" id="resultados"><img src="img/ingresar.png" class="img3 center-block" alt="" /></div>
                    
                 </form>
             </div>

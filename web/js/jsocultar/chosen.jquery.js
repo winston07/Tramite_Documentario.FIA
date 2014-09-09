@@ -144,8 +144,11 @@ Copyright (c) 2011 by Harvest
       } else {
         this.default_text = this.options.placeholder_text_single || this.options.placeholder_text || "Select an Option";
       }
-      return this.results_none_found = this.form_field.getAttribute("data-no_results_text") || this.options.no_results_text || "No hay coincidencias";
+      return this.results_none_found = this.form_field.getAttribute("data-no_results_text") || this.options.no_results_text || "No se Encontraron Resultados";
     };
+     function  kel(){
+        alert('kel');
+    }
 
     AbstractChosen.prototype.mouse_enter = function() {
       return this.mouse_on_container = true;

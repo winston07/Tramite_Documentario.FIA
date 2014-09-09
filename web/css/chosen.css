@@ -40,10 +40,10 @@ video {
 audio:not([controls]) {
   display: none; }
 
-html {
-  font-size: 100%;
-  -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%; }
+ //html {
+  //font-size: 100%;
+  //-webkit-text-size-adjust: 100%;
+  //-ms-text-size-adjust: 100%; }
 
 a:focus {
   outline: thin dotted #333;
@@ -66,18 +66,19 @@ sup {
 
 sub {
   bottom: -0.25em; }
-
+/*
 img {
   /* Responsive images (ensure images don't scale beyond their parents) */
-  max-width: 100%;
+ /* max-width: 100%;
   /* Part 1: Set a maxium relative to the parent */
-  width: auto\9;
+  /*width: auto\9;
   /* IE7-8 need help adjusting responsive images */
-  height: auto;
+  /*height: auto;
   /* Part 2: Scale the height according to the width, otherwise you get stretching */
-  vertical-align: middle;
+ /* vertical-align: middle;
   border: 0;
   -ms-interpolation-mode: bicubic; }
+*/
 
 #map_canvas img {
   max-width: none; }
@@ -90,10 +91,10 @@ textarea {
   font-size: 100%;
   vertical-align: middle; }
 
-button,
-input {
+/*button,input {
   *overflow: visible;
   line-height: normal; }
+*/
 
 button::-moz-focus-inner,
 input::-moz-focus-inner {
@@ -120,14 +121,15 @@ input[type="search"]::-webkit-search-cancel-button {
 textarea {
   overflow: auto;
   vertical-align: top; }
-
+/*
 body {
   margin: 0;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #333333;
-  background-color: white; }
+  background-color: white; }*/
+/*
 
 a {
   color: #0088cc;
@@ -769,6 +771,7 @@ input[type="color"],
     outline: 0;
     outline: thin dotted \9;
     /* IE6-9 */
+/*
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6); }
@@ -778,8 +781,10 @@ input[type="checkbox"] {
   margin: 4px 0 0;
   *margin-top: 0;
   /* IE7 */
+/*
   margin-top: 1px \9;
   /* IE8-9 */
+/*
   line-height: normal;
   cursor: pointer; }
 
@@ -796,9 +801,9 @@ select,
 input[type="file"] {
   height: 30px;
   /* In IE7, the height of the select element cannot be changed by height, only font-size */
-  *margin-top: 4px;
+  /* *margin-top: 4px;
   /* For IE7, add top margin to align select with labels */
-  line-height: 30px; }
+/*  line-height: 30px; }
 
 select {
   width: 220px;
@@ -1165,6 +1170,7 @@ select:focus:required:invalid {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
+/*
   *zoom: 1;
   vertical-align: middle;
   padding-left: 5px; }
@@ -1271,12 +1277,14 @@ input.search-query {
   padding-left: 14px;
   padding-left: 4px \9;
   /* IE7-8 doesn't have border-radius, so don't indent the padding */
+/*
   margin-bottom: 0;
   -webkit-border-radius: 15px;
   -moz-border-radius: 15px;
   border-radius: 15px; }
 
 /* Allow for input prepend/append in search forms */
+/*
 .form-search .input-append .search-query,
 .form-search .input-prepend .search-query {
   -webkit-border-radius: 0;
@@ -1327,6 +1335,7 @@ input.search-query {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
+/*
   *zoom: 1;
   margin-bottom: 0;
   vertical-align: middle; }
@@ -1638,6 +1647,7 @@ table [class*=span],
   margin-top: 1px; }
 
 /* White icons with optional class, or on hover/active states of certain elements */
+/*
 .icon-white,
 .nav-tabs > .active > a > [class^="icon-"],
 .nav-tabs > .active > a > [class*=" icon-"],
@@ -2322,6 +2332,7 @@ button.close {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
+/*
   *zoom: 1;
   padding: 4px 14px;
   margin-bottom: 0;
@@ -2345,6 +2356,7 @@ button.close {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #e6e6e6;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+/*
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   border: 1px solid #bbbbbb;
   *border: 0;
@@ -2370,6 +2382,7 @@ button.close {
     background-color: #e6e6e6;
     *background-color: #d9d9d9;
     /* Buttons in IE7 don't get borders, so darken on hover */
+/*
     background-position: 0 -15px;
     -webkit-transition: background-position 0.1s linear;
     -moz-transition: background-position 0.1s linear;
@@ -2465,6 +2478,7 @@ input[type="button"].btn-block {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #0044cc;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+/*
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
   .btn-primary:hover, .btn-primary:active, .btn-primary.active, .btn-primary.disabled, .btn-primary[disabled] {
     color: white;
@@ -2488,6 +2502,7 @@ input[type="button"].btn-block {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #f89406;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+/*
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
   .btn-warning:hover, .btn-warning:active, .btn-warning.active, .btn-warning.disabled, .btn-warning[disabled] {
     color: white;
@@ -2511,6 +2526,7 @@ input[type="button"].btn-block {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #bd362f;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+/*
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
   .btn-danger:hover, .btn-danger:active, .btn-danger.active, .btn-danger.disabled, .btn-danger[disabled] {
     color: white;
@@ -2534,6 +2550,7 @@ input[type="button"].btn-block {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #51a351;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+/*
   filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
   .btn-success:hover, .btn-success:active, .btn-success.active, .btn-success.disabled, .btn-success[disabled] {
     color: white;
@@ -2557,7 +2574,7 @@ input[type="button"].btn-block {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #2f96b4;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+  /* filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
   .btn-info:hover, .btn-info:active, .btn-info.active, .btn-info.disabled, .btn-info[disabled] {
     color: white;
     background-color: #2f96b4;
@@ -2580,7 +2597,7 @@ input[type="button"].btn-block {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #222222;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+   /* filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
   .btn-inverse:hover, .btn-inverse:active, .btn-inverse.active, .btn-inverse.disabled, .btn-inverse[disabled] {
     color: white;
     background-color: #222222;
@@ -2655,7 +2672,7 @@ input[type="submit"].btn {
     display: inline-block;
     *display: inline;
     /* IE7 inline-block hack */
-    *zoom: 1; }
+  /*  *zoom: 1; }
   .btn-toolbar .btn + .btn,
   .btn-toolbar .btn-group + .btn,
   .btn-toolbar .btn + .btn-group {
@@ -2805,7 +2822,7 @@ input[type="submit"].btn {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
-  *zoom: 1; }
+ /* *zoom: 1; }
 
 .btn-group-vertical .btn {
   display: block;
@@ -3070,7 +3087,7 @@ input[type="submit"].btn {
   border-bottom-color: #005580; }
 
 /* move down carets for tabs */
-.nav-tabs .dropdown-toggle .caret {
+/* .nav-tabs .dropdown-toggle .caret {
   margin-top: 8px; }
 
 .nav .active .dropdown-toggle .caret {
@@ -3438,7 +3455,7 @@ input[type="submit"].btn {
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
   *background-color: #e5e5e5;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+ /* filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
   -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
   -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(255, 255, 255, 0.075); }
@@ -3624,7 +3641,7 @@ input[type="submit"].btn {
     border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
     *background-color: #040404;
     /* Darken IE7 buttons by default so they stand out more given they won't have borders */
-    filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
+   /* filter: progid:DXImageTransform.Microsoft.gradient(enabled=false); }
     .navbar-inverse .btn-navbar:hover, .navbar-inverse .btn-navbar:active, .navbar-inverse .btn-navbar.active, .navbar-inverse .btn-navbar.disabled, .navbar-inverse .btn-navbar[disabled] {
       color: white;
       background-color: #040404;
@@ -3644,7 +3661,7 @@ input[type="submit"].btn {
     display: inline-block;
     *display: inline;
     /* IE7 inline-block hack */
-    *zoom: 1;
+  /*  *zoom: 1;
     text-shadow: 0 1px 0 white; }
   .breadcrumb .divider {
     padding: 0 5px;
@@ -3660,7 +3677,7 @@ input[type="submit"].btn {
   display: inline-block;
   *display: inline;
   /* IE7 inline-block hack */
-  *zoom: 1;
+ /* *zoom: 1;
   margin-left: 0;
   margin-bottom: 0;
   -webkit-border-radius: 3px;
@@ -3800,7 +3817,7 @@ input[type="submit"].btn {
   border: 1px solid rgba(0, 0, 0, 0.3);
   *border: 1px solid #999;
   /* IE6-7 */
-  -webkit-border-radius: 6px;
+ /* -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   border-radius: 6px;
   -webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -4498,6 +4515,7 @@ a.label:hover, a.badge:hover {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
+*/
 
 .chzn-container {
   position: relative;

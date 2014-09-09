@@ -42,6 +42,10 @@ function toogle3(a, b, c)
 {
     document.getElementById(b).style.display = a;
     document.getElementById(c).style.display = a;
+    redDireccionar();
+}
+function redDireccionar(){
+    location.href='Convalidacion.jsp';
 }
 
 function elimanarValidacion(id, cod, nom, apell)

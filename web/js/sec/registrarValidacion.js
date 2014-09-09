@@ -47,6 +47,10 @@ function toogle(a, b, c)
 {
     document.getElementById(b).style.display = a;
     document.getElementById(c).style.display = a;
+    redDireccionar();
+}
+function redDireccionar(){
+    location.href='Val_pendientes.jsp';
 }
 function ocultarBotton() {
     document.getElementById("opc").style.visibility = "hidden";
