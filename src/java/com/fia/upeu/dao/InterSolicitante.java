@@ -18,7 +18,7 @@ public interface InterSolicitante {
 
     public List<Solicitante> listar_Id_Solicitante(String idSolicitante);
 
-    public boolean agregar_Solicitante(String codigo, String idPersona);
+    public boolean agregar_Solicitante(String nombre,String ap_p,String ap_m,String correo,String telefono,String sexo,String direccion,String codigo);
 
     public boolean modificar_Solicitante(String idSolictante,String codigo, String idPersona);
 

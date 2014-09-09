@@ -150,8 +150,7 @@
                                 <div id="noimp" >
                                     <a  name="imp" value="Imprimir" onclick="toogle1('block', 'modal', 'ventana');
                                             registarPedido()" class="btn btn-warning">Registrar</a>
-                                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">HolaMundo</a>
-
+                                    
                                 </div>
 
                             </form>

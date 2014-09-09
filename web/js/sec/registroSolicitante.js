@@ -20,7 +20,7 @@ function registrarSolicitante(codigo,nombre,ap_paterno,ap_materno,email,telefono
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlCurso?opc='ajax'&id="+id+"&curso="+curso+"&cr="cr"&ht="+ht+"&hnp="+hnp+"&th="th"&nota="+nota+"",
         //url: "../ControlSolicitante?opc=s&id=" + id,
-        url: "../ControlPedido?opc=registrarSolicitante&codigo="+codigo+"&nombre="+nombre+"&ap_p="+ap_paterno+"&ap_m="+ap_materno+"&email="+email+"&tel="+telefono+"&sexo="+sexo+"&direccion="+direccion+"",
+        url: "../ControlSolicitante?opc=registrarSolicitante&codigo="+codigo+"&nombre="+nombre+"&ap_p="+ap_paterno+"&ap_m="+ap_materno+"&email="+email+"&tel="+telefono+"&sexo="+sexo+"&direccion="+direccion+"",
         // data: "id=" + id & "curso=" + curso & "cr=" + cr & "ht=" + ht & "hnp=" + hnp & "th=" + th & "nota=" + nota & "opc=" + "ajax",
         //data: "id=" + id,
         beforeSend: inicioEnvio,

@@ -162,18 +162,7 @@ public class ControlPedido extends HttpServlet {
                     out.println("</tr> ");
                 }
             }
-            if(opc.equals("registrarSolicitante")){
-                String codigo=request.getParameter("codigo");
-                String nombre=request.getParameter("nombre");
-                String ap_paterno=request.getParameter("ap_p");
-                String ap_materno=request.getParameter("ap_m");
-                String email=request.getParameter("email");
-                String telefono=request.getParameter("tel");
-                String sexo=request.getParameter("sexo");
-                String direcion=request.getParameter("direccion");
-                
-                out.println(codigo+nombre+ap_paterno+ap_materno+email+telefono+sexo+direcion);
-            }
+           
 
         } finally {
             out.close();

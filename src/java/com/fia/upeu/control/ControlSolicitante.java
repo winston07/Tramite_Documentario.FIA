@@ -26,6 +26,7 @@ public class ControlSolicitante extends HttpServlet {
 
     InterSolicitante is = new ModeloSolicitante();
     List<Solicitante> lsoli;
+    boolean estado;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -71,7 +72,7 @@ public class ControlSolicitante extends HttpServlet {
         processRequest(request, response);
         PrintWriter out = response.getWriter();
         String opc = request.getParameter("opc");
-        out.println(opc);
+        //out.println(opc);
         String read = "readonly=''";
         try {
             if (opc.equals("s")) {
@@ -81,6 +82,23 @@ public class ControlSolicitante extends HttpServlet {
                     out.println("<tr><td  >Nombres: &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<input type='text' name='nombres' value='"+lsoli.get(i).getNombre()+"' "+read+" size='15'/></td></tr>");
                     out.println("<tr><td>Apellido Paterno:&nbsp &nbsp &nbsp &nbsp&nbsp<input type='text' name='apellido_p' value='"+lsoli.get(i).getPaterno()+"' "+read+"/></td></tr>");
                     out.println("<tr><td>Apellido Materno:&nbsp &nbsp &nbsp &nbsp<input type='text' name='apellido_m' value='"+lsoli.get(i).getMaterno()+"' "+read+"/></td></tr>");
+                }
+            }
+             if(opc.equals("registrarSolicitante")){
+                
+                String nombre=request.getParameter("nombre");
+                String ap_paterno=request.getParameter("ap_p");
+                String ap_materno=request.getParameter("ap_m");
+                String email=request.getParameter("email");
+                String telefono=request.getParameter("tel");
+                String sexo=request.getParameter("sexo");
+                String direcion=request.getParameter("direccion");
+                String codigo=request.getParameter("codigo");
+                estado=is.agregar_Solicitante( nombre, ap_paterno, ap_materno, email, telefono, sexo, direcion,codigo);
+                if(estado){
+                out.println(codigo+nombre+ap_paterno+ap_materno+email+telefono+sexo+direcion+"AQUI ESTA");
+                }else{
+                    out.println("no");
                 }
             }
             
