@@ -79,6 +79,7 @@ function inicioEnvio()
 function llegada(datos)
 {
     $("#resultados").html(datos);
+    ocultar();
 }
 function problemas()
 {
@@ -127,6 +128,7 @@ function llegada1(datos)
 {
     //toogle('block', 'modal', 'ventana');
     $("#res").html(datos);
+   
 
 
 }
@@ -175,4 +177,10 @@ function toogle5(a, b, c)
 {
     document.getElementById(b).style.display = a;
     document.getElementById(c).style.display = a;
+}
+function ocultar(){
+     document.getElementById("ciclo1").value="";
+     document.getElementById("curso1").value="";
+     document.getElementById("cr1").value="";
+     document.getElementById("nota1").value="";
 }

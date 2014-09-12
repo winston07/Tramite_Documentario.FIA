@@ -95,7 +95,7 @@ function inicioEnvio()
 function llegada(datos)
 {
     $("#resultados").html(datos);
-   // ocultar();
+    ocultar();
      
 }
 function problemas()
