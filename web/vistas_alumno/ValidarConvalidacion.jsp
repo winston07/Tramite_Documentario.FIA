@@ -51,7 +51,16 @@
 
     </head>
     <body>
-
+        <style>
+            #cubo{
+                width: 600px;height: 250px;border:1px dotted blue;border-color: #000;
+                padding-left: 12px; padding-right: 400px;margin-right: 200px;margin-top: 10px;  margin-bottom: 5px; 
+            }
+            #in{width: 150px;height: 25px;border:1px dotted blue;border-color: #000;
+                padding-left: 10px;margin-right: 500px;margin-top: 10px;}
+            #on{width: 150px;height: 25px;border:1px dotted blue;border-color: #000;
+                padding-left: 10px;margin-right: 1000px;margin-top: 10px;}
+        </style>
         <div id="wrapper">
 
             <nav class="navbar navbar-default navbar-cls-top " role="navigation" style="margin-bottom: 0">
@@ -101,7 +110,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!--ingrese datos tabla-->
-                        <p>Convalidacion del alumno:<%=lsoli.get(0).getNombre()%> , <%=lsoli.get(0).getPaterno() + " " + lsoli.get(0).getMaterno()%> Con Su Codigo:<%=lsoli.get(0).getCodigo()%></p><p><%=ids+pedido%></p>
+                        <p><b>Convalidacion del alumno:</b><%=lsoli.get(0).getNombre()%> , <%=lsoli.get(0).getPaterno() + " " + lsoli.get(0).getMaterno()%> <b>Con Su Codigo:</b><%=lsoli.get(0).getCodigo()%></p><p><%=ids+pedido%></p>
                         <center>
                             <form action="" method="post" name="formulario" id="formulario">
                                 <%-- <table>
@@ -115,7 +124,9 @@
                                 <input type="hidden" id="pedido" value="<%=pedido%>" />
                                 <input type="hidden" id="tramite" value="<%=tramite%>" />
                                 <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
+                                <div id="cubo" margin="40px">
                                 <table>
+                                    
                                     <tr><td align="rigth">Universidad</td><td><input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" /></td></tr>
                                     <p></p>
                                     <tr><td align="right">Facultad</td><td><input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50"/> </td></tr>
@@ -142,13 +153,16 @@
                                         <%}%>
                                     </select>--%>
                                 <!--<strong >Codigo  </strong><input class="text-box" name="Codigo" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(0).getCodigo()%>" readonly="" />
-                                --><strong>Plan</strong><input class="text-box" name="plan" type="text" id="plan_in1" size="5" maxlength="50" />
-                                    <strong>Plan Nuevo</strong><input class="text-box" name="plannuevo" type="text" id="plan_out" size="5" maxlength="50" />
-                                <%--<p><strong>Nombres:</strong><input  class="text-box" type="text" name="descripcion" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(0).getNombre()%>" readonly/>
+                                -->
+                                <div id="in">
+                                <strong>Plan</strong><input class="text-box" name="plan" type="text" id="plan_in1" size="5" maxlength="50" />
+                                </div><div id="on"><strong>Plan Nuevo</strong><input class="text-box" name="plannuevo" type="text" id="plan_out" size="5" maxlength="50" />
+                                </div> <%--<p><strong>Nombres:</strong><input  class="text-box" type="text" name="descripcion" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(0).getNombre()%>" readonly/>
                                    <strong>Apellidos:</strong><input  class="text-box" type="text" name="apellidos" id="apellidos" size="30" maxlength="50" value="<%=lsoli.get(0).getPaterno() + "," + lsoli.get(0).getMaterno()%>" readonly/>
                                 </p>--%>
                                 <br/>
                                 </table>
+                                </div>
                                 <!--INGRESO DE TRABLA JQUERY -->
                                 <!--<a href="#" onClick="return false" onmouseOver="alert('Ingrese cursos del alumno ')">
                                 <img src="../img/interrogacion.png" width="45" height="45">-->
