@@ -10,11 +10,10 @@
     HttpSession sesion = request.getSession(true);
     String usuario = (String) sesion.getAttribute("IDUSER");
     String idRol = (String) sesion.getAttribute("IDROL");
-    if (usuario != null) {       
-       
+    if (usuario != null) {
+
 %>
-<%
-    String ids = request.getParameter("idS");
+<%    String ids = request.getParameter("idS");
     String tramite = request.getParameter("idT");
     String pedido = request.getParameter("idP");
     String validacion = request.getParameter("idV");
@@ -60,6 +59,10 @@
                 padding-left: 10px;margin-right: 500px;margin-top: 10px;}
             #on{width: 150px;height: 25px;border:1px dotted blue;border-color: #000;
                 padding-left: 10px;margin-right: 1000px;margin-top: 10px;}
+            form fieldset {
+                float: left;
+                width: 48%;
+            }
         </style>
         <div id="wrapper">
 
@@ -110,37 +113,42 @@
                 <div class="row">
                     <div class="col-md-12">
                         <!--ingrese datos tabla-->
-                        <p><b>Convalidacion del alumno:</b><%=lsoli.get(0).getNombre()%> , <%=lsoli.get(0).getPaterno() + " " + lsoli.get(0).getMaterno()%> <b>Con Su Codigo:</b><%=lsoli.get(0).getCodigo()%></p><p><%=ids+pedido%></p>
+                        <p><b>Convalidacion del alumno:</b><%=lsoli.get(0).getNombre()%> , <%=lsoli.get(0).getPaterno() + " " + lsoli.get(0).getMaterno()%> <b>Con Su Codigo:</b><%=lsoli.get(0).getCodigo()%></p><p><%=ids + pedido%></p>
                         <center>
+
                             <form action="" method="post" name="formulario" id="formulario">
-                                <%-- <table>
-                                <tr><td colspan="2" align="center">AUTENTIFICACIÓN</td></tr>
-                                <tr><td colspan="2"align="center"><hr></td></tr>
-                                <tr><td align="right">Usuario:</td><td><input type="text" name="usuario"></td></tr>
-                                <tr><td align="right">Clave:</td><td><input type="password" name="clave"></td></tr>
-                                <tr><td align="right" colspan="2"><input type="submit" name="boton" value="Enviar"></td></tr>
-                                </table>--%>
                                 <input type="hidden" id="codigo" value="<%=ids%>"  />
                                 <input type="hidden" id="pedido" value="<%=pedido%>" />
                                 <input type="hidden" id="tramite" value="<%=tramite%>" />
                                 <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
-                                <div id="cubo" margin="40px">
-                                <table>
-                                    
-                                    <tr><td align="rigth">Universidad</td><td><input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" /></td></tr>
-                                    <p></p>
-                                    <tr><td align="right">Facultad</td><td><input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50"/> </td></tr>
-                                    <p></p>
-                                    <tr><td align="right">EAP</td><td><input class="textaca-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50"/> </td></tr>
-                                    <%--<p> Universidad</p>
-                                    <input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" />
-                                    <strong> Facultad</strong>
-                                    <input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50" /> 
-                                    <strong> De  E.A.P</strong>
-                                    <input class="textaca-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50" />--%>
-                                   <!--COMBO BOX-->
-                                    <%--
-                                    <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
+                                <div class="col-lg-12">
+                                    <div class="col-lg-6">
+                                         <fieldset>
+                                        <legend>DATOS PROVENIENTES </legend>
+                                        
+                                        <div>
+                                            <label for="universidad">Universidad</label>
+                                            <input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" />
+                                        </div>
+
+                                        <div>
+                                            <label for="facultad">Facultad</label>
+                                            <input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50"/>
+                                        </div>
+                                        <div>
+                                            <label for="eap">De  E.A.P</label>
+                                            <input class="text-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50" />
+                                        </div>
+                                        <div>
+                                            <label for="plan">Plan</label>
+                                            <input class="text-box" name="plan" type="text" id="plan_in1" size="5" maxlength="50" />  
+                                    </fieldset>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <legend>DATOS A CONVALIDAR </legend>
+                                        <div>
+                                            <label for="nombre">Escuela Nueva</label>
+                                             <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
                                         <option value=""></option>
                                         <%
                                             InterEscuela tEscuela = new ModeloEscuela();
@@ -150,18 +158,14 @@
                                         <%                                                                                            %>
                                         <%for (int i = 0; i < ltEscuela.size(); i++) {%>
                                         <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
-                                        <%}%>
-                                    </select>--%>
-                                <!--<strong >Codigo  </strong><input class="text-box" name="Codigo" type="text" id="codigo" size="20" maxlength="50" value="<%=lsoli.get(0).getCodigo()%>" readonly="" />
-                                -->
-                                <div id="in">
-                                <strong>Plan</strong><input class="text-box" name="plan" type="text" id="plan_in1" size="5" maxlength="50" />
-                                </div><div id="on"><strong>Plan Nuevo</strong><input class="text-box" name="plannuevo" type="text" id="plan_out" size="5" maxlength="50" />
-                                </div> <%--<p><strong>Nombres:</strong><input  class="text-box" type="text" name="descripcion" id="nombre" size="20" maxlength="50" value="<%=lsoli.get(0).getNombre()%>" readonly/>
-                                   <strong>Apellidos:</strong><input  class="text-box" type="text" name="apellidos" id="apellidos" size="30" maxlength="50" value="<%=lsoli.get(0).getPaterno() + "," + lsoli.get(0).getMaterno()%>" readonly/>
-                                </p>--%>
-                                <br/>
-                                </table>
+                                        <%}%></select>
+                                        </div>
+                                        <div>
+                                            <label for="eap">Plan Nuevo </label>
+                                            <input class="text-box" name="plannuevo" type="text" id="plan_out" size="5" maxlength="50" />
+                                        </div>
+                                    </div>
+                                </div>
                                 </div>
                                 <!--INGRESO DE TRABLA JQUERY -->
                                 <!--<a href="#" onClick="return false" onmouseOver="alert('Ingrese cursos del alumno ')">
@@ -182,7 +186,7 @@
                                     <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp1" name="hnp"></td>
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th1" name="th"></td>-->
                                     <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota1" name="nota"></td>
-                                </tr>
+                                    </tr>
                                 </table>
                                 <table><tfoot>
                                     <a  class="btn btn-info" onclick="registarConvalidacion();
@@ -212,27 +216,27 @@
                 </center>
             </div>
         </div>
-    <!-- /. PAGE WRAPPER  -->
-</div>
-<!-- /. WRAPPER  -->
-<!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
-<!-- JQUERY SCRIPTS -->
-<script src="../js/jquery-1.10.2.js"></script>
-<!-- BOOTSTRAP SCRIPTS -->
-<script src="../js/bootstrap.min.js"></script>
-<!-- METISMENU SCRIPTS -->
-<script src="../js/jquery.metisMenu.js"></script>
-<!-- MORRIS CHART SCRIPTS -->
-<script src="../js/morris/raphael-2.1.0.min.js"></script>
-<script src="../js/morris/morris.js"></script>
-<!-- CUSTOM SCRIPTS -->
-<script src="../js/custom.js"></script>
-<div id="modal" style="display:none">
-    <div id="ventana" class="contenedor" style="display:none">
-        <div id="res"></div>
-        <a href="#close" title="Cerrar" onclick="toogle5('none', 'modal', 'ventana')" >Close</a>
+        <!-- /. PAGE WRAPPER  -->
     </div>
-</div>
+    <!-- /. WRAPPER  -->
+    <!-- SCRIPTS -AT THE BOTOM TO REDUCE THE LOAD TIME-->
+    <!-- JQUERY SCRIPTS -->
+    <script src="../js/jquery-1.10.2.js"></script>
+    <!-- BOOTSTRAP SCRIPTS -->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- METISMENU SCRIPTS -->
+    <script src="../js/jquery.metisMenu.js"></script>
+    <!-- MORRIS CHART SCRIPTS -->
+    <script src="../js/morris/raphael-2.1.0.min.js"></script>
+    <script src="../js/morris/morris.js"></script>
+    <!-- CUSTOM SCRIPTS -->
+    <script src="../js/custom.js"></script>
+    <div id="modal" style="display:none">
+        <div id="ventana" class="contenedor" style="display:none">
+            <div id="res"></div>
+            <a href="#close" title="Cerrar" onclick="toogle5('none', 'modal', 'ventana')" >Close</a>
+        </div>
+    </div>
 
 
 </body>
