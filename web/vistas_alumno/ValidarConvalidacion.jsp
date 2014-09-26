@@ -123,42 +123,42 @@
                                 <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
                                 <div class="col-lg-12">
                                     <div class="col-lg-6">
-                                         <fieldset>
-                                        <legend>DATOS PROVENIENTES </legend>
-                                        
-                                        <div>
-                                            <label for="universidad">Universidad</label>
-                                            <input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" />
-                                        </div>
+                                        <fieldset>
+                                            <legend>DATOS PROVENIENTES </legend>
 
-                                        <div>
-                                            <label for="facultad">Facultad</label>
-                                            <input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50"/>
-                                        </div>
-                                        <div>
-                                            <label for="eap">De  E.A.P</label>
-                                            <input class="text-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50" />
-                                        </div>
-                                        <div>
-                                            <label for="plan">Plan</label>
-                                            <input class="text-box" name="plan" type="text" id="plan_in1" size="5" maxlength="50" />  
-                                    </fieldset>
+                                            <div>
+                                                <label for="universidad">Universidad</label>
+                                                <input class="text-box" name="universidad" type="text" id="unversidad" size="20" maxlength="50" />
+                                            </div>
+
+                                            <div>
+                                                <label for="facultad">Facultad</label>
+                                                <input class="text-box" name="facultad" type="text" id="facultad" size="20" maxlength="50"/>
+                                            </div>
+                                            <div>
+                                                <label for="eap">De  E.A.P</label>
+                                                <input class="text-box" name="escuela" type="text" id="inst_in" size="20" maxlength="50" />
+                                            </div>
+                                            <div>
+                                                <label for="plan">Plan</label>
+                                                <input class="text-box" name="plan" type="text" id="plan_in1" size="5" maxlength="50" />  
+                                        </fieldset>
                                     </div>
                                     <div class="col-lg-6">
                                         <legend>DATOS A CONVALIDAR </legend>
                                         <div>
                                             <label for="nombre">Escuela Nueva</label>
-                                             <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
-                                        <option value=""></option>
-                                        <%
-                                            InterEscuela tEscuela = new ModeloEscuela();
-                                            List<Escuela> ltEscuela = tEscuela.listar_Escuela();
+                                            <select data-placeholder="A..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_out"   required="">
+                                                <option value=""></option>
+                                                <%
+                                                    InterEscuela tEscuela = new ModeloEscuela();
+                                                    List<Escuela> ltEscuela = tEscuela.listar_Escuela();
 
-                                        %>
-                                        <%                                                                                            %>
-                                        <%for (int i = 0; i < ltEscuela.size(); i++) {%>
-                                        <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
-                                        <%}%></select>
+                                                %>
+                                                <%                                                                                            %>
+                                                <%for (int i = 0; i < ltEscuela.size(); i++) {%>
+                                                <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
+                                                <%}%></select>
                                         </div>
                                         <div>
                                             <label for="eap">Plan Nuevo </label>
@@ -188,17 +188,26 @@
                                     <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota1" name="nota"></td>
                                     </tr>
                                 </table>
+                                    <center>
                                 <table><tfoot>
                                     <a  class="btn btn-info" onclick="registarConvalidacion();
                                             enviarDatos();" type="submit">Agregar</a> 
                                     </tfoot>
                                 </table>
+                                
+                                    <div>
+                                        <a type="submit" class="btn btn-success" id="enviarcur" value="ingresar" onclick="toogle5('block', 'modal', 'ventana');
+                                                enviarCursos1()">Enviar Cursos</a>
+                                        </a>
+                                        <br />
+                                    </div>
+                                </center>
                             </form>
                             <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                             <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
                             <script type="text/javascript">
-                                        $(".chzn-select").chosen();
-                                        $(".chzn-select-deselect").chosen({allow_single_deselect: true});
+                                            $(".chzn-select").chosen();
+                                            $(".chzn-select-deselect").chosen({allow_single_deselect: true});
                             </script>
                     </div>
                 </div>
@@ -206,14 +215,7 @@
                 </table>
 
                 <p>
-                <center>
-                    <div>
-                        <a type="submit" class="btn btn-success" id="enviarcur" value="ingresar" onclick="toogle5('block', 'modal', 'ventana');
-                                enviarCursos1()">Enviar Cursos</a>
-                        </a>
-                        <br />
-                    </div>
-                </center>
+
             </div>
         </div>
         <!-- /. PAGE WRAPPER  -->

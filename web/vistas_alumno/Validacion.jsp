@@ -16,8 +16,8 @@
     HttpSession sesion = request.getSession(true);
     String usuario = (String) sesion.getAttribute("IDUSER");
     String idRol = (String) sesion.getAttribute("IDROL");
-    if (usuario != null) {       
-       
+    if (usuario != null) {
+
 %>
 <!DOCTYPE html>
 <html>
@@ -82,12 +82,12 @@
             <nav class="navbar-default navbar-side" role="navigation">
                 <div class="sidebar-collapse">
                     <ul class="nav" id="main-menu">
-                       <li class="text-center">
+                        <li class="text-center">
                             <img src="../img/alumno.png" class="user-image img-responsive"/>
                         </li>
 
 
-                        
+
                         <li>
                             <a  href="../vistas_alumno/Val_pendientes.jsp"><i class="fa fa-check-square-o fa-3x"></i>Validacion</a>
                         </li>
@@ -114,13 +114,12 @@
                                 <strong> Escuela </strong>
                                 <select data-placeholder="De..." class="chzn-select form-control"  tabindex="2" style="width: 200px;" id="inst_in"   required="">
                                     <option value=""></option>
-                                    <%
-                                        String ids = request.getParameter("idS");
+                                    <%                                        String ids = request.getParameter("idS");
                                         String tramite = request.getParameter("idT");
                                         String pedido = request.getParameter("idP");
                                         String validacion = request.getParameter("idV");
                                         String escuela = request.getParameter("ide");
-                                      
+
                                         InterEscuela tEscuela = new ModeloEscuela();
                                         List<Escuela> ltEscuela = tEscuela.listar_Escuela();
 
@@ -130,13 +129,13 @@
                                     <option value="<%=ltEscuela.get(i).getEscuela()%>"><%=ltEscuela.get(i).getNombre()%></option>
                                     <%}%>
 
-                                   
+
                                 </select>
-                                     <%
-                                        InterSolicitante tSolicitante = new ModeloSolicitante();
-                                        List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
-                                    %>
-                                    <strong>Escuela Actual: <input type="text" value="<%=escuela%>"  readonly=?readonly?  tabindex="2"></strong>
+                                <%
+                                    InterSolicitante tSolicitante = new ModeloSolicitante();
+                                    List<Solicitante> lsoli = tSolicitante.listar_Id_Solicitante(ids);
+                                %>
+                                <strong>Escuela Actual: <input type="text" value="<%=escuela%>"  readonly=?readonly?  tabindex="2"></strong>
                                 <p>
                                     <%for (int w = 0; w < lsoli.size(); w++) {%>
                                     <strong >Codigo:</strong>
@@ -146,8 +145,8 @@
                                     <input type="hidden" id="tramite" value="<%=tramite%>" />
                                     <input type="hidden" id="validacion" name="validacion" value="<%=validacion%>" />
                                     <strong>Nombres y Apellidos del Solicitante:</strong>
-                                    <label  class="text-right" name="nombres" type="text" id="nombre" size="50" maxlength="50" readonly="true"><%=lsoli.get(w).getNombre()+","+""+lsoli.get(w).getPaterno()+" "+" "+lsoli.get(w).getMaterno()%></label>
-                                   
+                                    <label  class="text-right" name="nombres" type="text" id="nombre" size="50" maxlength="50" readonly="true"><%=lsoli.get(w).getNombre() + "," + "" + lsoli.get(w).getPaterno() + " " + " " + lsoli.get(w).getMaterno()%></label>
+
                                     <%}%>
 
                                 </p>
@@ -187,22 +186,13 @@
                                     <td><input type="text"size="3" class="clsAnchoTotal form-control" id="hnp1" name="hnp"></td>
                                     <td><input type="text" size="3"class="clsAnchoTotal form-control" id="th1" name="th"></td>--%>
                                     <td><input valign="center"type="text" size="3"class="clsAnchoTotal form-control" id="nota1" name="nota"></td>
-
-
-
                                     </tr>
-
-
-
                                 </table>
-
                                 <table><tfoot>
                                     <a  class="btn btn-info" onclick="registarValidacion();
                                             enviarDatos()" type="submit">Agregar</a> 
                                     </tfoot>
                                 </table>
-
-
                         </center>
                         <script src="../js/jsocultar/jquery.1.6.4.min.js" type="text/javascript"></script>
                         <script src="../js/jsocultar/chosen.jquery.js" type="text/javascript"></script>
@@ -212,8 +202,6 @@
                         </script>
                     </div>
                 </div>
-
-
                 <p>
                 <center>
                     <div>
@@ -228,7 +216,6 @@
                 </p>
                 </center>
                 </form>
-
             </div>
         </div>
     </div>
